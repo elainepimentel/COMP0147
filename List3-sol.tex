@@ -1,0 +1,676 @@
+\input{hmwrk_header-sol.tex}
+
+%====================================================================
+% Commands particular to this file
+%====================================================================
+
+%--------------------------------------------------------------------
+
+\begin{document}
+
+
+\homeworktitle{First-order Logic (FOL)}{Rosen - Chapter 1}
+
+\crossline
+
+\paragraph{Required reading for this assignment:}
+\emph{Discrete Mathematics and Its Applications} (Rosen, 7\textsuperscript{th} Edition):
+\begin{itemize}
+\item Chapter 1.1: \emph{Propositional Logic} 
+\item Chapter 1.2:  \emph{Applications of Propositional Logic}
+\item Chapter 1.3: \emph{Propositional Equivalences}
+\item Chapter 1.4: \emph{Predicates and Quantifiers}
+\item Chapter 1.5: \emph{Nested Quantifiers}
+\item Chapter 1.6:  \emph{Introduction to Proofs}
+\item Chapter 1.8:  \emph{Proof Methods and Strategy}
+\end{itemize}
+
+\noteondifficultylevel
+
+\crossline
+
+\begin{enumerate}
+\item \streasy (Rosen 1.1.1) Which of the sentences below are propositions?
+What is the truth value of those that are propositions?
+
+\begin{enumerate}
+\item Boston is the capital of Massachusetts.
+\solution{\ldots a true proposition.}
+
+\item Miami is the capital of Florida.
+\solution{\ldots a false proposition.}
+
+\item $2+3=5$
+\solution{\ldots a true proposition.}
+
+\item $5+7=10$
+\solution{\ldots a false proposition.}
+
+\item $x+2=11$
+\solution{Not a proposition.}
+
+\item Answer this question.
+\solution{Not a proposition.}
+\end{enumerate}
+
+%\item \streasy (Rosen 1.1.7) Suppose that during the last fiscal year, Acme Computer had a revenue of 138 billion dollars and a net profit of 8 billion dollars;  
+%Nadir Software had a revenue of 87 billion dollars and a net profit of 5 billion dollars;  
+%and Quixote Media had a revenue of 111 billion dollars and a net profit of 13 billion dollars.  
+%Determine the truth value of each of the propositions below about the last fiscal year.
+%
+%\begin{enumerate}
+%\item Quixote Media had the highest revenue.
+%\solution{False proposition.}
+%
+%\item Nadir Software had the lowest net profit and Acme Computer had the highest revenue.
+%\solution{True proposition.}
+%
+%\item Acme Computer had the highest net profit or Quixote Media had the highest net profit.
+%\solution{True proposition.}
+%
+%\item If Quixote Media had the lowest net profit, then Acme Computer had the highest revenue.
+%\solution{True proposition.}
+%
+%\item Nadir Software had the lowest net profit if and only if Acme Computer had the highest revenue.
+%\solution{True proposition.}
+%\end{enumerate}
+
+\item \streasy (Rosen 1.1.9) Let $p$ and $q$ be the propositions \prop{\ldots swimming is allowed on the coast of New Jersey} and \prop{Sharks have been sighted near the coast}, respectively.  
+Express each of the compound propositions below in a natural language sentence.
+
+\begin{multicols}{2}
+\begin{enumerate}
+\item $\neg{p} \vee q$
+\item $p \imp \neg{q}$
+\item $p \doubleimp \neg{q}$
+\item $\neg{p} \wedge (p \vee \neg{q})$
+\end{enumerate}
+\end{multicols}
+
+\solution{
+\begin{enumerate}
+\item $\neg{p} \vee q$: \prop{Swimming is not allowed on the coast of New Jersey.}
+\item $p \imp \neg{q}$: \prop{If swimming is allowed on the coast of New Jersey, then sharks have not been sighted near the coast.}
+\item $p \doubleimp \neg{q}$: \prop{\ldots swimming is allowed on the coast of New Jersey if and only if sharks have not been sighted near the coast.}
+\item $\neg{p} \wedge (p \vee \neg{q})$: \prop{Swimming is not allowed on the coast of New Jersey and  
+either swimming is allowed on the coast of New Jersey or sharks have not been sighted near the coast.}
+\end{enumerate}
+}
+
+\item \strmedium (Rosen 1.1.15) Let $p$, $q$, and $r$ be the following propositions:
+
+$p$ : Brown bears have been sighted in the area.\\
+$q$ : \ldots it is safe to walk on the trail.\\
+$r$ : There are ripe fruits along the trail.
+
+Write the following propositions using $p$, $q$, $r$, and logical connectives.
+
+\begin{enumerate}
+\item There are ripe fruits along the trail, but brown bears have not been sighted in the area.
+\solution{$r \wedge \neg{p}$}
+
+\item Brown bears have not been sighted in the area and it is safe to walk on the trail, but there are ripe fruits along the trail.
+\solution{$\neg{p} \wedge q \wedge r$}
+
+\item If there are ripe fruits along the trail, walking is safe if and only if brown bears have not been sighted in the area.
+\solution{$r \imp (q \doubleimp \neg{p})$}
+
+\item It is not safe to walk on the trail, but brown bears have not been sighted in the area and there are ripe fruits along the trail.
+\solution{$\neg{q} \wedge \neg{p} \wedge r$}
+
+\item For walking on the trail to be safe, it is necessary but not sufficient that there are no ripe fruits along the trail and brown bears have not been sighted in the area.
+\solution{$q \imp (\neg{r} \wedge \neg{p}) \wedge \neg{((\neg{r} \wedge \neg{p}) \imp q)}$}
+
+\item Walking on the trail is not safe whenever brown bears have been sighted in the area and there are ripe fruits along the trail.
+\solution{$p \wedge r \imp \neg{q}$}
+\end{enumerate}
+
+%\item \streasy (Rosen 1.1.17) Determine whether each of the conditional expressions below is true or false.
+%
+%\begin{enumerate}
+%\item If $1+1=2$, then $2+2=5$.
+%\solution{The implication is false, since the premise is true and the conclusion is false.}
+%
+%\item If $1+1=3$, then $2+2=4$.
+%\solution{The implication is true, since the premise is false.}
+%
+%\item If $1+1=3$, then $2+2=5$.
+%\solution{The implication is true, since the premise is false.}
+%
+%\item If monkeys can fly, then $1+1=3$.
+%\solution{The implication is true, since the premise is false.}
+%\end{enumerate}
+
+\item \strmedium (Rosen 1.1.23) Write each of the propositions below in the form \prop{if $p$, then $q$}.
+
+\begin{enumerate}
+\item It snows whenever the wind blows from the northeast.
+\solution{If the wind blows from the northeast, then it snows.}
+
+\item \ldots it is necessary to walk 8 miles to reach the top of Long's Peak.
+\solution{If you reached the top of Long's Peak, then you walked 8 miles.}
+
+\item To be appointed as a professor, it is sufficient to be world-famous.
+\solution{If you are world-famous, then you are appointed as a professor.}
+
+\item Your warranty is valid only if you purchased your CD player less than 90 days ago.
+\solution{If your warranty is valid, then you purchased your CD player less than 90 days ago.}
+
+\item Jan will swim unless the water is very cold.
+\solution{If the water is not very cold, then Jan will swim.}
+\end{enumerate}
+
+\item \strmedium (Rosen 1.1.27) Give the converse, contrapositive, and inverse of each of the conditional propositions below.
+
+\begin{enumerate}
+\item If it snows today, I will ski tomorrow.
+\solution{
+Converse: I will ski tomorrow only if it snows today. \\
+Contrapositive: If I do not ski tomorrow, it did not snow today. \\
+Inverse: If it does not snow today, I will not ski tomorrow.
+}
+
+\item I go to class whenever it is exam day.
+\solution{
+Converse: If I go to class, then it is exam day. \\
+Contrapositive: If I do not go to class, then it is not exam day.\\
+Inverse: If it is not exam day, I do not go to class.
+}
+\end{enumerate}
+
+%\item \strmedium (Rosen 1.1.31) Construct the truth table
+%for each of the compound propositions below.
+%
+%\begin{enumerate}
+%\item $(p \vee \neg{q}) \imp q$
+%
+%\item $(p \imp q) \doubleimp (\neg{q} \imp \neg{p})$
+%\end{enumerate}
+%
+%\solution{See the truth tables below.
+%
+%\begin{table}[!htb]
+%\centering
+%$
+%\begin{array}{|c|c||c|c|c|c|}
+%\hline
+%p & q & \neg{q} & p \vee \neg{q} & (p \vee \neg{q}) \imp q \\ \hline \hline
+%T & T & F & T & T \\ \hline
+%T & F & T & T & F \\ \hline
+%F & T & F & F & T \\ \hline
+%F & F & T & T & F \\ \hline
+%\end{array}
+%$
+%
+%\vspace{2mm}
+%
+%$
+%\begin{array}{|c|c||c|c|c|c|c|c|c|}
+%\hline
+%p & q & (p \imp q) & \neg{q} & \neg{p} & \neg{q} \imp \neg{q} & (p \imp q) \doubleimp (\neg{q} \imp \neg{p}) \\ \hline \hline
+%T & T & T & F & F & T & T \\ \hline
+%T & F & F & T & F & F & T \\ \hline
+%F & T & T & F & T & T & T \\ \hline
+%F & F & T & T & T & T & T \\ \hline
+%\end{array}
+%$
+%\end{table}
+%}
+
+\item \strhard (Rosen 1.2.17) Three professors are sitting
+in a restaurant, and the waitress asks them: \qm{Does everyone want coffee?}.
+The first professor says: \qm{I don't know.}
+The second professor says: \qm{I don't know.}
+Finally, the third professor says: \qm{No, not everyone wants coffee.}
+The waitress then brings coffee to the professors who wanted it.
+How did she deduce who wanted coffee?
+
+\solution{Note that the waitress's question has an affirmative answer
+if and only if all professors want coffee, and it is enough that one
+does not want it for the answer to be negative.
+If the first professor did not want coffee, he would know that
+the answer to the waitress's question would be \qm{no}.
+Therefore, both the waitress and the other professors know that
+the first professor wants coffee.
+Similarly, the second professor must also want coffee,
+because if he did not, he would have answered \qm{no} to the waitress's question.
+Finally, both the third professor and the waitress know that 
+both the first and the second professors want coffee.
+Since the third professor answered \qm{no} to the question, the waitress
+concludes that he is the only one who does not want coffee.
+}
+
+\item \streasy (Rosen 1.3.13) Use truth tables to verify the absorption law.
+
+\begin{enumerate}
+\item $p \vee (p \wedge q) \equiv p$
+\item $p \wedge (p \vee q) \equiv p$
+\end{enumerate}
+
+\solution{See the truth tables below.
+
+\begin{table}[!htb]
+\centering
+$
+\begin{array}{|c|c||c|c|c|}
+\hline
+p & q & (p \wedge q) & p \vee (p \wedge q) \\ \hline \hline
+T & T & T & T \\ \hline
+T & F & F & T \\ \hline
+F & T & F & F \\ \hline
+F & F & F & F \\ \hline
+\end{array}
+$
+\hspace{2cm}
+$
+\begin{array}{|c|c||c|c|c|}
+\hline
+p & q & (p \vee q) & p \wedge (p \vee q) \\ \hline \hline
+T & T & T & T \\ \hline
+T & F & T & T \\ \hline
+F & T & T & F \\ \hline
+F & F & F & F \\ \hline
+\end{array}
+$
+\end{table}
+}
+
+\item Prove the following problems through the manipulation of logical connectives.
+(In other words, do not use truth tables, but rather the equivalence axioms given in class.)
+
+\begin{enumerate}
+\item \strmedium (Rosen 1.3.20) $\neg{(p \oplus q)}$ and $p \leftrightarrow q$ are equivalent.
+
+\solution{
+\begin{align*}
+\neg{(p \oplus q)} 
+ &\equiv \neg{( (\neg{p} \wedge q) \vee (p \wedge \neg{q}) )} & \text{(disjunction equivalence)} \\
+ &\equiv \neg{(\neg{p} \wedge q)} \wedge \neg{(p \wedge \neg{q})} & \text{(de Morgan)} \\
+ &\equiv (p \vee \neg{q}) \wedge (\neg{p} \vee q) & \text{(de Morgan)} \\
+ &\equiv (q \rightarrow p) \wedge (p \rightarrow q) & \text{(implication equivalence)} \\
+ &\equiv p \leftrightarrow q & \text{(double implication equivalence)}
+\end{align*}
+}
+
+\item \streasy (Rosen 1.3.25) $(p \rightarrow r) \vee (q \rightarrow r)$ and 
+$(p \wedge q) \rightarrow r$ are equivalent.
+
+\solution{
+\begin{align*}
+(p \rightarrow r) \vee (q \rightarrow r)
+ &\equiv (\neg{p} \vee r) \vee (\neg{q} \vee r) & \text{(implication equivalence)} \\
+ &\equiv \neg{p} \vee r \vee \neg{q} \vee r & \text{(associativity)} \\
+ &\equiv \neg{p} \vee \neg{q} \vee r \vee r & \text{(comutativity)} \\
+ &\equiv (\neg{p} \vee \neg{q}) \vee (r \vee r) & \text{(associativity)} \\
+ &\equiv (\neg{p} \vee \neg{q}) \vee r & \text{(idempotency)} \\
+ &\equiv \neg{(p \wedge q)} \vee r & \text{(de Morgan)} \\
+ &\equiv (p \wedge q) \rightarrow r & \text{(implication equivalence)}
+\end{align*}
+}
+
+\end{enumerate}
+
+\item \strhard (Rosen 1.3.29) Show that $(p \rightarrow q) \wedge (q \rightarrow r) \rightarrow (p \rightarrow r)$ 
+is a tautology. \\
+\textbf{Obs:} In this question, did you find it easier to use the truth table or to manipulate logical connectives?
+
+\solution{
+
+\begin{itemize}
+\item \textbf{Solution 1:} One possible solution is to derive the tautology.
+\allowdisplaybreaks
+\begin{align*}
+& (p \rightarrow q) \wedge (q \rightarrow r) \rightarrow (p \rightarrow r) \\ & \equiv \text{(def. of $\rightarrow$)} \\
+& (\neg{p} \vee q) \wedge (\neg{q} \vee r) \rightarrow (\neg{p} \vee r) \\ & \equiv \text{(def. of $\rightarrow$)} \\
+& \neg{((\neg{p} \vee q) \wedge (\neg{q} \vee r))} \vee (\neg{p} \vee r) \\ & \equiv \text{(de Morgan; associativity)} \\
+& (\neg{(\neg{p} \vee q)} \vee \neg{(\neg{q} \vee r)}) \vee \neg{p} \vee r  \\ & \equiv \text{(de Morgan; associativity)} \\
+& (\neg{\neg{p}} \wedge \neg{q}) \vee (\neg{\neg{q}} \wedge \neg{r}) \vee \neg{p} \vee r  \\ & \equiv \text{(double $\neg$; associativity)} \\
+& (p \wedge \neg{q}) \vee (q \wedge \neg{r}) \vee \neg{p} \vee r  \\ & \equiv \text{(commutativity; associativity)} \\
+& ((p \wedge \neg{q}) \vee \neg{p}) \vee ((q \wedge \neg{r})  \vee r)  \\ & \equiv \text{(distributivity; distributivity)} \\
+& ((p \vee \neg{p}) \wedge (\neg{p} \vee \neg{q})) \vee ((q \vee r) \wedge (r \vee \neg{r})) \\ & \equiv \text{(negation; negation)} \\
+& (T \wedge (\neg{p} \vee \neg{q})) \vee ((q \vee r) \wedge T) \\ & \equiv \text{(dominance; dominance)} \\
+& (\neg{p} \vee \neg{q}) \vee (q \vee r) \\ & \equiv \text{(associativity)} \\
+& \neg{p} \vee (\neg{q} \vee q) \vee r \\ & \equiv \text{(negation)} \\
+& \neg{p} \vee T \vee r \\ & \equiv \text{(dominance)} \\
+& T 
+\end{align*}
+
+\item \textbf{Solution 2:} This question seems to be more easily solved using a truth table, as follows.
+\begin{table}[!htb]
+\centering
+$$
+\begin{array}{|c|c|c||c|c|c|c|c|}
+\hline
+p & q & r & p \rightarrow q & q \rightarrow r & (p \rightarrow q) \wedge (q \rightarrow r) & p \rightarrow r & (p \rightarrow q) \wedge (q \rightarrow r) \rightarrow (p \rightarrow r) \\ \hline \hline
+F & F & F & T & T & T & T & T \\ \hline
+F & F & T & T & T & T & T & T \\ \hline
+F & T & F & T & F & F & T & T \\ \hline
+F & T & T & T & T & T & T & T \\ \hline
+T & F & F & F & T & F & F & T \\ \hline
+T & F & T & F & T & F & T & T \\ \hline
+T & T & F & T & F & F & F & T \\ \hline
+T & T & T & T & T & T & T & T \\ \hline
+\end{array}
+$$
+\end{table}
+\end{itemize}
+
+But nothing beats the old and beautiful Proof Theory! 
+}
+
+\item \strhard (Rosen 1.3.42) Suppose a truth table in $n$ propositional variables is given.
+Show that a compound proposition from this truth table can be formed by taking
+the disjunction of conjunctions of variables or their negations, where one conjunction is
+included for each combination of values for which the compound proposition has the
+value true. 
+The resulting compound proposition is said to be in \textbf{disjunctive normal form}.
+
+\solution{
+For each row of the truth table in which the expression evaluates as 
+true, take the conjunction of the variables of that row as follows: 
+the variables that are true appear in the conjunction in their normal form ($x$), 
+while those that are false appear negated ($\neg{x}$).
+For example, if the row $a,b,c = 1 0 1$ is evaluated as true, then we take
+the conjunction $(a \wedge \neg{b} \wedge c)$.
+By then taking the disjunction of the conjunctions corresponding to all the true rows,
+we obtain an expression that is true if, and only if, the original expression was true.
+}
+
+\item \strmedium (Rosen 1.3.43) A collection of logical operators is called \textbf{functionally complete}
+if every compound proposition is logically equivalent to a compound proposition involving
+only these operators.
+Show that $\neg$, $\vee$ and $\wedge$ form a functionally complete collection of operators. 
+(Hint: use the fact that every compound proposition is logically equivalent to another proposition
+in disjunctive normal form.)
+
+\solution{
+The operators $\neg$, $\vee$ and $\wedge$ are sufficient to represent expressions in disjunctive normal
+form.
+Since every expression has a disjunctive normal form (by the previous exercise), 
+the collection formed by these operators is functionally complete.
+}
+
+
+\item \streasy (Rosen 1.7.13) 
+Prove that if $x$ is irrational, then $\nicefrac{1}{x}$ is irrational.
+
+\solution{
+By contraposition. We show that if $\nicefrac{1}{x}$ is rational,
+then $x$ is rational.
+If $\nicefrac{1}{x}$ is rational then there exist $p,q \in \mathbb{Z}$ such
+that $\nicefrac{1}{x} = \nicefrac{p}{q}$. 
+Then $x = \nicefrac{q}{p}$, which is rational.
+}
+
+\item \streasy (Rosen 1.7.17) 
+Prove that if $n$ is an integer and $n^{3}+5$ is odd, then $n$ is 
+even using 
+\begin{enumerate}
+\item a proof by contraposition, and 
+\item a proof by contradiction.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}[(a)]
+\item By contraposition. 
+We show that if $n$ is odd, $n^{3}+5$ is even.
+If $n$ is odd, then there exists $k \in \mathbb{Z}$ such that $n=2k+1$.
+Then
+\begin{align*}
+n^{3}+5 &= (2k+1)^{3} + 5 & \text{(since $n$ is odd)}\\
+        &= 8k^{3} + 12k^{2} + 6k + 1 + 5 \\
+        &= 8k^{3} + 12k^{2} + 6k + 6 \\
+        &= 2(4k^{3} + 6k^{2} + 3k + 3)  & .
+\end{align*}
+Since $4k^{3} + 6k^{2} + 3k + 3$ is an integer,
+$n^{3}+5$ is twice an integer, hence even.
+
+\item By contradiction. We show that $n$ cannot be odd and $n^{3}+5$ odd at the same time.
+
+If $n$ is odd then $n =  2k'+1$ for some $k' \in \mathbb{Z}$.
+If $n^{3}+5$ is odd then $n^{3}+5 = 2k'' + 1$ for some $k'' \in \mathbb{Z}$.
+
+Then
+\begin{align*}
+2k'' &= n^{3}+5-1 & \text{(since $n^{3}+5 = 2k'' + 1$)}\\
+	 &= n^{3}+4 \\
+	 &= (2k'+1)^{3}+4 \\
+	 &= 8k'^{3} + 12k'^{2} + 6k' + 1 + 4 \\
+	 &= 8k'^{3} + 12k'^{2} + 6k' + 5
+\end{align*}
+Thus $k'' = 4k'^{3} + 6k'^{2} + 3k' + \nicefrac{5}{2}$, which is not an integer.
+Contradiction.
+\end{enumerate}
+}
+
+\item \streasy (Rosen 1.7.18) 
+Prove that if $n$ is an integer and $3n+2$ is even, then $n$ is even using 
+\begin{enumerate}
+\item a proof by contraposition, and 
+\item a proof by contradiction.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}[(a)]
+\item By contraposition. If $n$ is odd, $3n+2$ is odd.
+If $n$ is odd, $n=2k+1$, then
+\begin{align*}
+3n+ 2 &= 3(2k+1) + 2 \\
+      &= 6k + 5 \\
+      &= 2(3k + 2) + 1 \\
+      &= 2k' + 1  & (\text{where $k'=3k+2$})
+\end{align*}
+So $3n+2$ is odd.
+
+\item By contradiction. $3n+2$ cannot be even if $n$ is odd.
+If $3n+2 = 2k'$, and $n=2k''+1$, then
+\begin{align*}
+2k' &= 3(2k''+1)+2 \\
+    &= 6k''+5
+\end{align*}
+Then $k' = 3k'' + \nicefrac{5}{2}$, not an integer. Contradiction.
+\end{enumerate}
+}
+
+
+\item (Rosen 1.4.7) 
+Translate the expressions below into natural language, knowing 
+that $C(x)$ is \prop{$x$ is a comedian}, $F(x)$ is \prop{$x$ is funny},
+and the universe of discourse is the set of all people.
+
+\begin{enumerate}
+\item \strmedium $\forall x. (C(x) \imp F(x))$
+\solution{Every comedian is funny.}
+
+\item \streasy $\forall x. (C(x) \wedge F(x))$
+\solution{Every person is a funny comedian.}
+
+\item \strmedium $\exists x. (C(x) \imp F(x))$
+\solution{There exists a person who, if they are a comedian, then they are funny.}
+
+\item \streasy $\exists x. (C(x) \wedge F(x))$
+\solution{Some comedians are funny.}
+\end{enumerate}
+
+\item (Rosen 1.4.15) 
+Determine the truth value of the following sentences, knowing that
+the domain of the variables consists of integers.
+
+\begin{enumerate}
+\item \streasy $\forall n. n^{2} \geq 0$
+\solution{True: every integer squared is non-negative.}
+
+\item \streasy $\exists n. n^{2} = 2$
+\solution{False: there is no integer whose square is 2.}
+
+\item \streasy $\forall n. n^{2} \geq n$
+\solution{True: the square of any integer is greater than or equal to that integer.}
+
+\item \streasy $\exists n. n^{2} < 0$
+\solution{False: the square of no integer is negative.}
+\end{enumerate}
+
+
+%\item (Rosen 1.4.27) Translate each of the statements below into logical expressions 
+%in three different ways, varying the domain and 
+%using predicates with one and two variables.
+%
+%\begin{enumerate}
+%\item \strmedium A student in your school has lived in Vietnam.
+%
+%\item \strmedium There is a student in your school who cannot speak Hindi.
+%
+%\item \strmedium A student in your school knows Java, Prolog, and C++.
+%
+%\item \strmedium Everyone in your class likes Thai food.
+%
+%\item \strmedium Someone in your class does not play hockey.
+%\end{enumerate}
+%
+%\solution{
+%Given in the textbook.
+%}
+
+\item \streasy (Rosen 1.4.50) Show that $\forall x. P(x) \vee \forall x. Q(x)$
+and $\forall x. (P(x) \vee Q(x))$ are not logically equivalent.
+
+\solution{
+Assume the universe of discourse is the set of all British.
+Let $P(x)$ be the proposition \prop{$x$ is a man}, and $Q(x)$ the proposition \prop{$x$ is a woman}.
+Clearly, saying that every Brazilian is a man or a woman 
+(i.e., $\forall x. (P(x) \vee Q(x))$) is not the same as saying that all British 
+are men or all British are women (i.e., $\forall x. P(x) \vee \forall x. Q(x)$).
+}
+
+%\item \strmedium (Rosen 1.4.59) Let $P(x)$, $Q(x)$, and $R(x)$ be the propositions \prop{$x$ is a professor}, 
+%\prop{$x$ is ignorant}, and \prop{$x$ is conceited}, respectively. 
+%Express each of the statements using quantifiers, logical connectives,
+%$P(x)$, $Q(x)$, and $R(x)$, where the domain consists of all people.
+%
+%\begin{enumerate}
+%\item No professor is ignorant.
+%\solution{ $\forall x (P(x) \rightarrow \neg{Q(x)} )$}
+%
+%\item All ignorant people are conceited.
+%\solution{$\forall x (Q(x) \rightarrow R(x))$}
+%
+%\item No professor is conceited.
+%\solution{$\forall x (P(x) \rightarrow \neg{R(x)})$}
+%
+%\item Is it true that (c) follows from (a) and (b)?
+%\solution{No, it is not true. 
+%Being ignorant is \emph{sufficient} to be conceited (c), 
+%but it may not be \emph{necessary}.
+%Thus, even if no professor is ignorant (a), 
+%a professor could still be conceited.
+%}
+%\end{enumerate}
+
+\item \strmedium (Rosen 1.5.1) Translate the following sentences into natural language, using the domain of real numbers.
+
+\begin{enumerate}
+\item $\forall x. \exists y. (x < y)$
+\solution{Every real number is less than some other real number.}
+
+\item $\forall x. \forall y. (((x \geq 0) \wedge (y \geq 0)) \imp (xy \geq 0))$
+\solution{The product of two non-negative real numbers is a non-negative real number.}
+
+\item $\forall x. \forall y. \exists z. (xy=z)$
+\solution{For every pair of real numbers, there exists a third real number 
+that is exactly the product of the pair.}
+
+\end{enumerate}
+
+
+\item \strmedium (Rosen 1.5.2) Translate the following sentences into natural language, using the domain of real numbers.
+
+\begin{enumerate}
+\item $\exists x. \forall y. (xy=y)$
+\solution{There exists a real number $x$ that multiplied by any other
+real $y$ results in $y$ itself.}
+
+\item $\forall x. \forall y. (((x \geq 0) \wedge (y < 0)) \imp (x-y>0))$
+\solution{The difference between a non-negative real and a negative real
+is always positive.}
+
+\item $\forall x. \forall y. \exists z. (x = y + z)$
+\solution{For every pair of real numbers, there exists a third real number that 
+added to the second element of the pair equals the first element of the pair.}
+
+\end{enumerate}
+
+
+\item (Rosen 1.5.9) Let $L(x,y)$ be the predicate \prop{$x$ loves $y$}, where the domain consists of all people in the world. Use quantifiers to express each of the following statements:
+\begin{enumerate}
+\item \streasy Everyone loves Jerry.
+\solution{$\forall x  :  L(x,\text{Jerry})$}
+
+\item \streasy Everyone loves someone.
+\solution{$\forall x. \exists y. L(x,y)$}
+
+\item \streasy There exists someone who is loved by everyone.
+\solution{$\exists y. \forall x. L(x,y)$}
+
+\item \streasy No one loves everyone.
+\solution{$\neg{\exists x. \forall y. L(x,y)}$ or $\forall x. \exists y. \neg{L(x,y)}$}
+
+\item \streasy There is someone whom Lydia does not love.
+\solution{$\exists x. \neg{L(\text{Lydia, x})}$}
+
+\item \streasy There exists someone who is not loved by anyone.
+\solution{$\exists y. \forall x. \neg{L(x,y)}$}
+
+\item \strhard There is exactly one person who is loved by everyone.
+\solution{$\exists y. \forall x. ( L(x,y) \wedge (\forall z. ((\forall w : L(w,z)) \imp y=z)))$}
+
+\item \strhard There exist exactly two people that Lynn loves.
+\solution{$\exists x. \exists y. (L(\text{Lynn,x}) \wedge L(\text{Lynn},y) \wedge x \neq y \wedge (\forall z. L(\text{Lynn},z) \imp z=x \vee z=y ))$}
+
+\item \streasy Everyone loves themselves.
+\solution{$\forall x. L(x,x)$}
+
+\item \strmedium There exists someone who loves no one except themselves.
+\solution{$\exists x. \forall y. L(x,y) \doubleimp x = y$}
+\end{enumerate}
+
+%\item (Rosen 1.5.10) Let $F(x,y)$ be the predicate \prop{$x$ can deceive $y$}, where the domain consists of all people in the world. Use quantifiers to express each of the following statements:
+%\begin{enumerate}
+%\item \streasy Everyone can deceive Fred.
+%\solution{$\forall x  :  F(x,\text{Fred})$}
+%
+%\item \streasy Evelyn can deceive everyone.
+%\solution{$\forall y  :  F(\text{Evelyn},y)$}
+%
+%\item \streasy Everyone can deceive someone.
+%\solution{$\forall x \exists y  :  F(x,y)$}
+%
+%\item \streasy No one can deceive everyone.
+%\solution{$\forall x \exists y  :  \neg{F(x,y)}$}
+%
+%\item \streasy Everyone can be deceived by someone.
+%\solution{$\forall y \exists x  :  F(x,y)$}
+%
+%\item \streasy No one can deceive both Fred and Jerry.
+%\solution{$\forall x  :  \neg{(F(x,\text{Fred}) \wedge F(x,\text{Jerry}))}$}
+%
+%\item \strhard Nancy can deceive exactly two people.
+%\solution{$\exists y_1, y_2  :  ( F(\text{Nancy},y_1) \wedge F(\text{Nancy},y_2) \wedge (y_1 \neq y_2) \wedge
+%(\forall y_3  :  (F(\text{Nancy},y_3) \rightarrow ((y_3 = y_1) \vee (y_3 = y_2))) ))$}
+%
+%\item \strhard There is exactly one person that everyone can deceive.
+%\solution{$\exists y. \forall x_1. (F(x_1,y) \wedge \forall x_2. (F(x_2,y) \rightarrow (x_2 = x_1) ) ) $}
+%
+%\item \streasy No one can deceive themselves.
+%\solution{$\forall x.  \neg{F(x,x)}$}
+%
+%\item \strhard There exists someone who can deceive exactly one person other than themselves.
+%\solution{$\exists x,y.  (F(x,x) \wedge F(x,y) \wedge (x \neq y) \wedge 
+%(\forall z.  (F(x,z) \rightarrow ((z=x) \vee (z=y)) ) )) $}
+%\end{enumerate}
+
+
+
+\end{enumerate}
+
+\end{document}
+

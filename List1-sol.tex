@@ -1,0 +1,503 @@
+\input{hmwrk_header-sol.tex}
+
+%====================================================================
+% Commands particular to this file
+%====================================================================
+
+%--------------------------------------------------------------------
+
+\begin{document}
+
+%====================================================================
+\homeworktitle{Problem-solving methods}{Some reasoning challenges}
+
+\crossline
+
+\noteondifficultylevel
+
+\def\hidesolution{}
+
+\crossline
+%--------------------------------------------------------------------
+
+\begin{enumerate}
+
+\item \streasy In a factory, 5 machines take 5 minutes to make 5 products.
+How long do 100 machines take to make 100 products?
+
+\solution{
+\begin{itemize}
+\item \textbf{Solution 1.} The time $t$ required for production
+is directly proportional to the number $p$ of products desired and
+inversely proportional to the number $m$ of machines available.
+Thus
+\begin{equation*}
+	t = k \, \frac{p}{m},
+\end{equation*}
+where $k$ is a constant.
+To determine $k$, use the fact that
+$5$ machines produce $5$ products in $5$ minutes:
+\begin{equation*}
+5 \, \textit{min} = k \, \frac{5 \, \textit{products}}{5 \, \textit{machines}}.
+\end{equation*}
+Hence $k = 5 \, \frac{\textit{min} \, \cdot \, \textit{machine}}{\textit{product}}$.
+
+Now we can compute the time to produce $100$ products
+using $100$ machines:
+\begin{align*}
+t &= 5 \, \frac{\textit{min} \, \cdot \, \textit{machine}}{\textit{product}} \, \cdot \, \frac{100 \, \textit{products}}{100 \, \textit{machines}} \\
+&= 5 \, \textit{min}.
+\end{align*}
+
+Therefore, the final answer is $5$ minutes.
+
+\item \textbf{Solution 2.} Divide the 100 machines into 20 groups of 5 machines.
+Each group produces $5$ products in $5$ minutes.
+Since there are 20 groups operating in parallel, a total of
+$20 \cdot 5 = 100$ products are produced in 5 minutes.
+
+\end{itemize}
+}
+
+\item
+\begin{enumerate}
+\item \streasy I have two hourglasses, one measures 11 minutes, and the other
+7 minutes. I need to cook a vegetable for exactly
+15 minutes. How can I use the hourglasses to mark 15 minutes?
+
+\solution{
+\begin{itemize}
+
+\item \textbf{Solution 1.} I follow these steps.
+\begin{enumerate}
+\item Flip both hourglasses simultaneously.
+\item When the sand in the 7-minute hourglass runs out, I start cooking
+the vegetable.
+\item When the 11-minute hourglass runs out, exactly 4 minutes will have passed since cooking started.
+Immediately, I flip the 11-minute hourglass so it starts again.
+\item When the 11-minute hourglass has finished again, $4 + 11 = 15$ minutes will have passed since the cooking began.
+Then I stop the cooking immediately.
+\end{enumerate}
+
+\item \textbf{Solution 2.} I follow these steps.
+\begin{enumerate}
+\item Put the vegetable to cook.
+\item Immediately flip both hourglasses simultaneously.
+\item When the 7-minute one runs out, there are 4 minutes left in the 11-minute one. I know 7 minutes have passed.
+\item Flip the 7-minute hourglass and let the remaining 4 minutes in the other hourglass run.
+I know another 4 minutes have passed, totaling $7+4=11$ minutes, and there are 3 minutes left on the 7-minute hourglass.
+\item Flip the 7-minute hourglass again, counting 4 minutes.
+Another 4 minutes pass, totaling $11 + 4 = 15$ minutes since cooking started.
+Then I stop the cooking immediately.
+\end{enumerate}
+
+\end{itemize}
+}
+
+\item \streasy There is a new product to replace the hourglass.
+It consists of a set of identical rods that burn from one end to the other in exactly one hour.
+Each rod has no intermediate markings and cannot be cut or bent.
+How can you measure fifteen minutes with two of these rods?
+
+\solution{Follow these steps.
+
+\begin{enumerate}
+\item Align the rods in parallel so that their ends coincide.
+\item Simultaneously, light one rod at one end (e.g., the right end) and the other rod at the opposite end (e.g., the left end).
+\item When the flames meet, exactly 30 minutes will have passed and therefore 30 minutes remain for the remainder of each rod to be completely burned.
+At that moment I extinguish the fire.
+\item Re-align the rods in parallel so that the ends of the unburned parts coincide.
+\item Again, light the two rods simultaneously, one from one end and the other from the opposite end.
+\item When the flames meet, exactly 15 minutes will have passed and therefore 15 minutes remain for the remainder of each rod to be completely burned.
+Extinguish the fire then.
+\item Now each of the rods can measure exactly 15 minutes when burned.
+I use either rod to time the cooking of the vegetable.
+\end{enumerate}
+
+}
+
+\end{enumerate}
+
+\item \strhard Four people need to cross a dark bridge. At most two can cross at a time and any crossing with two people takes as long as the slower person. They have one flashlight (it must be carried for every crossing) so someone must bring it back each time. The four crossing times are 5, 10, 20, 25 minutes. What is the minimum total time for all four to get across?
+
+\solution{Call the people $p_{5}$, $p_{10}$, $p_{20}$ and $p_{25}$ according to
+the time they take to cross the bridge.
+The best use of time occurs when: (i) the slowest individuals cross the bridge only once, and (ii) they cross together.
+One possible strategy is shown in Table~\ref{tab:ponte}.
+In this table, each row represents a step of the solution, as well as the time spent.
+For example, Step 0 indicates that $p_{5}$, $p_{10}$, $p_{20}$ and $p_{25}$ are on Side $A$ of the bridge, while Step 1 indicates that 
+$p_{5}$ and $p_{10}$ cross to Side $B$, taking $10$ minutes in the process.
+
+\begin{table}[!htb]
+	\centering
+	\begin{tabular}{|c|>{\centering}m{2.6cm}|>{\centering}m{2.6cm}|>{\centering}m{1.6cm}|>{\centering}m{1.6cm}|c|}
+	\hline
+	\textbf{Step} &  \textbf{Crossed $A \rightarrow B$} & \textbf{Crossed $B \rightarrow A$} & \textbf{Side $A$} & \textbf{Side $B$} & \textbf{Time spent} \\ \hline \hline
+	0 & --- & --- & $p_{5}$, $p_{10}$, $p_{20}$, $p_{25}$ & --- &  --- \\ \hline
+	1 & $p_{5}$, $p_{10}$ & --- &  $p_{20}$, $p_{25}$ & $p_{5}$, $p_{10}$ & 10 \\ \hline
+	2 & --- & $p_{5}$ & $p_{5}$, $p_{20}$, $p_{25}$ & $p_{10}$ & 5 \\ \hline
+	3 & $p_{20}$, $p_{25}$  & --- & $p_{5}$ & $p_{10}$, $p_{20}$,$p_{25}$ & 25 \\ \hline
+	4 & --- & $p_{10}$ & $p_{5}$, $p_{10}$ & $p_{20}$, $p_{25}$ & 10 \\ \hline
+	5 & $p_{5}$, $p_{10}$ & --- & --- & $p_{5}$, $p_{10}$, $p_{20}$, $p_{25}$ & 10 \\ \hline \hline
+	\multicolumn{5}{|c|}{\textbf{Total time}} & \textbf{60} \\ \hline
+	\end{tabular}		
+	\caption{Strategy to cross the bridge.}
+	\label{tab:ponte}
+	\end{table}
+The optimal solution is, indeed, $60$ minutes. Can you tell why?
+
+%Another way of seeing this is the following:
+%\begin{enumerate}
+%    \item $5$ and $10$ cross $\;\;\rightarrow\;$ takes $10$ minutes (total $10$).
+%    \item $5$ returns $\;\;\rightarrow\;$ takes $5$ minutes (total $15$).
+%    \item $20$ and $25$ cross $\;\;\rightarrow\;$ takes $25$ minutes (total $40$).
+%    \item $10$ returns $\;\;\rightarrow\;$ takes $10$ minutes (total $50$).
+%    \item $5$ and $10$ cross $\;\;\rightarrow\;$ takes $10$ minutes (total $60$).
+%\end{enumerate}
+%
+%\medskip
+
+%\textbf{Why this is optimal:}  
+%For crossing times $a \leq b \leq c \leq d$, there are two common strategies:
+%\[
+%T_1 = 2a + b + c + d,
+%\qquad
+%T_2 = a + 3b + d.
+%\]
+%Plugging in $a=5,\, b=10,\, c=20,\, d=25$ gives
+%\[
+%T_1 = 65, 
+%\qquad
+%T_2 = 60.
+%\]
+%Thus, the optimal solution is $60$ minutes.
+}
+
+
+\item \streasy A census taker knocks on a door and a woman answers.
+The following dialogue takes place:
+
+\textsc{Census taker:} \prop{How many children do you have, and what are their ages?}
+
+\textsc{Woman:} \prop{I have three daughters. Their ages are positive integers, and the product of their ages is $36$.}
+
+\textsc{Census taker:} \prop{That information is not sufficient.}
+
+\textsc{Woman:} \prop{I could also tell you the sum of their ages, but even then you would not know exactly.}
+
+\textsc{Census taker:} \prop{Then I need more information.}
+
+\textsc{Woman:} \prop{My oldest daughter loves dogs.}
+
+\textsc{Census taker:} \prop{Ah, now I know their ages!}
+
+\medskip
+
+\textbf{Question:} What are the ages of the three daughters?
+
+\solution{The number $36$ factors as $2^2 \cdot 3^2$.  
+We must distribute these factors among three daughters (allowing the use of $1$ as a factor).  
+The possible triples of ages (up to ordering) are:
+\[
+(36,1,1),\; (18,2,1),\; (12,3,1),\; (9,4,1),\; (9,2,2),\; (6,6,1),\; (6,3,2),\; (4,3,3).
+\]
+
+Taking sums, we obtain:
+\[
+38,\; 21,\; 16,\; 14,\; 13,\; 13,\; 11,\; 10.
+\]
+
+The census taker was uncertain after hearing the sum, which means the sum must not uniquely determine the triple.  
+The only ambiguous case is sum $13$, corresponding to $(6,6,1)$ and $(9,2,2)$.
+
+Finally, the mention of an \emph{oldest} daughter rules out $(6,6,1)$, since that has no unique oldest child.  
+Thus, the daughters' ages are: $9,\, 2,\, 2$.
+}
+
+
+\item \streasy 
+Jos\'{e} decided to swim regularly, every four days. He began on a Saturday, so his second swim was on the following Wednesday, and the pattern continued. On his 100th swim, what day of the week will it be?
+
+\solution{The hundredth time Jos\'{e} swims will be on day
+$1 + 99 \cdot 4 = 397$.
+But 397 days correspond to 56 complete weeks plus 5 days.
+Therefore, the day in question is a Wednesday.}
+
+\item \strmedium In a single-elimination tennis tournament the winner of each
+match advances to the next round, and the loser is
+eliminated. The winner of the final match is the champion.
+Determine the number of matches in a tournament with $n$ participants.
+
+\solution{Let $n$ be the number of participants in the tournament, and $P$
+the total number of matches.
+\begin{itemize}
+
+\item \textbf{Solution 1.} At the end of the tournament, there will be $n-1$ eliminated participants.
+Since each match eliminates exactly one person, there must be $n-1$ matches
+for a champion to be decided.
+
+\item \textbf{Solution 2.}
+In the first round there will be $n/2$ matches, in the second
+round $n/4$, in the third $n/8$, and so
+on until the final round, which consists
+of a single match.
+Thus
+\begin{equation*}
+P = \underbrace{\frac{n}{2} + \frac{n}{4} + \frac{n}{8} + \cdots + 4 + 2 + 1}{k \text{ rounds}}.
+\end{equation*}
+So $P$ is a geometric progression (GP) with $k$ terms, where the first term
+is $a_{1} = \nicefrac{n}{2}$ and the ratio is $q = \nicefrac{1}{2}$.
+To find $k$, note that the last term of the sum is $1$, {\em i.e.}
+\begin{align*}
+a_k &= a_1 q^{k-1} \\
+&= \frac{n}{2} \left(\frac{1}{2}\right)^{k-1} \\
+&= \frac{n}{2^{k}},
+\end{align*}
+which implies $k = \log_{2}{n}$.
+Recalling that the sum of a GP is $S = a_{1} (q^{k}-1)/(q-1)$, we obtain
+\begin{align*}
+P &= \frac{n}{2} \cdot \frac{(1/2)^{\log_{2}{n}}-1}{(1/2) - 1} \\
+&= \frac{n}{2} \cdot \frac{(2^{\log_{2}{n}})^{-1}-1}{-1/2} \\
+&= \frac{n}{2} \cdot \frac{(n)^{-1}-1}{-1/2} \\
+&= n-1
+\end{align*}
+
+Therefore, the answer is that $n-1$ matches are needed in a tournament of $n$
+participants.
+
+\end{itemize}
+}
+
+\item \strmedium Three friends, one of whom owned a monkey, bought a box of cookies and agreed to divide them the next morning.
+
+During the night, the first friend woke up and divided the cookies into three equal parts. One cookie was left over, so she gave it to the monkey. She ate his share, returned the remaining cookies to the box, and went back to sleep.
+
+Later, the second friend woke up. Unaware of what had happened, she also divided the cookies into three equal parts. Again, one cookie was left over and given to the monkey. She ate his share, returned the rest to the box, and went back to sleep.
+
+The same thing happened with the third friend.
+
+In the morning, the three friends divided the cookies that remained in the box into three equal parts. Once more, one cookie was left over and given to the monkey.
+
+Question: What is the minimum number of cookies that could have been in the box originally so that all of these divisions were possible?
+(Assume that each division results in an integer number of cookies.)
+
+\solution{Let $n$ be the quantity of cookies each friend
+received in the morning.
+This means that in the morning there were $m = 3n+1$ cookies in the package
+(because the friends subtracted $1$ cookie from $m$ to give to the monkey,
+leaving $3n$, and divided the result by $3$, giving $n$ to each).
+Therefore, when the third friend awoke, she found
+$a_3 = \tfrac{3}{2} , m + 1$ cookies in the package (because $m$ must satisfy
+$m = ((a_{3}-1)/3) \cdot 2$, since the third friend subtracted one cookie
+to give to the monkey, divided the remainder into $3$ parts, ate one part,
+and left two parts for the morning).
+Similarly, when the second friend awoke, there were $a_2 = \tfrac{3}{2} , a_3 + 1$
+cookies in the package, and when the first friend awoke there were
+$a_1 = \tfrac{3}{2} , a_2 + 1$ cookies in the package.
+We want to determine the value of $a_1$, which is the total number of cookies initially
+in the box.
+To do this, we construct a table and inspect the smallest value of
+$n$ that makes all quantities $m$, $a_{3}$, $a_{2}$ and $a_{1}$ integers.
+The result appears in Table~\ref{tab:cookies}, from which we conclude
+that the minimum total number of cookies is $79$.
+
+\begin{table}[!htb]
+	\centering
+	$$
+	\begin{array}{|c|c|c|c|c|}
+		\hline
+		n & m = 3n+1 & a_3 = 3/2 \, m + 1 & a_2 = 3/2 \, a_3 + 1 & a_1 = 3/2 \, a_2 + 1 \\ \hline \hline
+		 0  &  1  &  -  &  -  &  -  \\ \hline
+		 1  &  4  &  7  &  -  &  -  \\ \hline
+		 2  &  7  &  -  &  -  &  -  \\ \hline
+		 3  & 10  & 16  & 25  &  -  \\ \hline
+		 4  & 13  &  -  &  -  &  -  \\ \hline
+		 5  & 16  & 25  &  -  &  -  \\ \hline
+		 6  & 19  &  -  &  -  &  -  \\ \hline
+		 7  & 22  & 34  & 52  & 79  \\ \hline
+	\end{array}
+	$$
+\caption{Solution of the cookies problem.}
+\label{tab:cookies}
+\end{table}
+
+}
+
+\item \streasy Two companions sat down to eat. One had five loaves of bread, and the other had three.
+
+Before they began, a traveler passed by and greeted them. They invited him to join their meal, and together the three men ate all eight loaves, sharing equally.
+
+When leaving, the traveler gave them eight coins as payment for his share. The two companions then argued about how to divide the coins fairly.
+
+{\bf Question:} How should the eight coins be divided, taking into account what each companion contributed and what was eaten?
+
+\solution{Call $A$ the companion who initially
+had $5$ loaves and $B$ the companion who had $3$ loaves.
+Each of the 3 individuals ate $1/3 , (5+3) = 8/3$ loaves.
+$A$ contributed to the stranger the difference between what he
+provided and what he actually ate, i.e., $5 - 8/3 = 7/3$ loaves.
+Similarly, $B$ contributed $3 - 8/3 = 1/3$ loaf.
+Thus a total of $7/3 + 1/3 = 8/3$ loaves was contributed by $A$ and $B$
+together (which is exactly what the third man ate).
+Since $A$ contributed $(7/3)/(8/3) = 7/8$ of the total contributed,
+while $B$ contributed $(1/3)/(8/3) = 1/8$ of the total,
+$A$ should receive 7 coins and $B$ 1 coin.
+}
+
+\item \strhard A can contains a collection of black and white beans. The following process is repeated as long as possible:
+
+Randomly draw two beans from the can.
+
+If the two beans are the same color, both are discarded and one black bean is placed into the can (assume an unlimited supply of black beans).
+
+If the two beans are of different colors, the black bean is discarded and the white bean is returned to the can.
+
+Describe the possible relationships between the initial contents of the can and the final bean that remains.
+
+\solution{Note the following:
+\begin{itemize}
+\item At each step, the total number of beans in the can decreases by 1.
+\item White beans are removed only in pairs.
+\item Regardless of what happens with the black beans,
+eventually there will remain exactly $0$ white beans--if the initial number
+of white beans is even--or exactly $1$ white bean--if
+the initial number of white beans is odd.
+\item If no white bean remains, the only possible action
+is to draw a pair of black beans and replace them with a single black bean.
+Therefore, necessarily only one black bean will remain in the can
+at the end of the process.
+\item If exactly 1 white bean remains, there is no way to eliminate
+white beans further (since they can only be eliminated in pairs).
+The only options are therefore to draw a pair of black beans and
+replace them with a single black bean (thus removing a black bean),
+or to draw a white and a black bean, return the white and discard the black (also removing a black bean).
+Therefore, necessarily at the end of the process only a single white bean
+will remain.
+\end{itemize}
+
+Hence, if the can initially contains an even number of
+white beans, a single black bean will remain at the end of the process.
+If the can initially contains an odd number of white beans,
+a single white bean will remain at the end of the process.
+}
+
+\item \strhard
+Google interview question:
+\begin{enumerate}[(a)]
+\item You are given 2 eggs.
+\item You have access to a 100-story building.
+\item Eggs can be very hard or very fragile means it may break if dropped from the first floor or may not even break if dropped from 100th floor.
+\item Both eggs are identical.
+\end{enumerate}
+You need to figure out the highest floor of a 100-story building an egg can be dropped without breaking.
+The question is how many drops you need to make. You are allowed to break the 2 eggs in the process.
+
+\solution{
+Naive strategy: Drop the first egg at floor 1, 2, 3, \ldots until it breaks.
+Worst case scenario: 100 drops.
+
+Better strategy: Drop the first egg from some floor $x$, then $x + (x-1), x + (x-1) + (x-2),\ldots$.
+The idea: decrease the step size by 1 each time.
+Why? Because once the first egg breaks, we only have the second egg to check all floors below. We want to balance the total drops.
+
+The sum of drops should reach 100:
+\[
+x + (x-1), x + (x-1) + (x-2)+\ldots + 1 \geq  100
+\]
+Hence
+\[
+\frac{x(x+1)}{2} \geq 100 \quad\Rightarrow\quad x(x+1) \geq 200
+\]
+So $x=14$.
+}
+
+\item \strhard
+Three cryptographers are dining at a restaurant.
+When the meal is finished, the waiter informs them that the bill has already been paid.
+They now want to know whether the bill was paid by one of them or by a fourth person.
+However,
+if the sponsor was one of them,
+the identity of that person should remain anonymous.
+To achieve this, they apply the following protocol:
+
+\begin{enumerate}[{Step }1]
+\item
+Each one flips a coin, and shares
+the result with her right-hand neighbor.
+\item
+Each one looks at her own coin and her left neighbor's coin.
+The results of the two coins can be the same
+(heads-heads or tails-tails) or different (heads-tails or tails-heads).
+Each person announces aloud what she is seeing:
+``SAME'' or ``DIFFERENT''.
+However, the person who paid the bill must invert her statement
+(``she lies''). \item If the number of people who say ``DIFFERENT'' is odd,
+they deduce that one of them paid the bill.
+If the number of people who say ``DIFFERENT'' is even,
+they deduce that a fourth person paid.
+\end{enumerate}
+
+Argue why this protocol yields the correct result
+(that is, why one can deduce whether one of them paid or a fourth person),
+and why it is anonymous (that is, why it does not reveal the identity in case one of the three paid).
+
+\solution{
+Let  $C_1, C_2, C_3$ be the three cryptographers.
+Assign bits to coins:
+\[
+\text{Heads} \to 0, \quad \text{Tails} \to 1.
+\]
+
+Define for $C_i$:
+\[
+x_i = \text{own coin} \oplus \text{left neighbor's coin} = 
+\begin{cases}
+0 & \text{SAME} \\
+1 & \text{DIFFERENT}
+\end{cases}
+\]
+
+If $C_i$ paid, they invert their bit:
+\[
+y_i = 
+\begin{cases}
+x_i & \text{if } C_i \text{ did not pay} \\
+x_i \oplus 1 & \text{if } C_i \text{ paid}
+\end{cases}
+\]
+
+Let the coins be $c_1, c_2, c_3$. Then:
+\[
+\begin{aligned}
+x_1 &= c_1 \oplus c_3 \\
+x_2 &= c_2 \oplus c_1 \\
+x_3 &= c_3 \oplus c_2
+\end{aligned}
+\]
+
+If no one paid (outsider), the XOR sum of the three statements is:
+\[
+x_1 \oplus x_2 \oplus x_3 = (c_1 \oplus c_3) \oplus (c_2 \oplus c_1) \oplus (c_3 \oplus c_2) = 0
+\]
+so the parity of ``DIFFERENT'' is even.
+
+If one cryptographer paid, they invert their bit, flipping the parity:
+\[
+y_1 \oplus y_2 \oplus y_3 = 1
+\]
+so the parity of ``DIFFERENT'' is odd.
+
+\begin{center}
+\begin{tabular}{c|c}
+Parity of DIFFERENT & Meaning \\
+\hline
+Even (0) & Outsider paid \\
+Odd (1) & One of the cryptographers paid
+\end{tabular}
+\end{center}
+
+}
+\end{enumerate}
+
+\end{document}
+

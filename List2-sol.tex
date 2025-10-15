@@ -1,0 +1,442 @@
+\input{hmwrk_header-sol.tex}
+
+%====================================================================
+% Commands particular to this file
+%====================================================================
+
+%--------------------------------------------------------------------
+
+\begin{document}
+
+%====================================================================
+\homeworktitle{Proof techniques, Modular Arithmetic}{Rosen - Chapters 1 and 4}
+
+\crossline
+\paragraph{Required reading for this assignment:}
+\emph{Discrete Mathematics and Its Applications} (Rosen, 7\textsuperscript{th} Edition):
+\begin{itemize}
+\item Chapter 1.7: \emph{Introduction to Proofs}
+\item Chapter 4.1: \emph{Divisibility and Modular Arithmetic}
+\item Chapter 4.3:  \emph{Primes and Greatest Common Divisors}
+\end{itemize}
+
+\noteondifficultylevel
+
+\def\hidesolution{}
+
+\crossline
+
+
+\begin{enumerate}
+
+\item \strmedium (Rosen 1.7.5)
+Prove that if $m+n$ and $n+p$ are even integers, where
+$m$, $n$, and $p$ are integers, then $m+p$ is even.
+What type of proof did you use?
+
+\solution{
+We will use a direct proof.
+
+If $m+n$ is even, then there exists an integer $k$ such that $m+n=2k$.
+From this we can conclude that $m=2k-n$.
+
+Similarly, if $n+p$ is even, then there exists an integer $k'$ 
+such that $n+p = 2k'$.
+From this we can conclude that $p = 2k'-n$.
+
+Substituting the equations above, we see that $m+p = (2k-n) + (2k'-n) = 2k +2k' -2n = 2(k+k'-n)$.
+Since $k+k'-n$ is also an integer, $m+p$ is also even.
+}
+
+\item \strmedium (Rosen 1.7.6)
+Use a direct proof to show that the product of two odd numbers
+is odd.
+
+\solution{
+Let $m$ and $n$ be two odd integers.
+Then there exist integers $k$ and $k'$ such that 
+$m=2k+1$ and $n=2k'+1$.
+Thus, we can compute the product $mn = (2k+1)(2k'+1)= 4kk' + 2k+2k'+1 =
+2(2kk'+ k + k')+ 1$.
+Since $2kk'+k+k'$ is also an integer, we can conclude
+that $mn$ is odd, as it is twice an integer plus one.
+}
+
+\item \strmedium (Rosen 1.7.7) 
+Use a direct proof to show that every odd integer is the difference of two squares.
+
+\solution{
+Every positive odd integer can be represented as $2k+1$ for some 
+$k \in \mathbb{N}$, and every negative odd integer can be represented 
+as $-(2k+1)$ for some $k \in \mathbb{N}$.
+Consider the perfect squares $k^2$ and $(k+1)^2$, where $k \in \mathbb{N}$. 
+The difference between them is either $2k+1$ or $-(2k+1)$, so every odd integer can be represented as the difference of two perfect squares.
+}
+
+\item \strmedium (Rosen 1.7.8) 
+Prove that if $n$ is a perfect square, then $n+2$ is not a perfect square.
+
+\solution{
+By contradiction. 
+Assume that $n$ and $n+2$ are perfect squares.
+Then there exist $a,b \in \mathbb{N}$ such that $n = a^{2}$ and 
+$n+2 = b^{2}$.
+Subtracting the first equation from the second, we get 
+$b^2 - a^2 = 2$, i.e., $(a+b)(a-b)=2$. 
+Since $a,b$ must be integers, $(a+b)$ and $(a-b)$ must be factors of 2. 
+The only solution would be $(a+b)=2$ and $(a-b)=1$, which gives
+$a = \nicefrac{3}{2}$ and $b=\nicefrac{1}{2}$. 
+Then $n$ and $n+2$ would not be perfect squares, which is a 
+contradiction.
+}
+
+\item \strmedium (Rosen 1.7.9) 
+Use a proof by contradiction to show that the sum of an irrational number and a rational number is irrational.
+
+\solution{
+Let $i$ be an irrational number and $r$ a rational number.
+Since $r$ is rational, there exist integers $p$ and $q$ such that
+$r = \nicefrac{p}{q}$.
+
+By contradiction, assume that the sum $i + r$ is rational.
+Then there exist integers $x$ and $y$ such that 
+$i + r = \nicefrac{x}{y}$, i.e., $i = \nicefrac{x}{y} - r$.
+Since $r = \nicefrac{p}{q}$, we have 
+$i = \nicefrac{x}{y} - \nicefrac{p}{q} = \nicefrac{(qx-py)}{(qy)}$.
+Since both $qx-py$ and $qy$ are integers, this would mean
+$i = \nicefrac{(qx-py)}{qy}$ is rational.
+But this contradicts the assumption that $i$ is irrational.
+Therefore, the sum $i+r$ must be irrational.
+}
+
+\item \streasy (Rosen 1.7.11) 
+Prove or refute that the product of two irrational numbers is irrational.
+
+\solution{
+The product of two irrational numbers is not necessarily irrational.
+Note that $\sqrt{2} \cdot \sqrt{2} = 2$.
+}
+
+
+\item \strmedium 
+(Rosen 1.8.10) Prove that $2\ast 10^{500}+15$ or $2 \ast 10^{500}+16$ is not a perfect square. 
+Is your proof constructive or non-constructive?
+
+\solution{
+Proof by contradiction. 
+Assume both numbers are perfect squares.
+
+Assume $a^2 = 2\ast 10^{500}+15$ and $b^2 = 2 \ast 10^{500}+16$.
+Subtracting, $b^2 - a^2 = 1$, so $(b+a)(b-a)=1$. 
+Since $a,b$ are integers, $(b+a)$ and $(b-a)$ must be factors of 1, implying $b=1$ and $a=0$.
+But then $2\ast 10^{500}+15 = a^2 = 0$, a contradiction.
+
+This is a non-constructive proof: it does not show which number is not a perfect square, only that both cannot be squares simultaneously.
+}
+
+\item \strmedium (Rosen 1.8.12) Show that the product of two of the numbers 
+$65^{1000}-8^{2001}+3^{177}$, $79^{1212}-9^{2399}+2^{2001}$, and 
+$24^{4493}-5^{8192}+7^{1777}$ is non-negative. 
+Is your proof constructive or non-constructive?
+
+\solution{
+If one of the numbers is 0, its product with any other number is 0, so a non-negative product exists.
+If none are 0, at least two numbers have the same sign, and their product is non-negative.
+
+This is a non-constructive proof: it does not identify which two numbers give a non-negative product.
+}
+
+\item \streasy (Rosen 1.8.14) 
+Prove or refute that if $a$ and $b$ are rational numbers, then $a^{b}$ is also rational.
+
+\solution{
+Let $a=2$ and $b=\nicefrac{1}{2}$.
+Both $a$ and $b$ are rational.
+However, $a^b = 2^{\nicefrac{1}{2}} = \sqrt{2}$ is irrational.
+This counterexample refutes the statement.
+}
+
+\item \streasy (Rosen 1.8.29) 
+Prove that there is no positive integer $n$ such that $n^2+n^3=100$.
+
+\solution{
+By contradiction. Assume such a positive integer $n$ exists.
+Then $n^2(1+n) = 100$, so both $n^2$ and $n+1$ must divide 100. 
+The divisors of 100 are 1, 2, 4, 5, 10, 20, 25, 50, 100,
+and the only possibility is $n=1$ (so $n+1=2$ also divides 100). 
+Then $1^2 \cdot 2 = 2 \neq 100$, a contradiction.
+}
+
+\item \strmedium Show that $min(a,b)\leq med(a,b) \leq max(a,b)$.
+
+\solution{
+\begin{align*}
+med(a,b) &=    \frac{a+b}{2} \\
+		 &\leq \frac{max(a,b)+max(a,b)}{2} \\
+         &=     max(a,b)
+\end{align*}
+
+\begin{align*}
+med(a,b) &=    \frac{a+b}{2} \\
+		 &\geq \frac{min(a,b)+min(a,b)}{2} \\
+         &=     min(a,b)
+\end{align*}
+}
+
+\item \strhard Prove that between any two rational numbers there exists an infinite number of irrational numbers.
+
+\solution{
+Let $p$ and $q$ be any two rational numbers.
+
+Take any irrational number $\alpha$ in $[0,1]$ 
+(e.g., $\alpha = 1 / \sqrt{2}$). 
+Let $\mathcal{K} = \{ k \in \mathbb{Q} \mid 0 \leq k \leq 1\}$.
+For each $k \in \mathcal{K}$, define 
+\begin{equation*}
+\alpha_k = p + k \cdot (q-p) \cdot \alpha
+\end{equation*}	 
+
+We prove the result if we show:
+(i) every $\alpha_k$ is in $[p,q]$;
+(ii) there are infinitely many $\alpha_k$; and
+(iii) every $\alpha_k$ is irrational.
+
+\begin{enumerate}[(i)]
+\item $\alpha_k$ is minimal when $k=0$, $\alpha_0 = p$, 
+and maximal when $k=1$, $\alpha_1 = p + (q-p)\alpha \le p+(q-p) = q$.
+So $p \leq \alpha_k \leq q$.
+
+\item There are infinitely many $\alpha_k$ because there are infinitely many rationals in $[0,1]$ (consider $1/n$ for $n \ge 1$).
+
+\item $\alpha_k$ is irrational because multiplying or adding a rational by an irrational produces an irrational number.
+\end{enumerate}
+}
+
+\item \streasy Give an example of a relation that is:
+\begin{enumerate}
+\item symmetric, reflexive but not transitive.
+\item reflexive, transitive but not symmetric. 
+\item symmetric, transitive but not reflexive.
+\end{enumerate}
+\solution{
+\begin{enumerate}
+\item Let  $R = \{(x,y) \in \mathbb{R}^2. |x - y| \le 1\}$. Then:
+\[
+\begin{array}{ll}
+\text{Reflexive: } &|x - x| = 0 \le 1 \implies x R x. \\[4pt]
+\text{Symmetric: } &|x - y| \le 1 \implies |y - x| = |x - y| \le 1 \implies y R x. \\[4pt]
+\text{Not transitive: } &0 R 1 \text{ and } 1 R 2, \text{ but } |0 - 2| = 2 > 1 \implies (0,2) \notin R. 
+\end{array}
+\]
+\item $\leq$ 
+\item Let  $R = \{(x,y) \in \mathbb{R}^2. x = y \text{ and } x \neq 0\}$. Then
+\[
+\begin{array}{ll}
+\text{Symmetric: } &x R y \Rightarrow x = y \text{ and both are nonzero, hence } y R x. \\[4pt]
+\text{Transitive: } &x R y,\, y R z \Rightarrow x = y = z \text{ and all are nonzero, hence } x R z. \\[4pt]
+\text{Not reflexive: } &0 R 0 \text{ fails since } 0 \text{ is not nonzero.} 
+\end{array}
+\]
+
+\end{enumerate}
+}
+
+\item \streasy For $n\in\mathbb{N}, n\geq 1$, define 
+$$n!= n.(n-1).(n-2).\ldots.2.1$$
+$n!$ is called the factorial of $n$. Let $k\in\mathbb{N}, k>1$. Prove that the numbers
+$$
+k!+2, k!+3, \ldots,k!+k
+$$
+are composite. Conclude that no matter how large $m$ is, there always exist $m$ consecutive {\em composite} numbers.
+
+\solution{
+Observe that if $1<i\leq k$, then $k!+i$ is divisible by $i$. Since $k!+i>i>1$, we have that $k! + i$ is composite. Given any integer $m$, the sequence
+\[(m+1)!+2,\dots,(m+1)!+(m+1)\]
+contains $m$ consecutive integers which, as we have seen, are all composite.
+}
+
+\item \streasy Find an odd prime factor of \(5^{25}-1\).
+
+\solution{Note that
+\[
+5^{25}-1 = (5^5)^5 - 1.
+\]
+Therefore \(5^{25}-1\) is divisible by \(5^5-1\). Compute
+\[
+5^5-1 = 3125-1 = 3124.
+\]
+Factor \(3124\):
+\[
+3124 = 4\cdot 781 = 4\cdot 11\cdot 71 = 2^2\cdot 11\cdot 71.
+\]
+Hence \(11\) and \(71\) are odd prime divisors of \(5^{25}-1\), for example.
+}
+
+\item \strmedium Let $n$ be a positive composite integer and $p$ its smallest prime factor. It is known that:
+\begin{enumerate}
+    \item $p \geq \sqrt{n}$;
+    \item $p-4$ divides both $6n+7$ and $3n+2$.
+\end{enumerate}
+Determine all possible values of $n$.
+
+\solution{
+Let $n$ be composite with smallest prime factor $p$. Write $n = p \cdot m$.  
+Since $p \geq \sqrt{n}$, we have
+\[
+p^2 \geq n = pm \quad \Rightarrow \quad p \geq m.
+\]
+But $p$ is the smallest prime factor of $n$, so necessarily $m \geq p$.  
+Hence $m = p$, which gives
+\[
+n = p^2.
+\]
+
+Now use the divisibility condition: $p-4$ divides both $6n+7$ and $3n+2$.  
+Consider
+\[
+(6n+7) - 2(3n+2) = 3.
+\]
+Thus $p-4$ divides $3$, so
+\[
+p-4 \in \{\pm 1, \pm 3\}.
+\]
+This gives possible primes
+\[
+p \in \{3,5,7,1\}.
+\]
+Only $3,5,7$ are prime.
+
+\begin{itemize}
+    \item If $p=3$, then $n = 9$. Here $p-4 = -1$, which divides every integer, so both divisibility conditions are satisfied.
+    \item If $p=5$, then $n = 25$. Here $p-4 = 1$, which divides every integer, so both conditions hold.
+    \item If $p=7$, then $n = 49$. Here $p-4 = 3$, but $3n+2 = 149$ is not divisible by $3$. Hence this case fails.
+\end{itemize}
+
+Therefore, the possible values of $n$ are $9 \text{ and } 25$.
+}
+
+\item \streasy (Rosen 4.1.36) 
+Show that if $a,b,c,m$ are integers with $m\ge 2$, $c>0$, and
+\[
+a\equiv b \pmod{m},
+\]
+then
+\[
+ac\equiv bc \pmod{mc}.
+\]
+
+\solution{ The congruence $a\equiv b\pmod{m}$ means that there exists an integer $k$ such that
+\[
+a-b = k m.
+\]
+Multiply both sides of this equality by $c>0$ to obtain
+\[
+ac-bc = k (m c).
+\]
+Thus $ac-bc$ is a multiple of $mc$, so $ac\equiv bc\pmod{mc}$, as required. 
+}
+
+\item \strmedium (Rosen 4.1.36) Show that if $n$ is an integer, then 
+\[
+n^2 \equiv 0 \text{ or } 1 \pmod{4}.
+\]
+Use this to show that if $m$ is a positive integer of the form $4k+3$ for some nonnegative integer $k$, then $m$ is not the sum of the squares of two integers.
+
+
+\solution{ 
+\textbf{Step 1:} Consider any integer $n$. By division by $2$, we can write $n=2q$ or $n=2q+1$ for some integer $q$.
+
+\begin{itemize}
+    \item If $n=2q$, then $n^2 = (2q)^2 = 4q^2 \equiv 0 \pmod{4}$.
+    \item If $n=2q+1$, then $n^2 = (2q+1)^2 = 4q^2 + 4q + 1 = 4(q^2+q)+1 \equiv 1 \pmod{4}$.
+\end{itemize}
+
+Hence for any integer $n$, we have
+\[
+n^2 \equiv 0 \text{ or } 1 \pmod{4}.
+\]
+
+\textbf{Step 2:} Suppose $m$ is of the form $4k+3$ and that $m = a^2 + b^2$ for some integers $a,b$.  
+
+By Step 1, $a^2 \equiv 0 \text{ or } 1 \pmod{4}$ and $b^2 \equiv 0 \text{ or } 1 \pmod{4}$.  
+
+The possible sums of two squares modulo $4$ are:
+\[
+0+0 \equiv 0, \quad 0+1 \equiv 1, \quad 1+0 \equiv 1, \quad 1+1 \equiv 2 \pmod{4}.
+\]
+
+Thus $a^2+b^2 \equiv 0,1,2 \pmod{4}$. But $m \equiv 3 \pmod{4}$, which is impossible.  
+
+Therefore, a positive integer of the form $4k+3$ cannot be expressed as the sum of two squares.
+}
+
+\item \strmedium (Rosen 4.3.18)
+A positive integer is called \emph{perfect} if it equals the sum of its positive divisors other than itself.  
+
+\begin{enumerate}
+    \item Show that $6$ and $28$ are perfect.
+    \item Show that $2^{p-1}(2^p-1)$ is a perfect number when $2^p-1$ is prime.
+\end{enumerate}
+
+\solution{
+\begin{itemize}
+\item[(a)] Checking $6$ and $28$: 
+
+- Positive divisors of $6$ (other than $6$) are $1,2,3$. Their sum is
+\[
+1+2+3=6.
+\]
+Hence $6$ is perfect.  
+
+- Positive divisors of $28$ (other than $28$) are $1,2,4,7,14$. Their sum is
+\[
+1+2+4+7+14=28.
+\]
+Hence $28$ is perfect.
+
+\bigskip
+
+\item[(b)] Showing $2^{p-1}(2^p-1)$ is perfect when $2^p-1$ is prime:  
+
+Let $n = 2^{p-1}(2^p-1)$ with $2^p-1$ prime (a Mersenne prime). The positive divisors of $n$ are of the form
+\[
+d = 2^k \cdot m, \quad k = 0,1,\dots,p-1, \quad m = 1 \text{ or } m = 2^p-1.
+\]
+
+Sum of divisors excluding $n$:
+\[
+\begin{aligned}
+\sigma(n) - n &= \big(1 + 2 + 2^2 + \dots + 2^{p-1}\big) \cdot (1 + (2^p-1)) - n \\
+&= (2^p - 1) \cdot 2^p - 2^{p-1}(2^p-1) \\
+&= 2^{2p}-2^p - 2^{p-1}(2^p-1) \\
+&= 2^{p-1}(2^p-1) = n.
+\end{aligned}
+\]
+
+Hence $n$ is perfect.
+\end{itemize}
+}
+
+\item \strmedium (Rosen 4.3.22) The value of the Euler $\phi$-function at a positive integer $n$ is defined to be the number of positive integers less than or equal to $n$ that are relatively prime to $n$. [Note: $\phi$ is the Greek letter phi.]  
+
+Show that $n$ is prime if and only if $\phi(n) = n-1$.
+
+\solution{  
+($\Rightarrow$) If $n$ is prime, then $\phi(n) = n-1$: 
+
+If $n$ is prime, every positive integer $1 \le k \le n-1$ is relatively prime to $n$, because $n$ has no divisors other than $1$ and $n$. Hence the number of integers less than $n$ and relatively prime to $n$ is
+\[
+\phi(n) = n-1.
+\]
+
+($\Leftarrow$) If $\phi(n) = n-1$, then $n$ is prime: 
+
+Suppose $\phi(n) = n-1$. This means that all integers $1 \le k \le n-1$ are relatively prime to $n$. If $n$ were composite, it would have a proper divisor $d$ with $1<d<n$. Then $d$ is not relatively prime to $n$, contradicting $\phi(n) = n-1$. Hence $n$ cannot be composite and must be prime.
+
+Therefore, $n$ is prime if and only if $\phi(n) = n-1$.
+}
+\end{enumerate}
+
+\end{document}
+
+
