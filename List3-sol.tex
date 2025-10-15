@@ -75,7 +75,7 @@ What is the truth value of those that are propositions?
 %\solution{True proposition.}
 %\end{enumerate}
 
-\item \streasy (Rosen 1.1.9) Let $p$ and $q$ be the propositions \prop{\ldots swimming is allowed on the coast of New Jersey} and \prop{Sharks have been sighted near the coast}, respectively.  
+\item \streasy (Rosen 1.1.9) Let $p$ and $q$ be the propositions \prop{Swimming is allowed on the coast of New Jersey} and \prop{Sharks have been sighted near the coast}, respectively.  
 Express each of the compound propositions below in a natural language sentence.
 
 \begin{multicols}{2}
@@ -89,9 +89,9 @@ Express each of the compound propositions below in a natural language sentence.
 
 \solution{
 \begin{enumerate}
-\item $\neg{p} \vee q$: \prop{Swimming is not allowed on the coast of New Jersey.}
+\item $\neg{p} \vee q$: \prop{It is either the case that swimming is not allowed on the coast of New Jersey or that sharks have been sighted near the coast.}
 \item $p \imp \neg{q}$: \prop{If swimming is allowed on the coast of New Jersey, then sharks have not been sighted near the coast.}
-\item $p \doubleimp \neg{q}$: \prop{\ldots swimming is allowed on the coast of New Jersey if and only if sharks have not been sighted near the coast.}
+\item $p \doubleimp \neg{q}$: \prop{Swimming is allowed on the coast of New Jersey if and only if sharks have not been sighted near the coast.}
 \item $\neg{p} \wedge (p \vee \neg{q})$: \prop{Swimming is not allowed on the coast of New Jersey and  
 either swimming is allowed on the coast of New Jersey or sharks have not been sighted near the coast.}
 \end{enumerate}
@@ -100,7 +100,7 @@ either swimming is allowed on the coast of New Jersey or sharks have not been si
 \item \strmedium (Rosen 1.1.15) Let $p$, $q$, and $r$ be the following propositions:
 
 $p$ : Brown bears have been sighted in the area.\\
-$q$ : \ldots it is safe to walk on the trail.\\
+$q$ : It is safe to walk on the trail.\\
 $r$ : There are ripe fruits along the trail.
 
 Write the following propositions using $p$, $q$, $r$, and logical connectives.
@@ -147,7 +147,7 @@ Write the following propositions using $p$, $q$, $r$, and logical connectives.
 \item It snows whenever the wind blows from the northeast.
 \solution{If the wind blows from the northeast, then it snows.}
 
-\item \ldots it is necessary to walk 8 miles to reach the top of Long's Peak.
+\item It is necessary to walk 8 miles to reach the top of Long's Peak.
 \solution{If you reached the top of Long's Peak, then you walked 8 miles.}
 
 \item To be appointed as a professor, it is sufficient to be world-famous.
@@ -411,6 +411,7 @@ even using
 \end{enumerate}
 
 \solution{
+    %FIXME: It would be quite simpler with modular arithmetic.
 \begin{enumerate}[(a)]
 \item By contraposition. 
 We show that if $n$ is odd, $n^{3}+5$ is even.
@@ -451,6 +452,7 @@ Prove that if $n$ is an integer and $3n+2$ is even, then $n$ is even using
 \end{enumerate}
 
 \solution{
+    %FIXME: again, simpler with modular arithmetic.
 \begin{enumerate}[(a)]
 \item By contraposition. If $n$ is odd, $3n+2$ is odd.
 If $n$ is odd, $n=2k+1$, then
@@ -537,7 +539,7 @@ and $\forall x. (P(x) \vee Q(x))$ are not logically equivalent.
 \solution{
 Assume the universe of discourse is the set of all British.
 Let $P(x)$ be the proposition \prop{$x$ is a man}, and $Q(x)$ the proposition \prop{$x$ is a woman}.
-Clearly, saying that every Brazilian is a man or a woman 
+Clearly, saying that every British person is a man or a woman 
 (i.e., $\forall x. (P(x) \vee Q(x))$) is not the same as saying that all British 
 are men or all British are women (i.e., $\forall x. P(x) \vee \forall x. Q(x)$).
 }
@@ -603,7 +605,7 @@ added to the second element of the pair equals the first element of the pair.}
 \item (Rosen 1.5.9) Let $L(x,y)$ be the predicate \prop{$x$ loves $y$}, where the domain consists of all people in the world. Use quantifiers to express each of the following statements:
 \begin{enumerate}
 \item \streasy Everyone loves Jerry.
-\solution{$\forall x  :  L(x,\text{Jerry})$}
+\solution{$\forall x.  L(x,\text{Jerry})$}
 
 \item \streasy Everyone loves someone.
 \solution{$\forall x. \exists y. L(x,y)$}
@@ -621,7 +623,7 @@ added to the second element of the pair equals the first element of the pair.}
 \solution{$\exists y. \forall x. \neg{L(x,y)}$}
 
 \item \strhard There is exactly one person who is loved by everyone.
-\solution{$\exists y. \forall x. ( L(x,y) \wedge (\forall z. ((\forall w : L(w,z)) \imp y=z)))$}
+\solution{$\exists y. \forall x. ( L(x,y) \wedge (\forall z. ((\forall w.L(w,z)) \imp y=z)))$}
 
 \item \strhard There exist exactly two people that Lynn loves.
 \solution{$\exists x. \exists y. (L(\text{Lynn,x}) \wedge L(\text{Lynn},y) \wedge x \neq y \wedge (\forall z. L(\text{Lynn},z) \imp z=x \vee z=y ))$}
@@ -636,26 +638,26 @@ added to the second element of the pair equals the first element of the pair.}
 %\item (Rosen 1.5.10) Let $F(x,y)$ be the predicate \prop{$x$ can deceive $y$}, where the domain consists of all people in the world. Use quantifiers to express each of the following statements:
 %\begin{enumerate}
 %\item \streasy Everyone can deceive Fred.
-%\solution{$\forall x  :  F(x,\text{Fred})$}
+%\solution{$\forall x  .  F(x,\text{Fred})$}
 %
 %\item \streasy Evelyn can deceive everyone.
-%\solution{$\forall y  :  F(\text{Evelyn},y)$}
+%\solution{$\forall y  .  F(\text{Evelyn},y)$}
 %
 %\item \streasy Everyone can deceive someone.
-%\solution{$\forall x \exists y  :  F(x,y)$}
+%\solution{$\forall x \exists y  .  F(x,y)$}
 %
 %\item \streasy No one can deceive everyone.
-%\solution{$\forall x \exists y  :  \neg{F(x,y)}$}
+%\solution{$\forall x \exists y  .  \neg{F(x,y)}$}
 %
 %\item \streasy Everyone can be deceived by someone.
-%\solution{$\forall y \exists x  :  F(x,y)$}
+%\solution{$\forall y \exists x  .  F(x,y)$}
 %
 %\item \streasy No one can deceive both Fred and Jerry.
-%\solution{$\forall x  :  \neg{(F(x,\text{Fred}) \wedge F(x,\text{Jerry}))}$}
+%\solution{$\forall x  .  \neg{(F(x,\text{Fred}) \wedge F(x,\text{Jerry}))}$}
 %
 %\item \strhard Nancy can deceive exactly two people.
-%\solution{$\exists y_1, y_2  :  ( F(\text{Nancy},y_1) \wedge F(\text{Nancy},y_2) \wedge (y_1 \neq y_2) \wedge
-%(\forall y_3  :  (F(\text{Nancy},y_3) \rightarrow ((y_3 = y_1) \vee (y_3 = y_2))) ))$}
+%\solution{$\exists y_1, y_2  .  ( F(\text{Nancy},y_1) \wedge F(\text{Nancy},y_2) \wedge (y_1 \neq y_2) \wedge
+%(\forall y_3  .  (F(\text{Nancy},y_3) \rightarrow ((y_3 = y_1) \vee (y_3 = y_2))) ))$}
 %
 %\item \strhard There is exactly one person that everyone can deceive.
 %\solution{$\exists y. \forall x_1. (F(x_1,y) \wedge \forall x_2. (F(x_2,y) \rightarrow (x_2 = x_1) ) ) $}
