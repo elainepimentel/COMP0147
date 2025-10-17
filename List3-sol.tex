@@ -228,16 +228,16 @@ How did she deduce who wanted coffee?
 \solution{Note that the waitress's question has an affirmative answer
 if and only if all professors want coffee, and it is enough that one
 does not want it for the answer to be negative.
-If the first professor did not want coffee, he would know that
+If the first professor did not want coffee, she would know that
 the answer to the waitress's question would be \qm{no}.
 Therefore, both the waitress and the other professors know that
 the first professor wants coffee.
 Similarly, the second professor must also want coffee,
-because if he did not, he would have answered \qm{no} to the waitress's question.
+because if she did not, she would have answered \qm{no} to the waitress's question.
 Finally, both the third professor and the waitress know that 
 both the first and the second professors want coffee.
 Since the third professor answered \qm{no} to the question, the waitress
-concludes that he is the only one who does not want coffee.
+concludes that she is the only one who does not want coffee.
 }
 
 \item \streasy (Rosen 1.3.13) Use truth tables to verify the absorption law.
@@ -328,11 +328,11 @@ is a tautology. \\
 & (p \wedge \neg{q}) \vee (q \wedge \neg{r}) \vee \neg{p} \vee r  \\ & \equiv \text{(commutativity; associativity)} \\
 & ((p \wedge \neg{q}) \vee \neg{p}) \vee ((q \wedge \neg{r})  \vee r)  \\ & \equiv \text{(distributivity; distributivity)} \\
 & ((p \vee \neg{p}) \wedge (\neg{p} \vee \neg{q})) \vee ((q \vee r) \wedge (r \vee \neg{r})) \\ & \equiv \text{(negation; negation)} \\
-& (T \wedge (\neg{p} \vee \neg{q})) \vee ((q \vee r) \wedge T) \\ & \equiv \text{(dominance; dominance)} \\
+& (\top \wedge (\neg{p} \vee \neg{q})) \vee ((q \vee r) \wedge \top) \\ & \equiv \text{(dominance; dominance)} \\
 & (\neg{p} \vee \neg{q}) \vee (q \vee r) \\ & \equiv \text{(associativity)} \\
 & \neg{p} \vee (\neg{q} \vee q) \vee r \\ & \equiv \text{(negation)} \\
-& \neg{p} \vee T \vee r \\ & \equiv \text{(dominance)} \\
-& T 
+& \neg{p} \vee \top \vee r \\ & \equiv \text{(dominance)} \\
+& \top
 \end{align*}
 
 \item \textbf{Solution 2:} This question seems to be more easily solved using a truth table, as follows.
@@ -440,6 +440,8 @@ Then
 \end{align*}
 Thus $k'' = 4k'^{3} + 6k'^{2} + 3k' + \nicefrac{5}{2}$, which is not an integer.
 Contradiction.
+
+OBS. There are many other equivalent ways of solving this question. 
 \end{enumerate}
 }
 
@@ -535,11 +537,11 @@ the domain of the variables consists of integers.
 and $\forall x. (P(x) \vee Q(x))$ are not logically equivalent.
 
 \solution{
-Assume the universe of discourse is the set of all British.
-Let $P(x)$ be the proposition \prop{$x$ is a man}, and $Q(x)$ the proposition \prop{$x$ is a woman}.
-Clearly, saying that every Brazilian is a man or a woman 
-(i.e., $\forall x. (P(x) \vee Q(x))$) is not the same as saying that all British 
-are men or all British are women (i.e., $\forall x. P(x) \vee \forall x. Q(x)$).
+Assume the universe of discourse is the set of all red and blue dots.
+Let $P(x)$ be the proposition \prop{$x$ is a red dot}, and $Q(x)$ the proposition \prop{$x$ is a blue dot}.
+Clearly, saying that every dot is blue or red 
+(i.e., $\forall x. (P(x) \vee Q(x))$) is not the same as saying that all dots 
+are blue or all dots are red (i.e., $\forall x. P(x) \vee \forall x. Q(x)$).
 }
 
 %\item \strmedium (Rosen 1.4.59) Let $P(x)$, $Q(x)$, and $R(x)$ be the propositions \prop{$x$ is a professor}, 
@@ -621,7 +623,8 @@ added to the second element of the pair equals the first element of the pair.}
 \solution{$\exists y. \forall x. \neg{L(x,y)}$}
 
 \item \strhard There is exactly one person who is loved by everyone.
-\solution{$\exists y. \forall x. ( L(x,y) \wedge (\forall z. ((\forall w : L(w,z)) \imp y=z)))$}
+\solution{$\exists y. \forall x. ( L(x,y) \wedge (\forall z. L(x,z) \imp x=z))$. Observe that it would be the same to affirm 
+$\exists y. \forall x. (L(x,y) \wedge \neg(\exists z. L(x,z) \wedge x\not=z))$.}
 
 \item \strhard There exist exactly two people that Lynn loves.
 \solution{$\exists x. \exists y. (L(\text{Lynn,x}) \wedge L(\text{Lynn},y) \wedge x \neq y \wedge (\forall z. L(\text{Lynn},z) \imp z=x \vee z=y ))$}
