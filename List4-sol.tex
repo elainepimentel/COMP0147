@@ -1,0 +1,471 @@
+\input{hmwrk_header-sol.tex}
+
+%====================================================================
+% Commands particular to this file
+%====================================================================
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%--------------------------------------------------------------------
+
+\begin{document}
+
+%====================================================================
+\homeworktitle{Mathematical induction}{Rosen - Chapter 5}
+
+\crossline
+
+\paragraph{Required reading for this list:}
+\emph{Discrete Mathematics and Its Applications} (Rosen, 7\textsuperscript{th} Edition):
+\begin{itemize}
+\item Chapter 5.1: \emph{Mathematical Induction}
+\item Chapter 5.2: \emph{Strong Induction and Well-Ordering}
+\end{itemize}
+
+\noteondifficultylevel
+
+\crossline
+
+
+\begin{enumerate}
+
+\item (Rosen 5.1-3) Let $P(n)$ be the statement that
+$1^{2} + 2^{2} + \cdots + n^{2} = n(n+1)(2n+1)/6$ for the positive integer $n$.
+
+\begin{enumerate}
+\item \streasy What is the statement $P(1)$?
+
+\solution{The statement $P(1)$ is that $1^{2} = 1(1+1)(2 \cdot 1 + 1)/6$,
+i.e., that $1^{2} = 1(2)(3)/6$.
+}
+
+\item \streasy Show that $P(1)$ is true by completing the base case.
+
+\solution{
+$P(1)$ is true because the left-hand side and right-hand side of the equality are both equal to $1$.
+}
+
+\item \streasy What is the induction hypothesis?
+
+\solution{
+The induction hypothesis is that $P(k)$ is valid for an arbitrary positive integer $k$, i.e.,
+\begin{align*}
+1^{2} + 2^{2} + \cdots + k^{2} = \frac{k(k+1)(2k+1)}{6}.
+\end{align*}
+}
+
+\item \streasy What do you need to prove in the inductive step?
+
+\solution{
+In the inductive step, I need to show that if $P(k)$ is true for an arbitrary $k$, then $P(k+1)$ is also true.
+
+That is, I need to show that 
+\begin{align*}
+1^{2} + 2^{2} + \cdots + k^{2} + (k+1)^2 
+&= \frac{(k+1)((k+1)+1)(2(k+1)+1)}{6} \\
+&= \frac{(k+1)(k+2)(2k+3)}{6}.
+\end{align*}
+}
+
+\item \strmedium Complete the inductive step.
+
+\solution{
+\begin{align*}
+1^{2} + 2^{2} + \cdots + k^{2} + (k+1)^2 
+&= \left( \frac{k(k+1)(2k+1)}{6} \right) + (k+1)^{2} & \text{(by I.H.)} \\
+&= \frac{k(k+1)(2k+1) + 6(k+1)^{2}}{6} \\
+&= \frac{(k+1) (k(2k+1) + 6(k+1))}{6} & \text{(factoring $(k+1)$)} \\
+&= \frac{(k+1) (2k^{2}+ 7k + 6)}{6} \\
+&= \frac{(k+1) (k+2) (2k+3)}{6} & \text{(factoring $(2k^{2}+ 7k + 6)$)}
+\end{align*}
+}
+
+\item \streasy Explain why the above steps show the formula is true for all positive integers $n$.
+
+\solution{
+The above steps show the formula is true for all positive integers $n$ because we have successfully completed the proof by mathematical induction: we proved the base case and the inductive step.
+}
+\end{enumerate}
+
+\item \strmedium (Rosen 5.1-6) Prove that $1 \cdot 1! + 2 \cdot 2! + \cdots + n \cdot n! = (n+1)! -1$, 
+for $n \geq 1$.
+
+\solution{
+By induction.
+
+\paragraph{Base case.}
+\begin{align*}
+1 \cdot 1! &= (1+1)! - 1
+\end{align*}
+
+\paragraph{Inductive step.}
+\begin{align*}
+1 \cdot 1! + \cdots + n \cdot n! + (n+1) \cdot (n+1)! 
+&= (n+1)! - 1  + (n+1) \cdot (n+1)! & \text{(by induction hypothesis)} \\
+&= (1+(n+1))(n+1)! -1 \\
+&= ((n+1)+1)! - 1
+\end{align*}
+\qed
+}
+
+\item \strmedium (Rosen 5.1-10) Find a formula for 
+$\frac{1}{1 \cdot 2} + \frac{1}{2 \cdot 3} + \cdots + \frac{1}{n (n+1)}$ 
+by examining small values of $n$ and prove that the formula is correct.
+
+\solution{
+Let $f(n)$ denote 
+$\frac{1}{1 \cdot 2} + \frac{1}{2 \cdot 3} + \cdots + \frac{1}{n (n+1)}$.
+Then:
+
+\begin{align*}
+f(1) = \frac{1}{1 \cdot 2} = \frac{1}{2} \\
+f(2) = \frac{1}{2} + \frac{1}{2 \cdot 3} = \frac{2}{3} \\
+f(3) = \frac{2}{3} + \frac{1}{3 \cdot 4} = \frac{3}{4} \\
+f(4) = \frac{3}{4} + \frac{1}{4 \cdot 5} = \frac{4}{5} 
+\end{align*}
+
+At this point, we conjecture that $f(n) = \frac{n}{n+1}$ for all $n \geq 1$.
+We prove it by induction.
+
+\paragraph{Base case.}
+\begin{align*}
+f(1) = \frac{1}{1 \cdot 2} = \frac{1}{2} = \frac{1}{1+1}
+\end{align*}
+
+\paragraph{Inductive step.}
+\begin{align*}
+f(n+1) 
+&= \frac{1}{1 \cdot 2} + \cdots + \frac{1}{n (n+1)} + \frac{1}{(n+1)(n+2)} \\
+&= \frac{n}{n+1} + \frac{1}{(n+1)(n+2)} & \text{(induction hypothesis)} \\
+&= \frac{n(n+2) + 1}{(n+1)(n+2)} \\
+&= \frac{n^{2} + 2n + 1}{(n+1)(n+2)} \\
+&= \frac{(n+1)^{2}}{(n+1)(n+2)} \\
+&= \frac{n+1}{n+2}
+\end{align*}
+\qed
+}
+
+\item \strmedium (Rosen 5.1-11) Find a formula for 
+$\frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \cdots + \frac{1}{2^{n}}$ 
+by examining small values of $n$ and prove that the formula is correct.
+
+\solution{
+Let $f(n)$ denote 
+$\frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \cdots + \frac{1}{2^{n}}$.
+Then:
+
+\begin{align*}
+f(1) &= \frac{1}{2} \\
+f(2) &= \frac{1}{2} + \frac{1}{4} = \frac{3}{4} \\
+f(3) &= \frac{1}{2} + \frac{1}{4} + \frac{1}{8} = \frac{7}{8} \\
+f(4) &= \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} = \frac{15}{16} 
+\end{align*}
+
+We conjecture that $f(n) = \frac{2^{n}-1}{2^{n}}$ for all $n \geq 1$.
+
+\paragraph{Proof.}
+Let $P(n)$ be the proposition $\frac{1}{2} + \frac{1}{4} + \cdots + \frac{1}{2^{n}} = \frac{2^{n}-1}{2^{n}}$.
+
+\paragraph{Base case.}
+$P(1)$ is true because
+\begin{align*}
+f(1) &= \frac{2^{1}-1}{2^{1}} = \frac{1}{2}.
+\end{align*}
+
+\paragraph{Inductive step.}
+Assume $P(k)$ is true for an arbitrary $k \geq 1$.
+Then:
+\begin{align*}
+f(k+1) 
+&= \frac{1}{2} + \frac{1}{4} + \cdots + \frac{1}{2^{k}} +  \frac{1}{2^{k+1}} \\
+&= \frac{2^{k}-1}{2^{k}} + \frac{1}{2^{k+1}} & \text{(I.H.)} \\
+&= \frac{2(2^{k}-1)+1}{2^{k+1}} \\
+&= \frac{2^{k+1}-1}{2^{k+1}}
+\end{align*}
+\qed
+}
+
+\item \strmedium (Rosen 5.1-21) Prove that $2^n > n^2$ for $n \geq 5$, $n$ integer.
+
+\solution{By induction.
+
+\paragraph{Base case.}
+\begin{align*}
+2^{5} = 32 > 25 = 5^{2} 
+\end{align*}
+
+\paragraph{Inductive step.}
+\begin{align*}
+2^{n+1} 
+&= 2 \cdot 2^{n} \\
+&\geq 2 \cdot n^{2} & \text{(induction hypothesis)} \\
+&\geq n^{2} + 2n + 1 & \text{(for all $n \geq 5$)} \\
+&= (n+1)^{2}
+\end{align*}
+\qed
+}
+
+\item \strmedium (Rosen 5.1-33) Prove that $5$ divides
+$n^{5}-n$ whenever $n$ is a non-negative integer.
+
+\solution{By induction.
+
+\paragraph{Base case.}
+$0$ divides $0^{5} - 0 = 0$.
+
+\paragraph{Inductive step.}
+Assume as induction hypothesis that for some $n$,
+$n^{5}-n = 5k$ for some integer $k$. 
+Then for $n+1$:
+\begin{align*}
+(n+1)^{5}-(n+1)
+&= (n^{5} + 5n^{4} + 10n^{3} + 10 n^{2} + 5 n + 1) - (n+1) & \text{(binomial expansion)}\\
+&= (n^{5} -n) + (5n^{4} + 10n^{3} + 10 n^{2} + 5n) & \text{(rearranging terms)} \\
+&= 5k + 5(n^{4} + 2n^{3} + 2 n^{2} + n) & \text{(by I.H.)} \\
+&= 5( k+ n^{4} + 2n^{3} + 2 n^{2} + n),
+\end{align*}
+so $(n+1)^{5}-(n+1)$ is also divisible by $5$.
+\qed
+}
+
+\item \strmedium (Rosen 5.1-60) Prove that 
+$\neg{(p_{1} \vee p_{2} \vee \ldots \vee p_{n})}
+\equiv 
+\neg{p_{1}} \wedge \neg{p_{2}} \wedge \ldots \wedge \neg{p_{n}}$,
+for all $n \geq 1$.
+(Hint: use De Morgan's law $\neg{(p \vee q)} \equiv \neg{p} \wedge \neg{q}$.)
+
+\solution{By induction.
+
+\paragraph{Base case.}
+\begin{align*}
+\neg{p_{1}} = \neg{p_{1}}
+\end{align*}
+
+\paragraph{Inductive step.}
+\begin{align*}
+\neg{(p_{1} \vee p_{2} \vee \ldots \vee p_{k} \vee p_{k+1})}
+&= \neg{((p_{1} \vee p_{2} \vee \ldots \vee p_{k}) \vee p_{k+1})} & \text{(associativity)} \\
+&= \neg{(p_{1} \vee p_{2} \vee \ldots \vee p_{k})} \wedge \neg{p_{k+1}} & \text{(De Morgan)} \\
+&= \neg{p_{1}} \wedge \neg{p_{2}} \wedge \ldots \wedge \neg{p_{k}} \wedge \neg{p_{k+1}} & \text{(by I.H.)}
+\end{align*}
+\qed
+}
+
+\item \strmedium What is wrong with this argument by induction: 
+
+``I am going to prove that everyone's eyes are the same color. Ready?
+
+If there is only one person, then it's obviously true; this person's eyes are the same color that this person's eyes.
+
+Suppose it is established that $n-1$ persons must have the same eye color. Consider $n$ persons: the $n-1$ first have the same eye color, and the $(n-1)$ last have the same eye color. Since the two overlap, everyone has the same eye color.
+
+My initialization is verified, and so is my induction. Since I have brown eyes, everyone has brown eyes. Wait a minute, what?''
+
+\solution{
+The argument does not work for $n=2$. The problem is with the sentence ``Since the two overlap''.
+}
+
+\item (Rosen 5.2-3) Let $P(n)$ be the proposition ``a postage of $n$ cents can be formed using only 3-cent and 5-cent stamps''. This exercise illustrates a strong induction proof that $P(n)$ is true for $n \geq 8$.
+
+\begin{enumerate}
+\item \streasy Show that the propositions $P(8)$, $P(9)$, and $P(10)$ are true, completing the base case.
+
+\solution{
+$P(8)$ is true because we can form 8 cents with one 3-cent and one 5-cent stamp.
+
+$P(9)$ is true because we can form 9 cents with three 3-cent stamps.
+
+$P(10)$ is true because we can form 10 cents with two 5-cent stamps.
+}
+
+\item \streasy What is the inductive hypothesis?
+
+\solution{The inductive hypothesis is that $P(i)$ holds for all $i$ between $8$ and $k$.
+
+Mathematically:
+\begin{equation*}
+P(8) \wedge P(9) \wedge \ldots \wedge P(k)
+\end{equation*}
+}
+
+\item \streasy What do you need to prove in the inductive step?
+
+\solution{
+We need to prove that if all postages from 8 cents to $k$ cents can be formed using only 3- and 5-cent stamps, then a postage of $k+1$ cents can also be formed using only 3- and 5-cent stamps. 
+
+Mathematically, we need to show that
+\begin{equation*}
+[P(8) \wedge P(9) \wedge \ldots \wedge P(k)] \rightarrow P(k+1).
+\end{equation*}
+}
+
+\item \strhard Complete the inductive step for $k \geq 10$.
+
+\solution{
+If $k \geq 10$, then $k-2 \geq 8$, and the induction hypothesis guarantees that a postage of $k-2$ cents can be formed using only 3- and 5-cent stamps. Then, to obtain a postage of $k+1$ cents, simply add a 3-cent stamp to the postage for $k-2$ cents.
+}
+  
+\item \strmedium Explain why these steps show that the proposition is true for all $n \geq 8$.
+
+\solution{
+These steps show that the proposition is true because we completed the base case and the inductive step of the strong induction proof, so by strong induction, the proposition is valid for all integers $n \geq 8$.
+}
+\end{enumerate}
+
+\item (Rosen 5.2-4) Let $P(n)$ be the proposition ``a postage of $n$ cents can be formed using only 4-cent and 7-cent stamps''. This exercise illustrates a strong induction proof that $P(n)$ is true for $n \geq 18$.
+
+\begin{enumerate}
+\item \streasy Show that the propositions $P(18)$, $P(19)$, $P(20)$, and $P(21)$ are true, completing the base case.
+
+\solution{
+\begin{align*}
+P(18) &= 2 \times 7 + 1 \times 4 \\
+P(19) &= 1 \times 7 + 3 \times 4 \\
+P(20) &= 0 \times 7 + 5 \times 4 \\
+P(21) &= 3 \times 7 + 0 \times 4
+\end{align*}
+}
+
+\item \streasy What is the inductive hypothesis?
+
+\solution{The inductive hypothesis is that $P(i)$ holds for all $i$ between 18 and $k$.
+
+Mathematically:
+\begin{equation*}
+P(18) \wedge P(19) \wedge \ldots \wedge P(k)
+\end{equation*}
+}
+
+\item \streasy What do you need to prove in the inductive step?
+
+\solution{
+We need to prove that if all postages from 18 cents to $k$ cents can be formed using only 4- and 7-cent stamps, then a postage of $k+1$ cents can also be formed using only 4- and 7-cent stamps. 
+
+Mathematically:
+\begin{equation*}
+[P(18) \wedge P(19) \wedge \ldots \wedge P(k)] \rightarrow P(k+1).
+\end{equation*}
+}
+
+\item \strhard Complete the inductive step for $k \geq 21$.
+
+\solution{
+If $k \geq 21$, then $k-3 \geq 18$, and the induction hypothesis guarantees that a postage of $k-3$ cents can be formed using only 4- and 7-cent stamps. Then, to obtain a postage of $k+1$ cents, simply add a 4-cent stamp to the postage for $k-3$ cents.
+}
+  
+\item \strmedium Explain why these steps show that the proposition is true for all $n \geq 18$.
+
+\solution{
+These steps show the proposition is true because (i) we can use previous solutions to produce new solutions, and (ii) there is a basic set of initial solutions from which to start.
+}
+\end{enumerate}
+
+\item \strmedium Consider a chocolate bar made of a single row of $n$ squares as shown below.
+
+\begin{center}
+\begin{tabular}{|C{8mm}||C{8mm}||C{8mm}||C{8mm}||C{8mm}||C{8mm}|}
+\hline
+1 & 2 & 3 & $\cdots$ & $n{-}1$ & $n$ \\
+\hline 
+\end{tabular}
+\end{center}
+
+Suppose you want to separate all the squares of the bar into individual squares. Assume you can only break the bar between two consecutive squares (i.e., you cannot split a square in half, only separate squares from each other).
+
+Using strong induction, prove that for any bar of $n$ squares, exactly $n-1$ breaks are required to separate all squares.
+
+\solution{
+We want to prove $\forall n \in \mathbb{Z}^{+} : P(n)$, 
+where $P(n)$ is the predicate ``Any chocolate bar of $n$ lined-up squares can be separated into $n$ individual squares using exactly $n-1$ breaks''.
+We prove by strong induction.
+
+\paragraph{Base case.}
+$P(1)$ is true, because no break is needed for a bar of 1 square.
+
+\paragraph{Inductive step.}
+Assume as the induction hypothesis that 
+$P(j)$ is true for all $1 \leq j \leq k$. 
+We want to show that $P(k+1)$ is also true. 
+For any bar of $k+1$ squares, we need to make a first break to produce a sub-bar of $j$ squares and another sub-bar of $k+1-j$ squares ($1 \leq j \leq k$).
+By I.H., the sub-bar of $j$ squares can be separated using $j-1$ breaks, and the sub-bar of $k+1-j$ squares can be separated using $k-j$ breaks.
+Thus, the total number of breaks for the bar of size $k+1$ is exactly $1 + (j-1) + (k-j) = k$.
+Hence, $P(k+1)$ is true, and the induction proof is complete.
+}
+
+\item \strhard (Rosen 5.2-12) Use strong induction to show that every positive integer $n$ can be written as a sum of distinct powers of 2, i.e., as a sum of a subset of $2^0, 2^1, 2^2, \dots$. 
+(Hint: in the inductive step, consider separately the cases $k+1$ odd or even. Note that $\frac{k+1}{2}$ is an integer when $k+1$ is even.)
+
+\solution{
+We want to show that for all $n > 0$:
+\begin{align*}
+n &= \sum_{i=0}^{\infty} a_{i}2^{i},
+\end{align*}
+where each $a_{i} \in \{0,1\}$.
+
+\paragraph{Base case.} 
+For $n=1$, $1 = 2^{0} = \sum_{i=0}^{0} 1 \cdot 2^{0}$.
+
+\paragraph{Inductive step.}
+Assume every integer $\leq k$ can be written in this form. For $k+1$, there are two cases:
+\begin{itemize}
+\item If $k+1$ is even, $k+1 = 2 \cdot k'$ for some $k' \leq k$. By I.H., $k' = \sum_{i=0}^{\infty}a_{i}2^{i}$. Then:
+\begin{align*}
+k+1 &= 2 \cdot k' \\
+&= 2 \cdot \sum_{i=0}^{\infty}a_{i}2^{i} \\
+&= \sum_{i=0}^{\infty}a_{i}2^{i+1} \\
+&= \sum_{i=1}^{\infty}b_{i}2^{i} \quad \text{(with $b_i = a_{i-1}$)} \\
+&= \sum_{i=0}^{\infty}b_{i}2^{i} \quad \text{(with $b_0 = 0$)}
+\end{align*}
+
+\item If $k+1$ is odd, $k+1 = 1 + 2k'$ for some $k' \leq k$. By I.H., $k' = \sum_{i=0}^{\infty}a_{i}2^{i}$. Then:
+\begin{align*}
+k+1 &= 1 + 2 k' \\
+&= 1 + 2 \sum_{i=0}^{\infty}a_{i}2^{i} \\
+&= 1 + \sum_{i=0}^{\infty}a_{i}2^{i+1} \\
+&= 1 + \sum_{i=1}^{\infty}b_{i}2^{i} \quad (b_i = a_{i-1}) \\
+&= \sum_{i=0}^{\infty}b_{i}2^{i} \quad (b_0 = 1)
+\end{align*}
+\end{itemize}
+}
+
+\item \strmedium The \textit{Fibonacci numbers}, $f_{0},f_{1},\dots$ are defined by $f_{0}=0$, $f_{1}=1$ and $f_{n}=f_{n-1}+f_{n-2}$ for $n=2,3,4,\dots$. Use strong induction to show that
+\begin{equation*}
+f_n=\frac{1}{\sqrt{5}}\left(\frac{1+\sqrt{5}}{2}\right)^{n}
+- \frac{1}{\sqrt{5}}\left(\frac{1-\sqrt{5}}{2}\right)^{n},
+\end{equation*}
+for $n=0,1,2,\dots$
+
+\solution{
+\paragraph{Base case.}
+Show the proposition for $f_{0}$ and $f_{1}$.
+
+\begin{align*}
+f_{0} 
+&= \frac{1}{\sqrt{5}}\left(\frac{1+\sqrt{5}}{2}\right)^{0} 
+- \frac{1}{\sqrt{5}}\left(\frac{1-\sqrt{5}}{2}\right)^{0} \\
+&= 0
+\end{align*}
+
+\begin{align*}
+f_{1}
+&= \frac{1}{\sqrt{5}}\left(\frac{1+\sqrt{5}}{2}\right)^{1} 
+- \frac{1}{\sqrt{5}}\left(\frac{1-\sqrt{5}}{2}\right)^{1} \\
+&= 1
+\end{align*}
+
+\paragraph{Inductive step.}
+Assume the proposition holds for $0, 1, \dots, n$, show it holds for $n+1$.
+\begin{align}
+f_{n+1} 
+&= f_{n} + f_{n-1} \nonumber \\
+&= \frac{1}{\sqrt{5}}\left(\frac{1+\sqrt{5}}{2}\right)^{n} - \frac{1}{\sqrt{5}}\left(\frac{1-\sqrt{5}}{2}\right)^{n} \nonumber \\
+&\quad + \frac{1}{\sqrt{5}}\left(\frac{1+\sqrt{5}}{2}\right)^{n-1} - \frac{1}{\sqrt{5}}\left(\frac{1-\sqrt{5}}{2}\right)^{n-1} \nonumber \\
+&= \frac{1}{\sqrt{5}}\left(\frac{1+\sqrt{5}}{2}\right)^{n-1}\left(\frac{1+\sqrt{5}}{2} + 1\right) 
+- \frac{1}{\sqrt{5}}\left(\frac{1-\sqrt{5}}{2}\right)^{n-1}\left(\frac{1-\sqrt{5}}{2} + 1\right) \nonumber \\
+&= \frac{1}{\sqrt{5}}\left(\frac{1+\sqrt{5}}{2}\right)^{n+1} - \frac{1}{\sqrt{5}}\left(\frac{1-\sqrt{5}}{2}\right)^{n+1}.
+\end{align}
+\qed
+}
+\end{enumerate}
+\end{document}
+
