@@ -1,0 +1,1290 @@
+\input{hmwrk_header-sol.tex}
+
+%====================================================================
+% Commands particular to this file
+%====================================================================
+
+%--------------------------------------------------------------------
+
+\begin{document}
+
+%====================================================================
+\homeworktitle{Recursion and Structural Induction}{Rosen - Chapter 5}
+
+\crossline
+
+\paragraph{Required reading for this list:}
+\emph{Discrete Mathematics and Its Applications} (Rosen, 7\textsuperscript{th} Edition):
+\begin{itemize}
+\item Chapter 5.3: \emph{Recursive Definitions and Structural Induction}
+\item Chapter 5.4: \emph{Recursive Algorithms}
+\end{itemize}
+
+\noteondifficultylevel
+
+\crossline
+%--------------------------------------------------------------------
+
+\begin{enumerate}
+
+\item (Rosen 4.3-7) Give a recursive definition for the sequence
+${a_n}$, $n=1,2,3,...$ if
+
+\begin{enumerate}
+\item \streasy $a_{n} = 6n$.
+\solution{
+First, let's determine $a_{1}$.
+\[\begin{array}{lll}
+a_{1}
+&= 6(1) 
+&= 6
+\end{array}\]
+Now let's determine $a_{n}$ for $n \geq 2$.
+\[\begin{array}{llll}
+a_{n-1}
+&= 6(n-1) 
+&= 6n - 6 
+&= a_{n} - 6
+\end{array}\]
+Therefore
+\[
+\begin{array}{ll}
+a_{n}
+&= a_{n-1} + 6,
+\end{array}
+\]
+and the final answer is
+\[\begin{cases}
+a_{1} = 6, 
+a_{n} = a_{n-1} + 6, & \text{for $n\geq2$.}
+\end{cases}\]
+}
+
+\item \strmedium $a_{n} = 2n+1$.
+\solution{
+First, let's determine $a_{1}$.
+\[\begin{array}{lll}
+a_{1}
+&= 2(1) + 1 
+&= 3
+\end{array}\]
+Now let's determine $a_{n}$ for $n \geq 2$.
+\[\begin{array}{llllll}
+a_{n-1}
+&= 2(n-1) + 1 
+&= 2n - 1 
+&= 2n + (1 - 1) - 1 
+&= (2n + 1) - 2 
+&= a_{n} - 2 
+\end{array}\]
+Therefore
+\[\begin{array}{ll}
+a_{n}
+&= a_{n-1} + 2,
+\end{array}\]
+and the final answer is
+\[\begin{cases}
+a_{1} = 3, \
+a_{n} = a_{n-1} + 2, & \text{for $n\geq2$.}
+\end{cases}\]
+}
+
+\item \strmedium $a_{n} = 10^{n}$.
+\solution{
+First, let's determine $a_{1}$.
+\[\begin{array}{lll}
+a_{1}
+&= 10^{1} 
+&= 10
+\end{array}\]
+Now let's determine $a_{n}$ for $n \geq 2$.
+\[\begin{array}{llll}
+a_{n-1}
+&= 10^{n-1} 
+&= \frac{10^{n}}{10} 
+&= \frac{a_{n}}{10}
+\end{array}\]
+Therefore
+\[\begin{array}{ll}
+a_{n}
+&= 10 a_{n-1}
+\end{array}\]
+and the final answer is
+\[\begin{cases}
+a_{1} = 10, \
+a_{n} = 10 a_{n-1}, & \text{for $n\geq2$.}
+\end{cases}\]
+}
+
+\item \streasy $a_{n} = 5$.
+\solution{
+First, let's determine $a_{1}$.
+\[\begin{array}{ll}
+a_{1}
+&= 5
+\end{array}\]
+Now let's determine $a_{n}$ for $n \geq 2$.
+\[\begin{array}{ll}
+a_{n}
+&= 5
+\end{array}\]
+Therefore the final answer is
+\[\begin{cases}
+a_{1} = 5, \
+a_{n} = 5, & \text{for $n\geq2$.}
+\end{cases}\]
+}
+\end{enumerate}
+
+\item (Rosen 4.3-8) Give a recursive definition for the sequence
+${a_n}$, $n=1,2,3,...$ if
+\begin{enumerate}
+\item \streasy $a_{n} = 4n-2$.
+\solution{
+First, let's determine $a_{1}$.
+\[\begin{array}{lll}
+a_{1}
+&= 4(1)-2 
+&= 2
+\end{array}\]
+Now let's determine $a_{n}$ for $n \geq 2$.
+\[\begin{array}{lllll}
+a_{n-1}
+&= 4(n-1) - 2 
+&= 4n - 4 - 2 
+&= (4n -2) - 4 
+&= a_{n} - 4
+\end{array}\]
+Therefore
+\[\begin{array}{ll}
+a_{n}
+&= a_{n-1} + 4,
+\end{array}\]
+and the final answer is
+\[\begin{cases}
+a_{1} = 2, \
+a_{n} = a_{n-1} + 4, & \text{for $n\geq2$.}
+\end{cases}\]
+}
+
+\item \strmedium $a_{n} = 1+(-1)^n$.
+\solution{
+First, let's determine $a_{1}$.
+\[\begin{array}{lll}
+a_{1}
+&= 1 + (-1)^{1} 
+&= 0
+\end{array}\]
+Now let's determine $a_{n}$ for $n \geq 2$.
+\[\begin{array}{lllllll}
+a_{n-1}
+&= 1 + (-1)^{n-1} 
+&= 1 + (-1) (-1)^{n} 
+&= 1 + (-1) [-1 + 1 + (-1)^{n}] 
+&= 1 + (-1) [-1 + a_{n}] 
+&= 1 + 1 - a_{n} 
+&= 2 - a_{n}
+\end{array}\]
+Therefore
+\[\begin{array}{ll}
+a_{n}
+&= 2 - a_{n-1},
+\end{array}\]
+and the final answer is
+\[\begin{cases}
+a_{1} = 0, \
+a_{n} = 2 - a_{n-1}, & \text{for $n\geq2$.}
+\end{cases}\]
+}
+
+\item \strmedium $a_{n} = n(n+1)$.
+\solution{
+First, let's determine $a_{1}$.
+\[\begin{array}{lll}
+a_{1}
+&= (1)(1+1) 
+&= 2
+\end{array}\]
+Now let's determine $a_{n}$ for $n \geq 2$.
+\[\begin{array}{llllll}
+a_{n-1}
+&= (n-1)(n) 
+&= n^{2} - n 
+&= n^{2} + n - n - n 
+&= n(n + 1) -2n 
+&= a_{n} - 2n
+\end{array}\]
+Therefore
+\[\begin{array}{ll}
+a_{n}
+&= a_{n-1} + 2n,
+\end{array}\]
+and the final answer is
+\[\begin{cases}
+a_{1} = 2, \
+a_{n} = a_{n-1} + 2n, & \text{for $n\geq2$.}
+\end{cases}\]
+}
+
+\item \streasy $a_{n} = n^2$.
+\solution{
+First, let's determine $a_{1}$.
+\[\begin{array}{lll}
+a_{1}
+&= (1)^{2} 
+&= 1
+\end{array}\]
+Now let's determine $a_{n}$ for $n \geq 2$.
+\[\begin{array}{llll}
+a_{n-1}
+&= (n-1)^{2} 
+&= n^{2} -2n + 1 
+&= a_{n} -2n + 1
+\end{array}\]
+Therefore
+\[\begin{array}{ll}
+a_{n}
+&= a_{n-1} + 2n -1,
+\end{array}\]
+and the final answer is
+\[\begin{cases}
+a_{1} = 1, \
+a_{n} = a_{n-1} + 2n -1, & \text{for $n\geq2$.}
+\end{cases}\]
+}
+\end{enumerate}
+
+\item (Rosen 4.3-25) Give a recursive definition of:
+
+\begin{enumerate}
+\item \streasy the set of even integers.
+
+\solution{
+\[\begin{cases}
+0 \in S, \\
+\text{if $x \in S$ then $x+2 \in S$ and $x-2 \in S$.}
+\end{cases}\]
+}
+
+\item \streasy the set of positive integers congruent to 2 modulo 3 
+(that is, the positive integers that have remainder 2 when divided by 3).
+
+\solution{
+\[\begin{cases}
+2 \in S, \\
+\text{if $x \in S$ then $x+3 \in S$.}
+\end{cases}\]
+}
+
+\item \strmedium the set of positive integers not divisible by 5.
+\end{enumerate} 
+
+\solution{
+\[\begin{cases}
+1 \in S, \, 2 \in S, \, 3 \in S, \, 4 \in S, \\
+\text{if $x \in S$ then $x+5 \in S$.}
+\end{cases}\]
+}
+
+\item (Rosen 4.3-27a,c) Let $S$ be a subset of ordered pairs 
+of integers, defined recursively by
+
+\emph{Base step:} $(0,0)\in S$,
+
+\emph{Recursive step:} If $(a,b)\in S$, then $(a,b+1)\in S$, 
+$(a+1,b+1)\in S$ and $(a+2, b+1) \in S$.
+
+\begin{enumerate}
+\item \streasy List the elements of $S$ produced by the first four applications 
+of the recursive definition.
+\solution{
+\begin{itemize}
+\item Application 0: $S_0 = \{ (0,0) \}$.
+\item Application 1: $S_1 = S_0 \cup \{ (0,1), (1,1), (2,1) \}$.
+\item Application 2: $S_2 = S_1 \cup \{ (0,2), (1,2), (2,2), (3,2), (4,2) \}$.
+\item Application 3: $S_3 = S_2 \cup \{ (0,3), (1,3), (2,3), (3,3), (4,3), (5,3), (6,3) \}$.
+\item Application 4: $S_4 = S_3 \cup \{ (0,4), (1,4), (2,4), (3,4), (4,4), (5,4), (6,4), (7,4), (8,4) \}$.
+\end{itemize}
+}
+
+\item \strmedium Use structural induction to show that $a \leq 2b$ whenever 
+$(a,b)\in S$.
+\solution{
+\paragraph{Base step.} $0 \leq 2\cdot 0$.
+
+\paragraph{Inductive step.} Assume that for some arbitrary $(a,b) \in S_k$ 
+we have $a\leq 2b$.
+
+The recursive step rules are:
+\begin{itemize}
+\item $(a, b+1) \in S$: then $a \leq 2(b+1) = 2b + 2$ is true
+because by the I.H. we already have $a\leq 2b$.
+\item $(a+1,b+1) \in S$: then  $a + 1 \leq 2(b+1) = 2b + 2$ is the same
+as $a \leq 2b + 1$, which is true because by the I.H. we have $a\leq 2b$.
+\item $(a+2,b+1) \in S$: then  $a + 2 \leq 2(b+1) = 2b + 2$ is the same
+as $a \leq 2b$, which is true because by the I.H. we have $a\leq 2b$.
+\end{itemize}
+
+}
+\end{enumerate}
+
+\item (Rosen 4.3-28a,c,d) Give a recursive definition for each of the 
+sets of ordered pairs of positive integers. 
+(Hint: Plot the points on the plane and look for lines containing 
+the points of the set.)
+
+\begin{enumerate}
+\item \streasy $S=\{(a,b)  \mid  a,b\in \mathbb{Z}^+, a+b \text{~is odd}\}$
+\solution{
+\emph{Base step:} $(1,0) \in S$ and $(0,1) \in S$, \\
+\emph{Recursive step:} If $(a,b) \in S$, then $(a+2,b) \in S$ and $(a,b+2) \in S$.
+}
+
+\item \strmedium $S=\{(a,b)  \mid  a,b\in \mathbb{Z}^+, a  \mid  b\}$
+\solution{
+\emph{Base step:} $(a,0) \in S, (a>0)$\\  
+\emph{Recursive step:} if $(a,b) \in S$, then $(a,a+b) \in S$.
+}
+
+\item \strmedium $S=\{(a,b)  \mid  a,b\in \mathbb{Z}^+, 3  \mid  a+b\}$
+\solution{
+\emph{Base step:} $(0,0) \in S$, \\
+\emph{Recursive step:} If $(a,b) \in S$, then $(a+0,b+3) \in S$, $(a+1,b+2) \in S$,
+$(a+2,b+1) \in S$ and $(a+3,b+0) \in S$.
+}
+\end{enumerate}
+
+\item (Rosen 4.3-29) Give a recursive definition for each of the 
+sets of ordered pairs of positive integers. 
+(Hint: Plot the points on the plane and look for lines containing 
+the points of the set.)
+
+\begin{enumerate}
+\item \strmedium $S=\{(a,b)  \mid  a,b\in \mathbb{Z}^+, a+b \text{~is even}\}$
+\solution{
+\[\begin{cases}
+(1,1) \in S, \\
+\text{if $(a,b) \in S$, then $(a+2,b) \in S$, $(a+1,b+1)\in S$ and $(a,b+2)\in S$}.
+\end{cases}\]
+}
+
+\item \strmedium $S=\{(a,b)  \mid  a,b\in \mathbb{Z}^+, \text{~$a$ or $b$ is odd}\}$
+\solution{
+\[\begin{cases}
+(1,1) \in S, (1,2) \in S, (2,1) \in S, \\
+\text{if $(a,b) \in S$, then $(a+2,b) \in S$ and $(a,b+2)\in S$}.
+\end{cases}\]
+}
+\end{enumerate}
+
+\item (Rosen 4.3-33) 
+\begin{enumerate}
+\item \strmedium Give a recursive definition of the function $m(s)$, which returns the smallest
+digit in a string $s$ of decimal digits.
+(Ex: $m(3459367)=3$, $m(12)=1$, $m(979)=7$).
+
+\solution{
+\[
+m(s) =
+\begin{cases}
+d, & \text{if } s \text{ has only one digit } d, \\[6pt]
+\min(\text{first}(s),\, m(\text{rest}(s))), & \text{otherwise.}
+\end{cases}
+\]
+
+\noindent\textbf{Examples:}
+\[
+\begin{aligned}
+m(3459367) &= \min(3, m(459367)) = 3,\\
+m(12) &= \min(1, m(2)) = 1,\\
+m(979) &= \min(9, m(79)) = \min(9, 7) = 7.
+\end{aligned}
+\]}
+
+\item \strhard Use induction to show that $m(st) = \min(m(s),m(t))$.
+(Hint: Try induction on the length of the string $s$, assuming $s$ and $t$ are nonempty decimal-digit strings.)
+
+\solution{
+By  induction on the length of the string $s$.
+
+\textbf{Base case.} $s$ has length $1$, say $s=d$ where $d$ is a single digit. By the definition of $m$,
+\[
+m(dt)=\min\bigl(d,\;m(t)\bigr).
+\]
+But $m(d)=d$, so
+\[
+m(dt)=\min\bigl(m(d),m(t)\bigr),
+\]
+which proves the claim for the base case.
+
+\textbf{Inductive step.} Assume the statement holds for every string $u$ of length $n$: for all strings $t$,
+\[
+m(ut)=\min\bigl(m(u),m(t)\bigr).
+\]
+Let $s$ be any string of length $n+1$. Write $s$ as $s = x u$ where $x$ is the first digit of $s$ and $u$ has length $n$. Then, using the recursive definition of $m$,
+\[
+m(st)=m\bigl(x(ut)\bigr)=\min\bigl(x,\;m(ut)\bigr).
+\]
+By the inductive hypothesis applied to $u$ and $t$,
+\[
+m(ut)=\min\bigl(m(u),m(t)\bigr),
+\]
+so
+\[
+m(st)=\min\bigl(x,\;\min(m(u),m(t))\bigr).
+\]
+Since the binary $\min$ is associative and commutative, we may rearrange:
+\[
+\min\bigl(x,\;\min(m(u),m(t))\bigr)
+= \min\bigl(\min(x,m(u)),\,m(t)\bigr).
+\]
+By the recursive definition of $m$ on $s=xu$ we have $\min(x,m(u))=m(xu)=m(s)$. Therefore
+\[
+m(st)=\min\bigl(m(s),m(t)\bigr).
+\]
+
+By structural induction on the length of $s$, the identity $m(st)=\min(m(s),m(t))$ holds for all (nonempty) digit-strings $s$ and $t$.
+}
+
+\end{enumerate}
+
+\item \strhard (Rosen 4.3-35) Give a recursive definition for the reverse of 
+a string. 
+(Hint: first define the reverse of the empty string $\lambda$. 
+Then write a string $w$ of length $n+1$ as $xy$, where $x$ 
+is a string of length $n$, and express the reverse of $w$ in terms 
+of $x^R$ and $y$.)
+
+\solution{
+Given a string $x$, let $x^{R}$ be its reverse.
+Given two strings $x$ and $y$, let $x \cdot y$ be the concatenation of $x$ with $y$, 
+i.e., the string formed by appending $y$ to the end of $x$.
+Then the reverse of a string $s$ can be defined as:
+\begin{equation*}
+s^{R} =
+\begin{cases}
+\lambda, & \text{if $s$ is the empty string,} \\
+y \cdot x^{R},  & \text{if $s = x \cdot y$, where $y$ contains a single character.}
+\end{cases}
+\end{equation*}
+}
+
+\item \strhard (Rosen 4.3-43) Let $T$ be a complete binary tree 
+(that is, a tree in which all internal nodes have exactly two 
+child nodes), let $n(T)$ be the number of nodes in the tree $T$, and let $h(T)$ 
+be the height (that is, the longest path from the root to a leaf of the tree) 
+of $T$.
+
+Use structural induction to show that $n(T) \geq 2 h(T)+1$.
+
+\solution{
+\emph{Base step:} The smallest complete binary tree has only 
+one node, the root, and in this case $n(T) = 1$ and $h(T)=0$, therefore
+$1 \geq 2 \cdot 0 + 1$.
+
+
+\emph{Inductive step:} Assume that for any two 
+complete binary trees $T_{1}$ and $T_{2}$ we have 
+$n(T_{1}) \geq 2h(T_{1})+1$ and $n(T_{2}) \geq 2h(T_{2})+1$.
+
+The complete binary tree $T$ formed by having a node as root and
+subtrees $T_{1}$ and $T_{2}$ has a total number of nodes
+$n(T) = 1 + n(T_{1}) + n(T_{2})$.
+Moreover, $T$ has height $h(T) = \max{(h(T_{1}),h(T_{2}))}$.
+
+Thus, we can derive:
+\[\begin{array}{lll}
+n(T) 
+&=  n(T_{1}) + n(T_{2}) + 1 & \text{(using the formula for $n(T)$)} \\
+&\geq (2h(T_{1})+1) + n(T_{2}) + 1 & \text{(by I.H. on $T_{1}$)}\\
+&\geq (2h(T_{1})+1) + (2h(T_{2})+1) + 1 & \text{(by I.H. on $T_{2}$)}\\
+&= 2 (h(T_{1}) + h(T_{2}) + 1) + 1 & \text{}\\ 
+&\geq 2 (\max{(h(T_{1}),h(T_{2})) + 1}) + 1 & \text{(since $h(T_{1}) + h(T_{2}) \geq \max{(h(T_{1}),h(T_{2}))}$)}\\ 
+&= 2 h(T) + 1 & \text{(using the formula for $h(T)$)}
+\end{array}\]
+}
+
+\item  (Rosen 4.3-48 to 55) Consider the following inductive definition of a version of Ackermann's function:
+\[
+A(m,n)=
+\left\{
+\begin{array}{ll}
+2n & \mbox{ if } m=0\\
+0 & \mbox{ if } m\geq 1 \mbox{ and } n=0\\
+2 & \mbox{ if } m\geq 1 \mbox{ and } n=1\\
+A(m-1,A(m,n-1)) & \mbox{ if } m\geq 1 \mbox{ and } n\geq 2\\
+\end{array}
+\right.
+\]
+\begin{enumerate}
+\item[4.3-48] \streasy Find the following values of Ackermann's function: $A(1,0),A(0,1),A(1,1),A(2,2)$.
+\solution{
+\[\begin{array}{llll}
+A(1,0) &= 0 &&\text{(case $m\ge 1$, $n=0$)}\\
+A(0,1) &= 2\cdot 1 = 2 &&\text{(case $m=0$)}\\
+A(1,1) &= 2 &&\text{(case $m\ge 1$, $n=1$)}\\
+A(1,2) &= A(0,A(1,1)) = A(0,2) = 2\cdot 2 = 4 \\
+A(2,2) &= A(1,A(2,1)) = A(1,2) =4
+\end{array}\]
+}
+\item[4.3-49] \streasy Show that $A(m, 2) = 4$ whenever $m \geq 1$.
+\solution{
+Proof by induction on $m$.
+
+\textbf{Base case:} $m=1$.  
+\[
+A(1,2) = A(0,A(1,1)) = A(0,2) = 4
+\]
+
+\textbf{Inductive step:} Assume $A(k,2)=4$ for some $k\ge 1$. Then
+\[
+A(k+1,2) = A(k,A(k+1,1)) = A(k,2) = 4
+\]
+because $A(k+1,1)=2$ and by inductive hypothesis. Hence true for all $m\ge 1$.
+}
+\item[4.3-50] \streasy Show that $A(1, n) = 2^n$ whenever $n \geq 1$.
+\solution{
+Proof by induction on $n$.
+
+\textbf{Base case:} $n=1$, $A(1,1)=2=2^1$.  
+
+\textbf{Inductive step:} Assume $A(1,k)=2^k$. Then
+\[
+A(1,k+1) = A(0,A(1,k)) = 2 \cdot A(1,k) = 2 \cdot 2^k = 2^{k+1}
+\]
+Thus, by induction, $A(1,n)=2^n$ for all $n\ge 1$.
+}
+
+\item[4.3-53] \strhard Prove that $A(m,n+1) > A(m,n)$ for all $m,n\ge 0$. 
+\solution{
+By double induction on $m$ and $n$.
+
+\paragraph{Base case:} $m=0$. Then 
+\[
+A(0,n) = 2n \quad \text{and} \quad A(0,n+1) = 2(n+1) > 2n = A(0,n),
+\]
+so the property holds.
+
+\paragraph{Inductive step:} Assume that for a fixed $k \ge 0$ and all $n \ge 0$, 
+\[
+A(k,n+1) > A(k,n).
+\]
+
+We want to show that for $k+1$ and all $n \ge 0$:
+\[
+A(k+1,n+1) > A(k+1,n).
+\]
+
+\textbf{Case 1:} $n=0$  
+\[
+A(k+1,0) = 0, \quad A(k+1,1) = 2 > 0,
+\]
+so the property holds.
+
+\textbf{Case 2:} $n \ge 1$  
+\[
+A(k+1,n) = A(k, A(k+1,n-1)), \quad A(k+1,n+1) = A(k, A(k+1,n)).
+\]
+
+By the induction hypothesis on $n$, we have 
+\[
+A(k+1,n) > A(k+1,n-1).
+\]
+
+By the induction hypothesis on $k$, the function $A(k,x)$ is strictly increasing in $x$, so
+\[
+A(k, A(k+1,n)) > A(k, A(k+1,n-1)) = A(k+1,n).
+\]
+
+Thus,
+\[
+A(m+1,n+1) > A(m+1,n).
+\]
+}
+
+\item[4.3-54]  \strmedium Prove that $A(m + 1, n) \geq A(m, n)$ whenever $m$ and $n$ are nonnegative integers.
+\solution{
+Proof by induction on $n$.
+
+\textbf{Base case:} $n=0$:
+\[
+A(m+1,0) = 0 = A(m,0)
+\]
+
+\textbf{Inductive step:} Assume true for $k$. For $k+1$:
+\[
+A(m+1,k+1) = A(m,A(m+1,k)) \ge A(m,A(m,k)) = A(m,k+1)
+\]
+since $A(m,x)$ is non-decreasing in $x$ by induction hypothesis. 
+}
+
+\item[4.3-55] \strmedium Prove that $A(i, j ) \geq j$ whenever $i$ and $j$ are nonnegative
+integers.
+\solution{
+By double induction on $i$ and $j$.
+
+\paragraph{Base cases:}
+\begin{itemize}
+    \item If $i = 0$, then $A(0,j) = 2j \ge j$ for all $j \ge 0$.
+    \item If $j = 0$ and $i \ge 1$, then $A(i,0) = 0 \ge 0$, so the inequality holds.
+    \item If $j = 1$ and $i \ge 1$, then $A(i,1) = 2 \ge 1$, so the inequality holds.
+\end{itemize}
+
+\paragraph{Inductive step:} Assume that for a fixed $i \ge 1$ and all $k < j$, we have 
+\[
+A(i,k) \ge k \quad \text{and} \quad A(i-1,k) \ge k.
+\]
+
+Now consider $A(i,j)$ for $j \ge 2$:
+\[
+A(i,j) = A(i-1, A(i,j-1)).
+\]
+
+By the induction hypothesis on $j-1$:
+\[
+A(i,j-1) \ge j-1.
+\]
+
+Then, using the induction hypothesis on $i-1$:
+\[
+A(i,j) = A(i-1, A(i,j-1)) \ge A(i-1, j-1) \ge j-1.
+\]
+
+Furthermore, since $A(i,j-1) \ge j-1$ and $A(i-1,n)$ is non-decreasing in $n$, we get:
+\[
+A(i,j) = A(i-1, A(i,j-1)) \ge A(i-1, j-1) \ge j.
+\]
+
+By induction on $i$ and $j$, we conclude that 
+\[
+A(i,j) \ge j \quad \text{for all nonnegative integers } i \text{ and } j.
+\]
+}
+\end{enumerate}
+
+\item \streasy (Rosen 4.4-7)  Give a recursive algorithm for computing $n.x$ whenever $n$ is a positive integer and $n$ is an integer, using just addition.
+\solution{
+\[
+\text{mult}(n, x) =
+\begin{cases}
+x, & \text{if } n = 1, \\
+x + \text{mult}(n-1, x), & \text{if } n > 1.
+\end{cases}
+\]
+
+}
+
+\item \streasy (Rosen 4.4-10) Give a recursive algorithm for finding the maximum of a finite set of integers, making use of the fact that the maximum of $n$ integers is the larger of the last integer in the list and the maximum of the first $n - 1$ integers in the list.
+\solution{
+Let $S = \{a_1, a_2, \dots, a_n\}$ be a finite set of integers. Define:
+
+\[
+\text{mxm}(S) =
+\begin{cases}
+a_1, & \text{if } n = 1, \\
+\max\big(\text{mxm}(\{a_1, \dots, a_{n-1}\}), a_n\big), & \text{if } n > 1.
+\end{cases}
+\]
+}
+
+\item \streasy (Rosen 4.4-12)  Devise a recursive algorithm for finding $x^n \pmod{m}$ whenever $n, x$, and $m$ are positive integers based on the fact that $x^n \pmod{m}= (x^{n-1} \pmod{m}\cdot x\pmod{m})\pmod{m}$.
+\solution{
+Let $x, n, m$ be positive integers. Define:
+
+\[
+\text{mp}(x, n, m) =
+\begin{cases}
+1, & \text{if } n = 0,\\[2mm]
+\big(\text{mp}(x, n-1, m) \cdot (x \bmod m)\big) \bmod m, & \text{if } n \ge 1.
+\end{cases}
+\]
+
+}
+
+\item (Rosen 4.4-51 and 55) The quick sort is an efficient algorithm. To sort $a_1,a_2,\ldots,a_n$, this algorithm begins by taking the first element $a_1$ and forming two sublists, the first containing those elements that are less than $a_1$, in the order they arise, and the second containing those elements greater than $a_1$, in the order they arise. Then $a_1$ is put at the end of the first sublist. This procedure is repeated recursively for each sublist, until all sublists contain one item. The ordered list of $n$ items is obtained by combining the sublists of one item in the order they occur.
+\begin{itemize}
+\item[4.4-51] \strmedium  Let $a_1,a_2,\ldots,a_n$ be a list of n distinct real numbers. How many comparisons are needed to form two sublists from this list, the first containing elements less than $a_1$ and the second containing elements greater than $a_1$?
+\solution{
+Let $a_1, a_2, \ldots, a_n$ be a list of $n$ distinct real numbers. To form two sublists, one containing elements less than $a_1$ and the other containing elements greater than $a_1$, we need to compare each of the remaining $n-1$ elements with $a_1$. Hence, the number of comparisons required is
+$
+n-1.
+$
+}
+\item[4.4-55] \strhard Determine the worst-case complexity of the quick sort algorithm in terms of the number of comparisons used.
+\solution{
+In the worst case, the pivot chosen (here $a_1$) is always the smallest or largest element, so that one sublist has size $n-1$ and the other has size $0$. 
+
+Let $C(n)$ denote the number of comparisons in the worst case. Then we have the recurrence:
+\[
+C(n) = C(n-1) + (n-1), \quad C(1) = 0.
+\]
+
+Solving this recurrence:
+\[
+C(n) = (n-1) + (n-2) + \cdots + 1 + 0 = \frac{n(n-1)}{2}.
+\]
+
+Therefore, the worst-case number of comparisons for Quick Sort is
+$
+O(n^2).
+$
+
+\textbf{Understanding $O(n^2)$:}
+
+The notation $O(n^2)$ comes from \emph{Big O notation}, which describes the asymptotic behavior of a function. In algorithms, it tells us how the running time or number of operations grows as the input size $n$ increases.
+
+\begin{itemize}
+    \item \textbf{Quadratic growth:} If an algorithm has complexity $O(n^2)$, then when the input size doubles, the number of operations roughly quadruples. For example, if $n=10$ and it takes 100 steps, then $n=20$ would take roughly 400 steps.
+    
+    \item \textbf{Focus on the largest term:} Big O ignores constants and lower-order terms because they become insignificant for large $n$. For instance, if the number of comparisons in Quick Sort is $\frac{n(n-1)}{2}$, we write $O(n^2)$ because $n^2$ dominates as $n$ grows.
+    
+    \item \textbf{Upper bound:} Big O gives an upper bound on growth rate. $O(n^2)$ means that for sufficiently large $n$, the number of operations will grow no faster than a constant multiple of $n^2$.
+\end{itemize}
+
+\textbf{Example in Quick Sort:}
+\begin{itemize}
+    \item Worst case: The pivot always splits the list into sizes $0$ and $n-1$. Number of comparisons: $\frac{n(n-1)}{2} \sim \frac{n^2}{2} \implies O(n^2)$.
+    \item Best case: Pivot splits the list evenly, giving $O(n \log n)$ comparisons, much faster than $O(n^2)$ for large $n$.
+\end{itemize}
+
+}
+\end{itemize}
+
+\end{enumerate}
+
+\end{document}
+
+%\item A non-recursive formula for the Fibonacci sequence is
+%\begin{equation*}
+%f_{n} = \frac{1}{\sqrt{5}} ( \frac{1+\sqrt{5}}{2} )^{n} 
+%	    - \frac{1}{\sqrt{5}} ( \frac{1-\sqrt{5}}{2} )^{n}.
+%\end{equation*}
+%
+%The numerical value of $\frac{1+\sqrt{5}}{2}$ is approximately $1.61803398$,
+%while its reciprocal, $1/(\frac{1+\sqrt{5}}{2})$, is approximately 
+%$0.61803398$.
+%Consider the sequence $g_n = \frac{1}{\sqrt{5}} ( \frac{1+\sqrt{5}}{2} )^n $.
+%This sequence never results in an integer, but according to the previous item 
+%it should be a good approximation of $f_{n}$.
+%
+%The numerical values (to 4 decimal places) are:
+%\begin{center}
+%\begin{tabular}{c|c|c}
+%$n$ & $g_n$ & $f_n$\\ \hline
+%0 & 0.4472 & 0 \\
+%1 & 0.7236 & 1 \\
+%2 & 1.1708 & 1 \\
+%3 & 1.8944 & 2 \\
+%4 & 3.0652 & 3 \\
+%5 & 4.9597 & 5 \\
+%6 & 8.0249 & 8  \\
+%7 & 12.9846 & 13 \\
+%8 & 21.0095 & 21 \\
+%\end{tabular}
+%\end{center}
+%
+%Prove that $f_n = [ \frac{1}{\sqrt{5}} ( \frac{1+\sqrt{5}}{2} )^n ] $,
+%where $[x]$ is the function that maps a real number $x$ to the nearest integer
+%(in other words, for $x \in \mathbb{R}$ the value $[x] \in \mathbb{Z}$, and $ [x] - \nicefrac{1}{2} \le x < [x]+ \nicefrac{1}{2}$).
+%Hint: consider $ \varepsilon_n = - \frac{1}{\sqrt{5}} ( \frac{1-\sqrt{5}}{2} )^n $.
+%
+%\solution{
+%}
+
+%\item (Rosen 4.3-25) Give a recursive definition for the sequence
+%${a_n}$, $n=0,1,2,...$ if
+%\begin{enumerate}
+%\item \streasy $a_{n} = 3n+1$.
+%\solution{
+%First, let's determine $a_{0}$.
+%\[\begin{array}
+%a_{0}
+%&= 3(0) + 1 \
+%&= 1
+%\end{array}\]
+%Now let's determine $a_{n}$ for $n \geq 1$.
+%\[\begin{array}
+%a_{n-1}
+%&= 3(n-1) + 1 \
+%&= 3n - 3 + 1 \
+%&= 3n - 2 \
+%&= (3n + 1) - 3 \
+%&= a_{n} - 3
+%\end{array}\]
+%Therefore
+%\[\begin{array}
+%a_{n}
+%&= a_{n-1} + 3,
+%\end{array}\]
+%and the final answer is
+%\[\begin{array}
+%\[\begin{cases}
+%a_{0} = 1, \
+%a_{n} = a_{n-1} + 3, & \text{for $n\geq1$.}
+%\end{cases}\]
+%\end{array}\]
+%}
+%
+%\item \strmedium $a_{n} = 2^{n+1}$.
+%\solution{
+%First, let's determine $a_{0}$.
+%\[\begin{array}
+%a_{0}
+%&= 2^{0+1} \
+%&= 2
+%\end{array}\]
+%Now let's determine $a_{n}$ for $n \geq 1$.
+%\[\begin{array}
+%a_{n-1}
+%&= 2^{(n-1)+1} \
+%&= 2^{n} \
+%&= \frac{2^{n+1}}{2} \
+%&= \frac{a_{n}}{2}
+%\end{array}\]
+%Therefore
+%\[\begin{array}
+%a_{n}
+%&= 2 a_{n-1},
+%\end{array}\]
+%and the final answer is
+%\[\begin{array}
+%\[\begin{cases}
+%a_{0} = 2, \
+%a_{n} = 2 a_{n-1}, & \text{for $n\geq1$.}
+%\end{cases}\]
+%\end{array}\]
+%}
+%
+%\item \strmedium $a_{n} = 5(-2)^n$.
+%\solution{
+%First, let's determine $a_{0}$.
+%\[\begin{array}
+%a_{0}
+%&= 5(-2)^0 \
+%&= 5
+%\end{array}\]
+%Now let's determine $a_{n}$ for $n \geq 1$.
+%\[\begin{array}
+%a_{n-1}
+%&= 5(-2)^{n-1} \
+%&= 5\frac{(-2)^n}{-2} \
+%&= -\frac{a_{n}}{2}
+%\end{array}\]
+%Therefore
+%\[\begin{array}
+%a_{n}
+%&= -2 a_{n-1},
+%\end{array}\]
+%and the final answer is
+%\[\begin{array}
+%\[\begin{cases}
+%a_{0} = 5, \
+%a_{n} = -2 a_{n-1}, & \text{for $n\geq1$.}
+%\end{cases}\]
+%\end{array}\]
+%}
+%\end{enumerate}
+%
+%\item (Rosen 4.3-26) Give a recursive definition for the sequence
+%${a_n}$, $n=0,1,2,...$ if
+%\begin{enumerate}
+%\item \streasy $a_{n} = n^2 + 1$.
+%\solution{
+%First, let's determine $a_{0}$.
+%\[\begin{array}
+%a_{0}
+%&= (0)^2 + 1 \
+%&= 1
+%\end{array}\]
+%Now let's determine $a_{n}$ for $n \geq 1$.
+%\[\begin{array}
+%a_{n-1}
+%&= (n-1)^2 + 1 \
+%&= n^2 - 2n + 1 + 1 \
+%&= n^2 - 2n + 2 \
+%&= (n^2 + 1) - 2n + 1 \
+%&= a_{n} - 2n + 1
+%\end{array}\]
+%Therefore
+%\[\begin{array}
+%a_{n}
+%&= a_{n-1} + 2n - 1,
+%\end{array}\]
+%and the final answer is
+%\[\begin{array}
+%\[\begin{cases}
+%a_{0} = 1, \
+%a_{n} = a_{n-1} + 2n - 1, & \text{for $n\geq1$.}
+%\end{cases}\]
+%\end{array}\]
+%}
+%
+%\item \strmedium $a_{n} = n! + 1$.
+%\solution{
+%First, let's determine $a_{0}$.
+%\[\begin{array}
+%a_{0}
+%&= 0! + 1 \
+%&= 1 + 1 \
+%&= 2
+%\end{array}\]
+%Now let's determine $a_{n}$ for $n \geq 1$.
+%\[\begin{array}
+%a_{n-1}
+%&= (n-1)! + 1 \
+%&= \frac{n!}{n} + 1 \
+%&= \frac{1}{n}(a_{n} - 1) + 1 \
+%&= \frac{a_{n} - 1 + n}{n} \
+%&= \frac{a_{n} + n - 1}{n}
+%\end{array}\]
+%Therefore
+%\[\begin{array}
+%a_{n}
+%&= n a_{n-1} - n + 1,
+%\end{array}\]
+%and the final answer is
+%\[\begin{array}
+%\[\begin{cases}
+%a_{0} = 2, \
+%a_{n} = n a_{n-1} - n + 1, & \text{for $n\geq1$.}
+%\end{cases}\]
+%\end{array}\]
+%}
+%\end{enumerate}
+%
+%\item (Rosen 4.3-27) Give a recursive definition for the sequence
+%${a_n}$, $n=0,1,2,...$ if
+%\begin{enumerate}
+%\item \streasy $a_{n} = 2^n + 3^n$.
+%\solution{
+%First, let's determine $a_{0}$.
+%\[\begin{array}
+%a_{0}
+%&= 2^0 + 3^0 \
+%&= 1 + 1 \
+%&= 2
+%\end{array}\]
+%Now let's determine $a_{n}$ for $n \geq 1$.
+%\[\begin{array}
+%a_{n-1}
+%&= 2^{n-1} + 3^{n-1} \
+%&= \frac{2^n}{2} + \frac{3^n}{3} \
+%&= \frac{1}{6}(3\cdot2^n + 2\cdot3^n) \
+%&= \frac{1}{6}[3(a_{n} - 3^n) + 2\cdot3^n] \
+%&= \frac{1}{6}[3a_{n} - 3\cdot3^n + 2\cdot3^n] \
+%&= \frac{1}{6}[3a_{n} - 3^n]
+%\end{array}\]
+%Therefore
+%\[\begin{array}
+%a_{n}
+%&= 2 a_{n-1} + 3^{n-1},
+%\end{array}\]
+%and the final answer is
+%\[\begin{array}
+%\[\begin{cases}
+%a_{0} = 2, \
+%a_{n} = 2 a_{n-1} + 3^{n-1}, & \text{for $n\geq1$.}
+%\end{cases}\]
+%\end{array}\]
+%}
+%
+%\item \strmedium $a_{n} = 2^{n+1} - 3^{n}$.
+%\solution{
+%First, let's determine $a_{0}$.
+%\[\begin{array}
+%a_{0}
+%&= 2^{0+1} - 3^0 \
+%&= 2 - 1 \
+%&= 1
+%\end{array}\]
+%Now let's determine $a_{n}$ for $n \geq 1$.
+%\[\begin{array}
+%a_{n-1}
+%&= 2^{(n-1)+1} - 3^{n-1} \
+%&= 2^n - 3^{n-1} \
+%&= \frac{1}{3}(3\cdot2^n - 3^n) \
+%&= \frac{1}{3}[3(2^n - 3^n) + 2\cdot3^n] \
+%&= \frac{1}{3}[3 a_{n} + 2\cdot3^n]
+%\end{array}\]
+%Therefore
+%\[\begin{array}
+%a_{n}
+%&= \frac{3 a_{n-1} - 2\cdot3^{n-1}}{3},
+%\end{array}\]
+%and the final answer is
+%\[\begin{array}
+%\[\begin{cases}
+%a_{0} = 1, \
+%a_{n} = \frac{3 a_{n-1} - 2\cdot3^{n-1}}{3}, & \text{for $n\geq1$.}
+%\end{cases}\]
+%\end{array}\]
+%}
+%\end{enumerate}
+%
+%\item (Rosen 4.3-28) Give a recursive definition for the sequence
+%${a_n}$, $n=0,1,2,...$ if
+%\begin{enumerate}
+%\item \streasy $a_{n} = 4n^2 + 2$.
+%\solution{
+%First, let's determine $a_{0}$.
+%\[\begin{array}
+%a_{0}
+%&= 4(0)^2 + 2 \
+%&= 2
+%\end{array}\]
+%Now let's determine $a_{n}$ for $n \geq 1$.
+%\[\begin{array}
+%a_{n-1}
+%&= 4(n-1)^2 + 2 \
+%&= 4(n^2 - 2n + 1) + 2 \
+%&= 4n^2 - 8n + 4 + 2 \
+%&= 4n^2 - 8n + 6 \
+%&= (4n^2 + 2) - 8n + 4 \
+%&= a_{n} - 8n + 4
+%\end{array}\]
+%Therefore
+%\[\begin{array}
+%a_{n}
+%&= a_{n-1} + 8n - 4,
+%\end{array}\]
+%and the final answer is
+%\[\begin{array}
+%\[\begin{cases}
+%a_{0} = 2, \
+%a_{n} = a_{n-1} + 8n - 4, & \text{for $n\geq1$.}
+%\end{cases}\]
+%\end{array}\]
+%}
+%
+%\item \strmedium $a_{n} = 7n^3$.
+%\solution{
+%First, let's determine $a_{0}$.
+%\[\begin{array}
+%a_{0}
+%&= 7(0)^3 \
+%&= 0
+%\end{array}\]
+%Now let's determine $a_{n}$ for $n \geq 1$.
+%\[\begin{array}
+%a_{n-1}
+%&= 7(n-1)^3 \
+%&= 7(n^3 - 3n^2 + 3n - 1) \
+%&= 7n^3 - 21n^2 + 21n - 7 \
+%&= (7n^3) - (21n^2 - 21n + 7) \
+%&= a_{n} - (21n^2 - 21n + 7)
+%\end{array}\]
+%Therefore
+%\[\begin{array}
+%a_{n}
+%&= a_{n-1} + 21n^2 - 21n + 7,
+%\end{array}\]
+%and the final answer is
+%\[\begin{array}
+%\[\begin{cases}
+%a_{0} = 0, \
+%a_{n} = a_{n-1} + 21n^2 - 21n + 7, & \text{for $n\geq1$.}
+%\end{cases}\]
+%\end{array}\]
+%}
+%\end{enumerate}
+%
+%\item (Rosen 4.3-29) Give a recursive definition for the sequence
+%${a_n}$, $n=0,1,2,...$ if
+%\begin{enumerate}
+%\item \streasy $a_{n} = 2n + (-1)^n$.
+%\solution{
+%First, let's determine $a_{0}$.
+%\[\begin{array}
+%a_{0}
+%&= 2(0) + (-1)^0 \
+%&= 1
+%\end{array}\]
+%Now let's determine $a_{n}$ for $n \geq 1$.
+%\[\begin{array}
+%a_{n-1}
+%&= 2(n-1) + (-1)^{n-1} \
+%&= 2n - 2 + (-1)(-1)^n \
+%&= 2n - 2 - (-1)^n \
+%&= (2n + (-1)^n) - 2 - 2(-1)^n \
+%&= a_{n} - 2 - 2(-1)^n
+%\end{array}\]
+%Therefore
+%\[\begin{array}
+%a_{n}
+%&= a_{n-1} + 2 + 2(-1)^n,
+%\end{array}\]
+%and the final answer is
+%\[\begin{array}
+%\[\begin{cases}
+%a_{0} = 1, \
+%a_{n} = a_{n-1} + 2 + 2(-1)^n, & \text{for $n\geq1$.}
+%\end{cases}\]
+%\end{array}\]
+%}
+%
+%\item \strmedium $a_{n} = 3^n + n$.
+%\solution{
+%First, let's determine $a_{0}$.
+%\[\begin{array}
+%a_{0}
+%&= 3^0 + 0 \
+%&= 1
+%\end{array}\]
+%Now let's determine $a_{n}$ for $n \geq 1$.
+%\[\begin{array}
+%a_{n-1}
+%&= 3^{n-1} + (n-1) \
+%&= \frac{3^n}{3} + n - 1 \
+%&= \frac{a_{n} - n}{3} + n - 1 \
+%&= \frac{a_{n} - n + 3n - 3}{3} \
+%&= \frac{a_{n} + 2n - 3}{3}
+%\end{array}\]
+%Therefore
+%\[\begin{array}
+%a_{n}
+%&= 3a_{n-1} - 2n + 3,
+%\end{array}\]
+%and the final answer is
+%\[\begin{array}
+%\[\begin{cases}
+%a_{0} = 1, \
+%a_{n} = 3a_{n-1} - 2n + 3, & \text{for $n\geq1$.}
+%\end{cases}\]
+%\end{array}\]
+%}
+%\end{enumerate}
+%\item (Rosen 4.3-30) Give a recursive definition for the sequence
+%${a_n}$, $n=0,1,2,...$ if
+%
+%\begin{enumerate}
+%\item \streasy $a_{n} = n! + 1$.
+%\solution{
+%First, let's determine $a_{0}$.
+%\[\begin{array}
+%a_{0}
+%&= 0! + 1 \
+%&= 2
+%\end{array}\]
+%Now let's determine $a_{n}$ for $n \geq 1$.
+%\[\begin{array}
+%a_{n-1}
+%&= (n-1)! + 1 \
+%&= \frac{n!}{n} + 1 \
+%&= \frac{a_{n} - 1}{n} + 1
+%\end{array}\]
+%Therefore
+%\[\begin{array}
+%a_{n}
+%&= n(a_{n-1} - 1) + 1,
+%\end{array}\]
+%and the final answer is
+%\[\begin{array}
+%\[\begin{cases}
+%a_{0} = 2, \
+%a_{n} = n(a_{n-1} - 1) + 1, & \text{for $n\geq1$.}
+%\end{cases}\]
+%\end{array}\]
+%}
+%
+%\item \strmedium $a_{n} = 2^{n} + (-1)^{n}$.
+%\solution{
+%First, let's determine $a_{0}$.
+%\[\begin{array}
+%a_{0}
+%&= 2^{0} + (-1)^{0} \
+%&= 2
+%\end{array}\]
+%Now let's determine $a_{n}$ for $n \geq 1$.
+%\[\begin{array}
+%a_{n-1}
+%&= 2^{n-1} + (-1)^{n-1} \
+%&= \frac{2^n}{2} - (-1)^{n} \
+%&= \frac{a_{n} - (-1)^{n}}{2} - (-1)^{n}
+%\end{array}\]
+%Therefore
+%\[\begin{array}
+%a_{n}
+%&= 2a_{n-1} + (-1)^{n+1},
+%\end{array}\]
+%and the final answer is
+%\[\begin{array}
+%\[\begin{cases}
+%a_{0} = 2, \
+%a_{n} = 2a_{n-1} + (-1)^{n+1}, & \text{for $n\geq1$.}
+%\end{cases}\]
+%\end{array}\]
+%}
+%\end{enumerate}
+%
+%\item (Rosen 4.3-31) Give a recursive definition for the sequence
+%${a_n}$, $n=0,1,2,...$ if
+%
+%\begin{enumerate}
+%\item \streasy $a_{n} = n^{2} + n + 1$.
+%\solution{
+%First, let's determine $a_{0}$.
+%\[\begin{array}
+%a_{0}
+%&= 0^{2} + 0 + 1 \
+%&= 1
+%\end{array}\]
+%Now let's determine $a_{n}$ for $n \geq 1$.
+%\[\begin{array}
+%a_{n-1}
+%&= (n-1)^{2} + (n-1) + 1 \
+%&= n^{2} - 2n + 1 + n - 1 + 1 \
+%&= n^{2} - n + 1 \
+%&= (n^{2} + n + 1) - 2n \
+%&= a_{n} - 2n
+%\end{array}\]
+%Therefore
+%\[\begin{array}
+%a_{n}
+%&= a_{n-1} + 2n,
+%\end{array}\]
+%and the final answer is
+%\[\begin{array}
+%\[\begin{cases}
+%a_{0} = 1, \
+%a_{n} = a_{n-1} + 2n, & \text{for $n\geq1$.}
+%\end{cases}\]
+%\end{array}\]
+%}
+%
+%\item \strmedium $a_{n} = 2n^{2} + 3n + 1$.
+%\solution{
+%First, let's determine $a_{0}$.
+%\[\begin{array}
+%a_{0}
+%&= 2(0)^{2} + 3(0) + 1 \
+%&= 1
+%\end{array}\]
+%Now let's determine $a_{n}$ for $n \geq 1$.
+%\[\begin{array}
+%a_{n-1}
+%&= 2(n-1)^{2} + 3(n-1) + 1 \
+%&= 2(n^{2} - 2n + 1) + 3n - 3 + 1 \
+%&= 2n^{2} - 4n + 2 + 3n - 2 \
+%&= 2n^{2} - n \
+%&= (2n^{2} + 3n + 1) - 4n - 1 \
+%&= a_{n} - 4n - 1
+%\end{array}\]
+%Therefore
+%\[\begin{array}
+%a_{n}
+%&= a_{n-1} + 4n + 1,
+%\end{array}\]
+%and the final answer is
+%\[\begin{array}
+%\[\begin{cases}
+%a_{0} = 1, \
+%a_{n} = a_{n-1} + 4n + 1, & \text{for $n\geq1$.}
+%\end{cases}\]
+%\end{array}\]
+%}
+%\end{enumerate}
+%
+%\end{enumerate}
+%
+%\end{document}
+%
