@@ -35,7 +35,7 @@ $1^{2} + 2^{2} + \cdots + n^{2} = n(n+1)(2n+1)/6$ for the positive integer $n$.
 \item \streasy What is the statement $P(1)$?
 
 \solution{The statement $P(1)$ is that $1^{2} = 1(1+1)(2 \cdot 1 + 1)/6$,
-i.e., that $1^{2} = 1(2)(3)/6$.
+\ie, that $1^{2} = 1(2)(3)/6$.
 }
 
 \item \streasy Show that $P(1)$ is true by completing the base case.
@@ -47,7 +47,7 @@ $P(1)$ is true because the left-hand side and right-hand side of the equality ar
 \item \streasy What is the induction hypothesis?
 
 \solution{
-The induction hypothesis is that $P(k)$ is valid for an arbitrary positive integer $k$, i.e.,
+The induction hypothesis is that $P(k)$ is valid for an arbitrary positive integer $k$, \ie,
 \begin{align*}
 1^{2} + 2^{2} + \cdots + k^{2} = \frac{k(k+1)(2k+1)}{6}.
 \end{align*}
@@ -299,13 +299,13 @@ Mathematically, we need to show that
 \end{equation*}
 }
 
-\item \strhard Complete the inductive step for $k \geq 10$.
+\item \strmedium Complete the inductive step for $k \geq 10$.
 
 \solution{
 If $k \geq 10$, then $k-2 \geq 8$, and the induction hypothesis guarantees that a postage of $k-2$ cents can be formed using only 3- and 5-cent stamps. Then, to obtain a postage of $k+1$ cents, simply add a 3-cent stamp to the postage for $k-2$ cents.
 }
   
-\item \strmedium Explain why these steps show that the proposition is true for all $n \geq 8$.
+\item \streasy Explain why these steps show that the proposition is true for all $n \geq 8$.
 
 \solution{
 These steps show that the proposition is true because we completed the base case and the inductive step of the strong induction proof, so by strong induction, the proposition is valid for all integers $n \geq 8$.
@@ -347,13 +347,13 @@ Mathematically:
 \end{equation*}
 }
 
-\item \strhard Complete the inductive step for $k \geq 21$.
+\item \strmedium Complete the inductive step for $k \geq 21$.
 
 \solution{
 If $k \geq 21$, then $k-3 \geq 18$, and the induction hypothesis guarantees that a postage of $k-3$ cents can be formed using only 4- and 7-cent stamps. Then, to obtain a postage of $k+1$ cents, simply add a 4-cent stamp to the postage for $k-3$ cents.
 }
   
-\item \strmedium Explain why these steps show that the proposition is true for all $n \geq 18$.
+\item \streasy Explain why these steps show that the proposition is true for all $n \geq 18$.
 
 \solution{
 These steps show the proposition is true because (i) we can use previous solutions to produce new solutions, and (ii) there is a basic set of initial solutions from which to start.
@@ -370,7 +370,7 @@ These steps show the proposition is true because (i) we can use previous solutio
 \end{tabular}
 \end{center}
 
-Suppose you want to separate all the squares of the bar into individual squares. Assume you can only break the bar between two consecutive squares (i.e., you cannot split a square in half, only separate squares from each other).
+Suppose you want to separate all the squares of the bar into individual squares. Assume you can only break the bar between two consecutive squares (\ie, you cannot split a square in half, only separate squares from each other).
 
 Using strong induction, prove that for any bar of $n$ squares, exactly $n-1$ breaks are required to separate all squares.
 
@@ -392,7 +392,7 @@ Thus, the total number of breaks for the bar of size $k+1$ is exactly $1 + (j-1)
 Hence, $P(k+1)$ is true, and the induction proof is complete.
 }
 
-\item \strhard (Rosen 5.2-12) Use strong induction to show that every positive integer $n$ can be written as a sum of distinct powers of 2, i.e., as a sum of a subset of $2^0, 2^1, 2^2, \dots$. 
+\item \strhard (Rosen 5.2-12) Use strong induction to show that every positive integer $n$ can be written as a sum of distinct powers of 2, \ie, as a sum of a subset of $2^0, 2^1, 2^2, \dots$. 
 (Hint: in the inductive step, consider separately the cases $k+1$ odd or even. Note that $\frac{k+1}{2}$ is an integer when $k+1$ is even.)
 
 \solution{
