@@ -1,0 +1,173 @@
+\input{hmwrk_header.tex}
+
+%====================================================================
+% Commands particular to this file
+%====================================================================
+
+%--------------------------------------------------------------------
+
+\begin{document}
+
+%====================================================================
+\homeworktitle{Combinatorial Analysis}{Rosen - Chapter 6}
+
+\crossline
+
+\paragraph{Required reading for this list:}
+\emph{Discrete Mathematics and Its Applications} (Rosen, 7\textsuperscript{th} Edition):
+\begin{itemize}
+\item Chapter 6.1: \emph{The Basics of Counting}
+\item Chapter 6.2: \emph{The Pigeonhole Principle}
+\item Chapter 6.3: \emph{Permutations and Combinations}
+\item Chapter 6.4: \emph{Binomial Coefficients and Identities}
+\item Chapter 6.5: \emph{Generalized Permutations and Combinations}
+\end{itemize}
+
+\noteondifficultylevel
+
+\crossline
+
+\begin{enumerate}
+
+\item (Rosen 6.1-3) A multiple-choice test contains 10 questions.
+There are four alternatives for each question.
+
+\begin{enumerate}
+\item \streasy In how many ways can a student answer
+the questions on the test if no question is left blank?
+
+
+\item \streasy In how many ways can a student answer
+the questions on the test if questions may be left blank?
+
+\end{enumerate}
+
+\item (Rosen 6.1-23) How many integers between $100$ and $999$, inclusive,
+satisfy:
+
+\begin{enumerate}
+
+\item \strmedium are divisible by 3 or 4?
+
+\item \strmedium are not divisible by 3 nor by 4?
+
+\item \strmedium are divisible by 3 but not by 4?
+
+\item \strmedium are divisible by both 3 and 4?
+\solution{
+The numbers divisible by both 3 and 4 are those
+divisible by 12. 
+As already calculated above, there are 75 such
+numbers in the interval of interest.
+}
+
+\end{enumerate}
+
+\item (Rosen 6.1-37) How many functions exist from the set $\{1,2,\ldots,n\}$,
+where $n$ is a positive integer, to the set $\{0,1\}$, if:
+
+\begin{enumerate}
+\item \strmedium that are one-to-one?
+
+\item \streasy that assign 0 to both 1 and $n$?
+
+\item \streasy that assign 1 to exactly one of the positive integers less than $n$?
+\end{enumerate}
+
+\item (Rosen 6.2-3) A drawer contains twelve brown socks and twelve black socks,
+all mixed together. 
+A person removes socks randomly from the drawer in the dark.
+
+\begin{enumerate}
+\item \streasy How many socks must the person remove to be sure that 
+at least two socks are of the same color?
+
+\item \streasy How many socks must the person remove to be sure that at 
+least two socks are black?
+
+\end{enumerate}
+
+\item \streasy (Rosen 6.2-5) Show that in any group of five
+integers (not necessarily consecutive), at least 
+two numbers have the same remainder when divided by 4.
+
+\item \strmedium (Rosen 6.2-15) How many distinct numbers must be
+chosen from the set $\{1,2,3,4,5,6\}$ to ensure that 
+at least one pair of them has a sum equal to 7?
+
+\item (Rosen 6.2-37) \strhard A computer network consists of six computers. Each computer is directly connected to zero or more of the other computers. Show that there are at least two computers in the network that are directly connected to the same number of other computers. [Hint: It is impossible to have a computer linked to none of the others and a computer linked to all the others.]
+
+\item (Rosen 6.3-11) How many binary strings of length 10 contain
+
+\begin{enumerate}
+\item \streasy exactly four 1s?
+
+\item \strmedium at most four 1s?
+
+\item \strmedium at least four 1s?
+
+\item \streasy an equal number of 0s and 1s?
+\end{enumerate}
+
+\item \strmedium (Rosen 6.3-13) A group contains $n$ men and $n$ women. 
+How many ways are there to arrange these people in a line
+if men and women must alternate?
+
+\item (Rosen 6.3-21) How many permutations of the letters $ABCDEFG$ contain:
+\begin{enumerate}
+
+\item the strings $ABC$ and $DE$?
+
+\item \strhard the strings $ABC$ and $CDE$?
+
+\item \streasy the strings $CBA$ and $BED$?
+
+
+\end{enumerate}
+
+\item \strmedium (Rosen 6.3-33) Suppose a department has 10 men 
+and 15 women.
+In how many ways can a six-member committee be formed if the 
+committee must contain the same number of men and women?
+
+\item (Rosen 6.5-3) \streasy How many 6-letter strings exist? 
+(Consider an alphabet of 26 letters.)
+
+\item (Rosen 6.5-9) A bagel shop has onion bagels, poppy seed bagels, egg bagels, salty bagels, pumpernickel bagels, sesame seed bagels, raisin bagels, and plain bagels. How many ways are there to choose
+
+\begin{enumerate}
+\item \streasy six bagels?
+
+
+\item \streasy two dozen bagels?
+
+\item \strmedium one dozen bagels, with at least one of each kind?
+
+\end{enumerate}
+
+\item (Rosen 6.5-15) How many solutions does the equation
+$$
+x_{1} + x_{2} + x_{3} + x_{4} + x_{5} = 21,
+$$
+where $x_{i}, i = 1,2,3,4,5$, is a non-negative integer, have if
+
+\begin{enumerate}
+\item \streasy $x_{1} \geq 1$?
+
+\item \strmedium $x_{i} \geq 2$ for $i=1,2,3,4,5$?
+
+\item \strmedium $0 \leq x_{1} \leq 10$?
+
+\end{enumerate}
+
+\item (Rosen 6.5-39) \strmedium In how many ways can one travel 
+in $xyz$-space from the origin $(0,0,0)$ to the point $(4,3,5)$
+taking steps of: one unit in the positive direction of the $x$-axis, 
+one unit in the positive direction of the $y$-axis, 
+or one unit in the positive direction of the $z$-axis?
+(Moving in the negative direction of any axis is not allowed, 
+i.e., you cannot move backward.)
+
+\end{enumerate}
+
+\end{document}

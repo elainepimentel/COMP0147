@@ -1,0 +1,752 @@
+\documentclass[11pt,a4]{exam}
+
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{qtree}
+\usepackage{xcolor}
+\usepackage{proof}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{xspace}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+
+\def\cC{\mathcal{C}}
+\def\cV{\mathcal{V}}
+\def\cP{\mathcal{P}}
+
+\newcommand\lra{\longrightarrow}
+\newcommand\lrai{\Longrightarrow}
+\newcommand\iimp{\supset}
+
+\newcommand{\Frame}[1]{
+    \fbox{
+      \parbox[c]{\textwidth}
+      {
+       \noindent #1
+      }
+    }
+}
+
+\renewcommand{\solution}[1]{\paragraph{Solution:} #1 \vspace{4mm}}
+
+\usepackage{draftwatermark}
+\SetWatermarkAngle{-30}
+\SetWatermarkText{\includegraphics{answers}}
+
+\usepackage[centerlast,small,sc]{caption}
+\newcommand{\nat}{N}
+\setlength{\captionmargin}{60pt}
+\boxedpoints
+\pointpoints{Mark}{Marks}
+\addpoints
+\hqword{Question}
+\hpword{Mark}
+\hsword{Cal.}
+\setlength\linefillheight{.5cm}
+%\printanswers
+\extraheadheight[0.5in]{0.2in}
+
+
+\newcommand{\course}{COMP0147: Discrete Mathematics \\ 25/26}
+\newcommand{\subject}{Practice sheet}
+\newcommand{\dt}{Nov/2025}
+
+
+\firstpageheader{\includegraphics[height=1.3cm]{UCL-logo.jpeg}
+}%
+{\large\bf  \course}{\bf \subject \\ \dt}
+
+\runningheader{
+Name:\\
+}{}{}
+\firstpagefooter{}{}{}
+\runningfooter{}{Page \thepage}{}
+\runningheadrule
+\footrule
+\lfoot{}
+\cfoot{Page  \thepage\ of \numpages}
+\rfoot{}
+
+
+\begin{document}
+
+\hbox to \textwidth{Name and ID:\enspace\hrulefill}
+%\vspace{1cm}
+%\hbox to \textwidth{Group:\enspace\hrulefill}
+
+
+
+\begin{center}
+\Frame{
+\begin{multicols}{2}
+\scriptsize
+\begin{enumerate}
+\item {\em This is not a mock exam!} It is a set of selected exercises covering all the material in the module.
+\item Try to solve all the questions and keep track of how long you take -- it should be around 2 hours.
+\item The sample is marked out of 100 in total. The number of marks for each question roughly corresponds to the difficulty.
+\item Good practice!
+\end{enumerate}
+\end{multicols}
+}
+\end{center}
+
+
+\lstset{
+	tabsize = 1, %% set tab space width
+	showstringspaces = false, %% prevent space marking in strings, string is defined as the text that is generally printed directly to the console
+	numbers = left, %% display line numbers on the left
+	commentstyle = \color{green}, %% set comment color
+	keywordstyle = \color{blue}, %% set keyword color
+	stringstyle = \color{red}, %% set string color
+	rulecolor = \color{black}, %% set frame color to avoid being affected by text color
+	basicstyle = \fontsize{7}{10} \ttfamily , %% set listing font and size
+	breaklines = true, %% enable line breaking
+	numberstyle = \tiny,
+	xleftmargin=2.5em,frame=single,framexleftmargin=2.5em
+  % literate={\ \ }{{\ }}1
+}
+
+
+
+\begin{questions}
+
+
+\question[6] 
+Determine whether each of the arguments below is correct or incorrect, and explain why.
+You must formalize the argument using propositions/predicates and indicate which rules of inference were used.
+
+\begin{enumerate}
+
+\item[a.] It is fun to drive convertible cars.
+Claudia's car is not a convertible.
+Therefore, Claudia's car is not fun to drive.
+
+\item[b.] Alice is taking COMP0147 or COMP003.
+Alice is not taking COMP0147 or she is taking Calculus.
+Therefore, Alice is taking COMP0003 or Calculus.
+
+\end{enumerate}
+\solution{
+
+\begin{itemize}
+\item[a.] Notation for the predicate symbols:
+    \[
+    \mathrm{Conv}(x) : \text{$x$ is a convertible}, \quad 
+    \mathrm{Fun}(x) : \text{$x$ is fun to drive}
+    \]
+    and a constant \(c\) for ``Claudia's car.'' 
+\[
+\begin{array}{l}
+\text{Premise 1: It is fun to drive convertible cars.} \\
+\quad (\forall x)(\mathrm{Conv}(x) \to \mathrm{Fun}(x)) \\[2mm]
+\text{Premise 2: Claudia's car is not a convertible.} \\
+\quad \neg \mathrm{Conv}(c) \\[2mm]
+\text{Conclusion: Claudia's car is not fun to drive.} \\
+\quad \neg \mathrm{Fun}(c)
+\end{array}
+\]
+
+The statement is false.
+
+\textbf{Explanation:} By \emph{Universal Instantiation} we obtain:
+\[
+\mathrm{Conv}(c) \to \mathrm{Fun}(c)
+\]
+but from \(\mathrm{Conv}(c) \to \mathrm{Fun}(c)\) and \(\neg \mathrm{Conv}(c)\) we \emph{cannot} deduce \(\neg \mathrm{Fun}(c)\). This is the fallacy of \emph{denying the antecedent}.  
+
+\textbf{Countermodel:} Let \(\mathrm{Conv}(c) = \text{false}\), \(\mathrm{Fun}(c) = \text{true}\). Then both premises are true but the conclusion is false, showing invalidity.
+
+\item[b.] Notation for the propositional letters:
+    \[
+    P : \text{Alice takes COMP0147}, \quad 
+    Q : \text{Alice takes COMP003}, \quad 
+    R : \text{Alice takes Calculus}.
+    \]
+
+\[
+\begin{array}{l}
+\text{Premise 1: Alice is taking COMP0147 or COMP003.} \\
+\quad P \vee Q \\[1mm]
+\text{Premise 2: Alice is not taking COMP0147 or she is taking Calculus.} \\
+\quad \neg P \vee R \\[1mm]
+\text{Conclusion: Alice is taking COMP003 or Calculus.} \\
+\quad Q \vee R
+\end{array}
+\]
+
+The statement is true.
+
+\textbf{Explanation:} This follows by the \emph{resolution rule}:
+\[
+(P \vee Q), (\neg P \vee R) \vdash Q \vee R
+\]
+\emph{Proof by cases:}
+\begin{itemize}
+    \item Case 1: \(P\) is true. Then \(\neg P \vee R\) forces \(R\) to be true, so \(Q \vee R\) holds.
+    \item Case 2: \(P\) is false. Then \(P \vee Q\) forces \(Q\) to be true, so \(Q \vee R\) holds.
+\end{itemize}
+In both cases, the conclusion is true.
+\end{itemize}
+}
+
+\question[4] Let $m_1 , m_2 , \ldots , m_n$ be pairwise relatively prime integers greater than or equal to 2. Show that if $a \equiv b\pmod{m_i}$ for $i = 1,2,\ldots,n$, then $a \equiv b \pmod{m}$, where $m = m_1\cdot m_2\cdot\ldots \cdot m_n$.
+
+\solution{
+
+\begin{itemize}
+\item Using factorisation. The premise is $a \equiv b \pmod{m_i}$ for all $i = 1, \ldots, n$.
+By the definition of congruence, this means that $m_i$ divides the difference $(a - b)$ for every $i$:
+\[
+    m_i \mid (a - b) \quad \text{for all } i = 1, 2, \ldots, n.
+\]
+We want to show that $m = m_1 m_2 \cdots m_n$ divides $(a-b)$, or $m \mid (a-b)$.
+
+Since $m_1, m_2, \ldots, m_n$ are pairwise relatively prime, they share no prime factors.
+Let the prime factorization of each $m_i$ be:
+\[
+    m_i = p_{i,1}^{e_{i,1}} p_{i,2}^{e_{i,2}} \cdots p_{i,k_i}^{e_{i,k_i}}
+\]
+where $p_{i,j}$ are distinct prime numbers for different values of $i$.
+The prime factorization of the product $m = m_1 m_2 \cdots m_n$ is simply the union of all these distinct prime power factors:
+\[
+    m = \prod_{i=1}^{n} m_i = \left( \prod_{j=1}^{k_1} p_{1,j}^{e_{1,j}} \right) \left( \prod_{j=1}^{k_2} p_{2,j}^{e_{2,j}} \right) \cdots \left( \prod_{j=1}^{k_n} p_{n,j}^{e_{n,j}} \right)
+\]
+In other words, the set of all prime power factors of $m$ is exactly the union of the prime power factors of $m_1, m_2, \ldots, m_n$.
+
+From the initial premise, we know $m_i \mid (a-b)$.
+This means that for every $i$, all prime factors of $m_i$, with their correct exponents, must also be factors of the difference $(a-b)$.
+Specifically, for a prime power $p^e$ that is a factor of $m_i$ (i.e., $p^e \mid m_i$), we must have $p^e \mid (a-b)$.
+
+Let $P$ be the set of all distinct prime power factors $p^e$ of $m$.
+\[
+    P = \{ p_{i,j}^{e_{i,j}} \mid i=1,\ldots,n; j=1,\ldots,k_i \}
+\]
+From Step 1, we established that $m = \prod_{p^e \in P} p^e$.
+From Step 2, we know that every prime power factor $p^e \in P$ must divide $(a-b)$.
+
+A key theorem in number theory states that if a set of pairwise relatively prime numbers (in this case, the set of distinct prime power factors $P$) all divide an integer $(a-b)$, then their product must also divide $(a-b)$.
+Since the product of all prime power factors in $P$ is exactly $m$, we conclude:
+\[
+    m \mid (a - b)
+\]
+By the definition of modular congruence, this implies:
+\[
+    a \equiv b \pmod{m}
+\]
+The proof is complete.
+
+\item Using induction.
+%\textbf{Problem:} Let $m_1, m_2, \ldots, m_n$ be pairwise relatively prime integers greater than or equal to 2. Show that if $a \equiv b \pmod{m_i}$ for $i = 1, 2, \ldots, n$, then $a \equiv b \pmod{m}$, where $m = m_1 m_2 \cdots m_n$.
+%
+We are given the set of congruences:
+\[
+    a \equiv b \pmod{m_i} \quad \text{for all } i = 1, 2, \ldots, n.
+\]
+By the definition of modular congruence, this means that $m_i$ divides the difference $(a-b)$ for each $i$:
+\[
+    m_i \mid (a - b) \quad \text{for all } i = 1, 2, \ldots, n.
+\]
+This implies that for each $i$, there exists an integer $k_i$ such that:
+\[
+    a - b = k_i m_i
+\]
+
+Since $m_1 \mid (a-b)$ and $m_2 \mid (a-b)$, and we are given that $m_1$ and $m_2$ are relatively prime (i.e., $\gcd(m_1, m_2) = 1$), it follows from a fundamental property of divisibility that their product must also divide $(a-b)$.
+\[
+    m_1 m_2 \mid (a - b)
+\]
+
+We can formally prove this by induction on the number of moduli $n$.
+
+\subsection*{Base Case (n=2)}
+Assume $m_1 \mid (a-b)$ and $m_2 \mid (a-b)$, with $\gcd(m_1, m_2) = 1$.
+Since $m_1 \mid (a-b)$, we have $a-b = k m_1$ for some integer $k$.
+Substituting this into the second divisibility relation, we get $m_2 \mid k m_1$.
+Since $\gcd(m_1, m_2) = 1$, we must have $m_2 \mid k$.
+Thus, $k = l m_2$ for some integer $l$.
+Substituting this back into the expression for $(a-b)$:
+\[
+    a - b = (l m_2) m_1 = l (m_1 m_2)
+\]
+This shows that $m_1 m_2 \mid (a - b)$, which proves the base case.
+
+\subsection*{Inductive Step}
+Let $P(k)$ be the proposition that if $a \equiv b \pmod{m_i}$ for $i=1, \ldots, k$, and $m_1, \ldots, m_k$ are pairwise relatively prime, then $a \equiv b \pmod{M_k}$, where $M_k = m_1 m_2 \cdots m_k$.
+
+\textbf{Inductive Hypothesis (I.H.):} Assume $P(n-1)$ holds for $n-1 \geq 2$. That is, we assume:
+\[
+    a \equiv b \pmod{m_1 m_2 \cdots m_{n-1}}
+\]
+Let $M_{n-1} = m_1 m_2 \cdots m_{n-1}$. By the I.H., we have $M_{n-1} \mid (a-b)$.
+We are also given the congruence for $m_n$:
+\[
+    m_n \mid (a - b)
+\]
+Since $m_1, \ldots, m_n$ are pairwise relatively prime, $m_n$ is relatively prime to every factor in $M_{n-1}$. Therefore, $m_n$ is relatively prime to their product $M_{n-1}$:
+\[
+    \gcd(M_{n-1}, m_n) = 1
+\]
+Now we apply the result from the base case (or the property used above) to the two moduli $M_{n-1}$ and $m_n$.
+Since $M_{n-1} \mid (a-b)$, $m_n \mid (a-b)$, and $\gcd(M_{n-1}, m_n) = 1$, it must be true that their product divides $(a-b)$:
+\[
+    M_{n-1} m_n \mid (a - b)
+\]
+Since $M_{n-1} m_n = m_1 m_2 \cdots m_n = m$, we have:
+\[
+    m \mid (a - b)
+\]
+By the definition of modular congruence, this is equivalent to:
+\[
+    a \equiv b \pmod{m}
+\]
+Thus, the proposition holds for $n$.
+
+By the principle of induction, the result holds for all $n \geq 2$.
+
+\end{itemize}
+}
+
+\question[10]
+The {\em symmetric difference} of sets $A$ and $B$, denoted by $A \oplus B$, is
+the set containing those elements in either $A$ or $B$, but not in both $A$ and $B$.
+\begin{enumerate}
+    \item[a.] What can you say about the sets $A$ and $B$ if $A\oplus B=A$?
+    \item[b.] Suppose that $A, B, C$ are sets such that $A\oplus C = B \oplus C$. Must it be the case that $A = B$?
+\end{enumerate}    
+\solution{
+First of all, observe that: $A\oplus B = (A- B)\cup(B- A).$
+
+\begin{enumerate}
+    \item[a.] Suppose that $A \oplus B = A$, that is,
+    \[
+    A = (A -B)\cup(B-A).
+    \]
+    Suppose that there exists $b\in B$. If $b\in A$, then $b$ is not $A \oplus B$, so $A \oplus B\not= A$. On the other hand, if $b \in $A, then it must be the case that $b\in A\oplus B$, so again $A\oplus B \not= A$. Thus in either case, $A \oplus B \not= A$. We conclude that $B$ cannot have any elements, hence $B=\varnothing$.
+   
+
+    \item[b.] Yes. Assume that $A \oplus C = B \oplus C$, and let $x \in A$.  There are two possibilities:
+    \begin{itemize}
+    \item $x \in C$: by definition $x \notin A \oplus C$. Therefore $x \notin B \oplus C$. Now if $x\notin B$, then $x \in B \oplus C$ (since $x \in C$ by assumption). Since this is not true, we conclude that $x \in B$, as desired. 
+    \item $x \notin C$: then $x \in A \oplus C$. Therefore $x \in B \oplus C$ as well. Again, if $x \notin B$, then $x\notin B \oplus C$ (since $x \notin C$ by assumption). Once again we conclude that $x \in B$.
+    \end{itemize}
+    In any case, if $x\in A$ then $x\in B$. Since the argument is symmetric, the proof is complete.
+%    Suppose that $A\oplus C = B\oplus C$. Using the fact that
+%    \[
+%    (X\oplus Y)\oplus Y = X,
+%    \]
+%    we apply $\oplus C$ to both sides:
+%    \[
+%    (A\oplus C)\oplus C = (B\oplus C)\oplus C.
+%    \]
+%    Therefore $A = B$.
+\end{enumerate}
+
+}
+
+\question[15] Consider a function $f : A \to B$.
+
+\begin{itemize}
+    \item 
+    A function $r : B \to A$ is called a \emph{right inverse} of $f$ if
+    \[
+    f \circ r = \mathrm{id}_B.
+    \]
+    This means that for every $b \in B$, $f(r(b)) = b$.
+
+    \item 
+    A function $\ell : B \to A$ is called a \emph{left inverse} of $f$ if
+    \[
+    \ell \circ f = \mathrm{id}_A.
+    \]
+    This means that for every $a \in A$, $\ell(f(a)) = a$.
+\end{itemize}
+\begin{enumerate}
+ \item[a.] Prove  that a function $h: A\to B$,
+\begin{itemize}
+  \item[i.] has a right inverse iff $h$ is surjective;
+  \item[ii.] has a left inverse  iff $h$ is injective;
+  \item[iii.] is invertible iff $h$ is a bijection.
+\end{itemize}
+
+    \item[b.] Let the function $f:\mathbb{R}\to \mathbb{R}$ be defined as:
+    \[
+    f(x)=\left\{\begin{array}{ll}
+    \sqrt{x} & \mbox{ if } x>0,\\
+    0 & \mbox{ otherwise.}
+    \end{array}
+    \right.
+    \]
+    \begin{enumerate}
+    \item[i.] Does $f$ have a right inverse? If so, give an example of a right inverse.
+    \item[ii.] Does $f$ have a left inverse? If so, give an example of a left inverse.
+    \item[iii.] Is $f$ invertible? If it is, what is its inverse?
+    \end{enumerate}
+
+    \item[c.] Let the function $g:\mathbb{R}\to [0,\infty)$ be defined as:
+    \[
+    g(x)=\left\{\begin{array}{ll}
+    \sqrt{x} & \mbox{ if } x>0,\\
+    0 & \mbox{ otherwise.}
+    \end{array}
+    \right.
+    \]
+    \begin{enumerate}
+    \item[i.] Does $g$ have a right inverse? If so, give an example of a right inverse.
+    \item[ii.] Does $g$ have a left inverse? If so, give an example of a left inverse.
+    \item[iii.] Is $g$ invertible? If it is, what is its inverse?
+    \end{enumerate}
+\end{enumerate}
+
+\solution{
+\begin{itemize}
+\item[a.]
+\begin{itemize}
+\item[i.] Suppose \(h\) has a right inverse; that is, there exists \(r:B\to A\) with
+\[
+h\circ r=\mathrm{id}_B.
+\]
+For any \(b\in B\) we have \(h(r(b))=b\), so every \(b\in B\) has a preimage under \(h\).
+Hence \(h\) is surjective.
+
+Conversely, suppose \(h\) is surjective. For each \(b\in B\) the nonempty set
+\(h^{-1}(\{b\})\subseteq A\) of preimages of \(b\) is nonempty. Choosing one element
+\(a_b\in h^{-1}(\{b\})\) for each \(b\in B\) and defining \(r(b):=a_b\) yields a function
+\(r:B\to A\) with \(h(r(b))=b\) for all \(b\), i.e. \(h\circ r=\mathrm{id}_B\). 
+
+%\emph{Remark:} the construction above uses a choice of one preimage for each \(b\in B\).
+%Thus the existence of a right inverse for every surjection is guaranteed if one assumes
+%the Axiom of Choice. The implication ``right inverse \(\Rightarrow\) surjective'' holds
+%without any choice assumption.
+
+\item [ii.] Suppose \(h\) has a left inverse; that is, there exists \(\ell:B\to A\) with
+\[
+\ell\circ h=\mathrm{id}_A.
+\]
+If \(h(a_1)=h(a_2)\) then applying \(\ell\) to both sides gives
+\[
+a_1=(\ell\circ h)(a_1)=(\ell\circ h)(a_2)=a_2,
+\]
+so \(h\) is injective.
+
+Conversely, suppose \(h\) is injective. The restriction \(h: A\to h(A)\)
+is a bijection onto its image \(h(A)\), hence it has an inverse
+\(\tilde{\ell}:h(A)\to A\) satisfying \(\tilde{\ell}\circ h=\mathrm{id}_A\). To obtain
+a function \(\ell:B\to A\) defined on all of \(B\) we may extend \(\tilde{\ell}\) arbitrarily
+to the points of \(B- h(A)\): choose for each \(b\in B- h(A)\) some
+element \(a_0\in A\) (if \(A\) is nonempty) and set \(\ell(b):=a_0\). Then \(\ell\) satisfies
+\(\ell\circ h=\mathrm{id}_A\), so \(\ell\) is a left inverse of \(h\).
+
+%\emph{Remark on edge cases:} if \(A=\varnothing\) but \(B\neq\varnothing\), then there
+%is no function \(B\to A\), so no left inverse can exist despite \(h\) being injective
+%(vacuously). Apart from this trivial pathological case, the construction above provides
+%a left inverse without any appeal to the Axiom of Choice (the values on \(B- h(A)\)
+%can all be taken equal to any fixed element of \(A\), which requires that \(A\) be nonempty).
+%In particular, if \(A\) is nonempty and \(h\) is injective then \(h\) has a left inverse.
+
+\item[iii.] Suppose \(h\) is invertible: there exists \(g:B\to A\) with
+\[
+g\circ h=\mathrm{id}_A\qquad\text{and}\qquad h\circ g=\mathrm{id}_B.
+\]
+Then from part (2) \(h\) is injective, and from part (1) \(h\) is surjective. Hence \(h\)
+is a bijection.
+
+Conversely, if \(h\) is a bijection then it has an inverse map
+\(h^{-1}:B\to A\) which is both a left and a right inverse, i.e.
+\[
+h^{-1}\circ h=\mathrm{id}_A,\qquad h\circ h^{-1}=\mathrm{id}_B.
+\]
+Thus \(h\) is invertible.
+\end{itemize}
+\item[b.] The function $f$ has image (range) $\operatorname{Im}f=[0,\infty)$.
+
+\begin{enumerate}
+\item[i.] \emph{Right inverse?} \\
+A right inverse $r:\mathbb{R}\to\mathbb{R}$ would satisfy $f(r(y))=y$ for all $y\in\mathbb{R}$. But $f$ never attains negative values, so no negative $y$ can be written as $f(x)$. Hence there is no $r$ with $f(r(y))=y$ for every $y\in\mathbb{R}$. Therefore \emph{$f$ has no right inverse}.
+
+\item[ii.] \emph{Left inverse?} \\
+A left inverse $\ell:\mathbb{R}\to\mathbb{R}$ must satisfy $\ell(f(x))=x$ for all $x\in\mathbb{R}$. This would force $\ell(0)=x$ for every $x\le0$ (since $f(x)=0$ for all $x\le0$), which is impossible. Thus $f$ is not injective and \emph{has no left inverse}.
+
+\item[iii.] \emph{Inverse?} \\
+The inverse exists only for bijections. Since $f$ is neither injective nor surjective (onto $\mathbb{R}$), \emph{no two-sided inverse exists}.
+\end{enumerate}
+
+\item[c.] The function $g$
+has the same rule as $f$ but its codomain is $[0,\infty)$. Its image is $\operatorname{Im}g=[0,\infty)$, so $g$ is \emph{surjective} onto its codomain.
+
+\begin{enumerate}
+\item[i.] \emph{Right inverse?} \\
+Yes. For example define $r:[0,\infty)\to\mathbb{R}$ by
+\[
+r(y)=y^2\qquad (y\ge0).
+\]
+Then for every $y\in[0,\infty)$,
+\[
+g(r(y))=g(y^2)=\sqrt{y^2}=y,
+\]
+so $g\circ r=\mathrm{id}_{[0,\infty)}$. Thus $r$ is a right inverse of $g$.
+(There are many right inverses: for $y>0$ one must choose a preimage $x$ with $x=y^2$, and for $y=0$ any $x\le0$ or $x=0$ will do; $r(y)=y^2$ is the natural choice.)
+
+\item[ii.] \emph{Left inverse?} \\
+No. A left inverse $\ell:[0,\infty)\to\mathbb{R}$ would require $\ell(g(x))=x$ for all $x\in\mathbb{R}$. But $g(x)=0$ for all $x\le0$, so this would force $\ell(0)=x$ for every $x\le0$, impossible. Hence $g$ is not injective and \emph{has no left inverse}.
+
+\item[iii.] \emph{Inverse?} \\
+No, because $g$ is not injective (many $x\le0$ map to $0$), so it is not bijective and there is no two-sided inverse.
+\end{enumerate}
+\end{itemize}
+}
+
+
+
+\question[10]
+Prove by mathematical induction that for all integers $n \geq 1$,
+\[
+1^3 + 2^3 + \dots + n^3 = (1 + 2 + \dots + n)^2.
+\]
+
+\solution{
+\textbf{Base case:} \(n=1\). Left-hand side \(=1^3=1\). Right-hand side \(=(1)^2=1\). So the statement holds for \(n=1\).
+
+\textbf{Inductive step:} Assume the identity holds for some \(n\ge1\); that is assume
+\[
+1^3+2^3+\cdots+n^3=\bigl(1+2+\cdots+n\bigr)^2.
+\]
+Let \(S_n=1+2+\cdots+n\). Using the induction hypothesis,
+\[
+1^3+2^3+\cdots+n^3+ (n+1)^3 = S_n^2 + (n+1)^3.
+\]
+We must show the right-hand side equals \((S_n+(n+1))^2\). Indeed,
+\[
+(S_n+(n+1))^2 - S_n^2 = 2S_n(n+1) + (n+1)^2.
+\]
+But \(S_n=\dfrac{n(n+1)}{2}\), so
+\[
+2S_n(n+1) + (n+1)^2
+= 2\cdot\frac{n(n+1)}{2}\,(n+1) + (n+1)^2
+= n(n+1)^2 + (n+1)^2
+= (n+1)^2(n+1)
+= (n+1)^3.
+\]
+Hence
+\[
+S_n^2 + (n+1)^3 = (S_n+(n+1))^2,
+\]
+which shows
+\[
+1^3+2^3+\cdots+n^3+(n+1)^3 = \bigl(1+2+\cdots+n+(n+1)\bigr)^2.
+\]
+Thus the identity holds for \(n+1\). By the principle of mathematical induction the formula is true for all integers \(n\ge1\). \(\square\)
+}
+
+
+\question[10] Prove that at a party where there are at least two people, there are two people who know the same number of other people there.
+\solution{
+Label the people \(P_1,\dots,P_n\). For each \(i\) let \(d_i\) denote the number of other people that \(P_i\) knows.
+Clearly \(d_i\in\{0,1,\dots,n-1\}\) for every \(i\).
+
+If some person knows nobody, say for some \(i\) we have \(d_i=0\), then no person can know everyone else,
+so no one can have degree \(n-1\). Thus the possible degree values actually realized lie in the set
+\(\{0,1,\dots,n-2\}\), which has \(n-1\) elements.
+
+If no person has degree \(0\), then every person knows at least one other person, so degrees lie in
+\(\{1,2,\dots,n-1\}\), which also has \(n-1\) elements.
+
+Therefore, in either case the \(n\) people have degrees that take values from a set of size \(n-1\).
+By the pigeonhole principle (or simply by counting), two of the \(d_i\)'s must be equal. Hence there are
+two people who know the same number of other people.
+}
+
+
+\question[5]
+A survey of 100 students found that:
+\begin{itemize}
+    \item 60 study Mathematics,
+    \item 45 study Computer Science,
+    \item 30 study both.
+\end{itemize}
+\begin{enumerate}
+    \item[a.] How many students study at least one of the two subjects?
+    \item[b.] How many study only Mathematics?
+    \item[c.] How many study neither subject?
+\end{enumerate}
+Express your results using set operations and the inclusion-exclusion principle.
+
+\solution{
+Let \(M\) be the set of students who study Mathematics and \(C\) the set of students who study Computer Science.
+We are given
+\[
+|M|=60,\qquad |C|=45,\qquad |M\cap C|=30,\qquad \text{total students }=100.
+\]
+
+\begin{enumerate}
+\item[a.] Number who study at least one of the two subjects.\\
+By the inclusion--exclusion principle,
+\[
+|M\cup C|=|M|+|C|-|M\cap C|=60+45-30=75.
+\]
+
+\item[b.] Number who study only Mathematics.\\
+Students who study only Mathematics are those in \(M\) but not in \(C\), i.e. \(M- C\). Hence
+\[
+|M- C|=|M|-|M\cap C|=60-30=30.
+\]
+
+\item[c.] Number who study neither subject.\\
+Those who study neither are the complement of \(M\cup C\) (inside the 100 students), so
+\[
+\text{neither} = 100-|M\cup C|=100-75=25.
+\]
+\end{enumerate}
+}
+
+\question[10] Let $X=\{(a,b)\mid a,b\in\mathbb{Z}, b\not=0\}$ and define a relation $R$ on $X$ by
+\[
+((a,b),(c,d))\in R \qquad\Longleftrightarrow\qquad ad=bc.
+\]
+Show that $R$ is an equivalence relation.
+\solution{
+\begin{itemize}
+\item Reflexive.
+For any $(a,b)\in X$ we have $ab=ba$, so $((a,b),(a,b))\in R$. Thus $R$ is reflexive.
+
+\item Symmetric.
+If $((a,b),(c,d))\in R$ then $ad=bc$. Rearranging gives $cb=da$, so $((c,d),(a,b))\in R$. Hence $R$ is symmetric.
+
+\item Transitive.
+Suppose $((a,b),(c,d))\in R$ and $((c,d),(e,f))\in R$. Then
+\[
+ad=bc \qquad\text{and}\qquad cf=de.
+\]
+Multiply the first equation by $f$ and the second by $b$ to obtain
+\[
+adf = bcf \qquad\text{and}\qquad bcf = bde.
+\]
+Thus $adf=bde$. Since $d\not=0$, we may divide both sides by $d$ to get $af=be$, i.e.
+$((a,b),(e,f))\in R$. Therefore $R$ is transitive.
+\end{itemize}
+
+Since $R$ is reflexive, symmetric and transitive, it is an equivalence relation.
+
+{\em Remark.}
+The equivalence class of $(a,b)$ is the set
+\[
+\{(c,d)\in X \mid ad=bc\},
+\]
+so equivalence classes correspond exactly to the rational numbers $\dfrac{a}{b}$ (written in any representative form).
+}
+
+\question[20] A poset $(R, \preceq)$ is {\em well-founded} if there is no infinite decreasing sequence of elements in the poset, that is, elements $x_1,x_2,\ldots,x_n,\ldots$ such that $\cdots \prec x_n \prec \cdots \prec x_2 \prec x_1$. A poset $(R, \preceq)$ is {\em dense} if for all $x ,y \in S$ with $x \prec y$, there is an element $z \in R$ such that $x \prec z \prec y$.
+
+Let $\Sigma=\{\text{the 26 lowercase English letters}\}$ and let $\Sigma^{*}$ be the set of all finite strings over $\Sigma$.  Equip $\Sigma^{*}$ with the usual lexicographic order $\leq$ defined as follows: for $x,y\in\Sigma^*$, write $x<y$ iff either
+\begin{enumerate}
+  \item $x$ is a proper prefix of $y$, or
+  \item at the first position where $x$ and $y$ differ, the letter of $x$ is less than the letter of $y$ (according to the usual order $a<b<\cdots<z$).
+\end{enumerate}
+
+Show that $(\Sigma^*,\leq)$ is
+\begin{itemize}
+\item [a)] not well-founded;
+\item[b)] not dense.
+\end{itemize}
+\solution{
+\begin{itemize}
+\item[a)] Not well-founded.
+Consider the infinite sequence
+\[
+s_0 = \texttt{b},\qquad s_1=\texttt{ab},\qquad s_2=\texttt{aab},\qquad s_3=\texttt{aaab},\qquad\ldots
+\]
+in which $s_n$ is the string consisting of $n$ copies of \texttt{a} followed by \texttt{b}.  For every $n\ge 0$ we have $s_n>s_{n+1}$: indeed, compare $s_n$ and $s_{n+1}$; they agree on the first $n$ letters (all \texttt{a}), and at the $(n+1)$-st position $s_n$ has \texttt{b} while $s_{n+1}$ has \texttt{a}, and since \texttt{b}>\texttt{a} we get $s_n>s_{n+1}$.  Thus
+\[
+\texttt{b}>\texttt{ab}>\texttt{aab}>\texttt{aaab}>\cdots
+\]
+is an infinite strictly decreasing chain, so $(\Sigma^*,<)$ is not well-founded.
+
+\item[b)] Not dense.
+Take $x=\texttt{a}$ and $y=\texttt{aa}$. Clearly $x<y$ because $x$ is a proper prefix of $y$. Suppose $z\in\Sigma^*$ satisfies $x<z<y$.  Since $x=\texttt{a}$ is a prefix of $y=\texttt{aa}$, any $z$ with $x<z$ must begin with the letter \texttt{a}. Write $z=\texttt{a}w$ for some (possibly empty) string $w$. The condition $z<\texttt{aa}$ forces $w<\texttt{a}$ in the lexicographic order of strings (compare $w$ with the one-letter string \texttt{a} at the first position where they differ, or note that if $w$ is empty then $z=\texttt{a}=x$). But there is no nonempty string $w$ with $w<\texttt{a}$, and $w$ cannot be empty because that would make $z=x$. Hence no such $z$ exists. Therefore there are $x<y$ with no $z$ strictly between them, so the order is not dense.
+\end{itemize}
+
+}
+
+
+
+\question[10] The {\em line graph} $L(G)$ of a simple graph $G$ is the graph whose vertices are in one-to-one correspondence with the edges of $G$. Two vertices of $L(G)$ are adjacent if and only if the corresponding edges in G have an end-point in common.
+\begin{itemize}
+\item[a.] Determine the line graphs of the two graphs below.
+\begin{center}
+\begin{tikzpicture}[vertex/.style={draw,circle,inner sep=1.5pt,minimum size=12pt}, >=Stealth]
+% G1 triangle
+\node[vertex] (A) at (0,1) { };
+\node[vertex] (B) at (-0.87,-0.5) { };
+\node[vertex] (C) at (0.87,-0.5) { };
+\draw (A) -- (B) -- (C) -- (A);
+\node at (0,-1.0) {$G_1$};
+\begin{scope}[xshift=4.5cm]
+% G2 K1,3
+\node[vertex] (O) at (0,-0.5) { };
+\node[vertex] (u) at (-1.2,0.6) { };
+\node[vertex] (v) at (0,1) { };
+\node[vertex] (w) at (1.2,0.6) { };
+\draw (O) -- (u); \draw (O) -- (v); \draw (O) -- (w);
+\node at (0,-1.0) {$G_2=K_{1,3}$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\item[b.] If $G$ and $H$ are simple graphs with $L(G)$ isomorphic to $L(H)$, are $G$ and $H$ also isomorphic? Justify.
+\item[c.] Prove that  if $G$ is a simple graph in which every vertex has degree $k$ (i.e.\ $G$ is $k$--regular), then every vertex of $L(G)$ has degree $2k-2$.
+\end{itemize}
+ 
+\solution{
+\begin{itemize}
+\item[i.] 
+The line graph $L(G)$ has one vertex for each edge of $G$, and two vertices of $L(G)$ are adjacent iff the corresponding edges of $G$ share a common end-point.
+
+\begin{itemize}
+\item $G_1$ has three edges and each edge meets the other two. So $L(G_1)$ has three vertices, each adjacent to the other two; hence
+\begin{center}
+\begin{tikzpicture}[vertex/.style={draw,circle,inner sep=1.5pt,minimum size=12pt}, >=Stealth]
+\node[vertex] (a) at (0,1) { };
+\node[vertex] (b) at (-0.87,-0.5) { };
+\node[vertex] (c) at (0.87,-0.5) { };
+\draw (a) -- (b) -- (c) -- (a);
+\node at (0,-1.0) {$L(G_1)\cong K_3$};
+\end{tikzpicture}
+\end{center}
+\item 
+$G_2$ has three edges all incident with the central vertex, so each pair of edges meet. Thus $L(G_2)$ also has three vertices all pairwise adjacent, so
+\begin{center}
+\begin{tikzpicture}[vertex/.style={draw,circle,inner sep=1.5pt,minimum size=12pt}, >=Stealth]
+\node[vertex] (x) at (0,1) { };
+\node[vertex] (y) at (-0.87,-0.5) { };
+\node[vertex] (z) at (0.87,-0.5) { };
+\draw (x) -- (y) -- (z) -- (x);
+\node at (0,-1.0) {$L(G_2)\cong K_3$};
+\end{tikzpicture}
+\end{center}
+
+\end{itemize}
+
+\item[b.] In general \emph{no}. A simple counterexample is $G=K_{1,3}$ (the star on four vertices).  We saw above that $L(K_{1,3})\cong K_3$. Since $L(K_3)\cong K_3$ again, we have
+\[
+L(L(K_{1,3}))\cong K_3,
+\]
+but $K_{1,3}$ is not isomorphic to $K_3$ (they have different numbers of vertices and different degree sequences). Hence $G$ and $L(L(G))$ need not be isomorphic.
+
+\item[c.]  A vertex of $L(G)$ corresponds to some edge $e=uv$ of $G$. In $L(G)$ the neighbours of the vertex corresponding to $e$ are exactly the edges of $G$ that share an end-point with $e$. The edges incident with the vertex $u$ in $G$ are $k$ in number, and similarly there are $k$ edges incident with $v$. Together these account for $k+k=2k$ incidences, but the edge $e$ itself is counted twice (once at $u$ and once at $v$), so the number of \emph{distinct} edges other than $e$ that meet $e$ is
+\[
+2k-2.
+\]
+Therefore the vertex of $L(G)$ corresponding to $e$ has degree $2k-2$. Since $e$ was arbitrary, every vertex of $L(G)$ has degree $2k-2$. \(\square\)
+\end{itemize}
+}
+\end{questions}
+\end{document}

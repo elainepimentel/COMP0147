@@ -1,0 +1,441 @@
+\input{hmwrk_header-sol.tex}
+
+%====================================================================
+% Commands particular to this file
+%====================================================================
+
+%--------------------------------------------------------------------
+
+\begin{document}
+
+%====================================================================
+\homeworktitle{Combinatorial Analysis}{Rosen - Chapter 6}
+
+\crossline
+
+\paragraph{Required reading for this list:}
+\emph{Discrete Mathematics and Its Applications} (Rosen, 7\textsuperscript{th} Edition):
+\begin{itemize}
+\item Chapter 6.1: \emph{The Basics of Counting}
+\item Chapter 6.2: \emph{The Pigeonhole Principle}
+\item Chapter 6.3: \emph{Permutations and Combinations}
+\item Chapter 6.4: \emph{Binomial Coefficients and Identities}
+\item Chapter 6.5: \emph{Generalized Permutations and Combinations}
+\end{itemize}
+
+\noteondifficultylevel
+
+\crossline
+
+\begin{enumerate}
+
+\item (Rosen 6.1-3) A multiple-choice test contains 10 questions.
+There are four alternatives for each question.
+
+\begin{enumerate}
+\item \streasy In how many ways can a student answer
+the questions on the test if no question is left blank?
+\solution{
+By the multiplication rule, there are $4^{10}$ ways to answer
+the test.
+}
+
+\item \streasy In how many ways can a student answer
+the questions on the test if questions may be left blank?
+\solution{
+If questions may be left blank, then there are
+$5$ options for each question (each of the original $4$ alternatives 
+plus the alternative of leaving it blank).
+
+By the multiplication rule, there are $5^{10}$ ways to answer
+the test.
+}
+\end{enumerate}
+
+\item (Rosen 6.1-23) How many integers between $100$ and $999$, inclusive,
+satisfy:
+
+\begin{enumerate}
+
+\item \strmedium are divisible by 3 or 4?
+\solution{
+The numbers divisible by $3$ in the interval from $100$ to $999$
+go from $34 \cdot 3 = 102$ to $333 \cdot 3 = 999$, that is,
+there are $333-34+1=300$ of these numbers.
+
+The numbers divisible by $4$ in the interval from $100$ to $999$
+go from $25 \cdot 4 = 100$ to $249 \cdot 4 = 996$, that is,
+there are $249-25+1=225$ of these numbers.
+
+The numbers divisible by both $3$ and $4$ in the interval from
+$100$ to $999$ are those divisible by $4\cdot3=12$,
+and they go from $9 \cdot 12 = 108$ to $83 \cdot 12 = 996$, that is,
+there are $83-9+1=75$ of these numbers.
+
+Thus, by the inclusion-exclusion principle, there are $300+225-75=450$
+numbers divisible by $3$ or $4$ in this interval.
+}
+
+\item \strmedium are not divisible by 3 nor by 4?
+\solution{
+Since there are $999-100+1=900$ numbers in the interval and, of these,
+$450$ are divisible by $3$ or $4$ (see the previous exercise),
+there are $900-450=450$ numbers in the interval that are not divisible
+by 3 nor by 4.
+}
+
+\item \strmedium are divisible by 3 but not by 4?
+\solution{
+The numbers divisible by 3 but not by 4 are those
+in the set of numbers divisible by 3, minus those
+divisible by both 3 and 4.
+
+From the previous items, this total is $300-75=225$
+numbers divisible by 3 and not by 4.
+}
+
+\item \strmedium are divisible by both 3 and 4?
+\solution{
+The numbers divisible by both 3 and 4 are those
+divisible by 12. 
+As already calculated above, there are 75 such
+numbers in the interval of interest.
+}
+
+\end{enumerate}
+
+\item (Rosen 6.1-37) How many functions exist from the set $\{1,2,\ldots,n\}$,
+where $n$ is a positive integer, to the set $\{0,1\}$, if:
+
+\begin{enumerate}
+\item \strmedium that are one-to-one?
+\solution{
+\begin{itemize}
+\item If $n = 1$, there are two functions: $\{1 \mapsto 0\}$ or $\{1 \mapsto 1\}$.
+\item If $n = 2$, there are two functions: $\{1 \mapsto 0, 2 \mapsto 1\}$ or $\{1 \mapsto 1, 2 \mapsto 0 \}$.
+\item If $n \geq 3$, there are no bijective functions, since the domain
+is larger than the codomain.
+\end{itemize}
+}
+
+\item \streasy that assign 0 to both 1 and $n$?
+\solution{
+If $n=1$, then there is only one possible function: $\{1 \mapsto 0\}$.
+
+If $n \geq 2$, since the function assigns $0$ to both $1$ and $n$, 
+we are free to choose the values for the remaining $n-2$ elements.
+As there are 2 possibilities (0 or 1) for each, there are $2^{n-2}$ 
+possible functions.
+}
+
+\item \streasy that assign 1 to exactly one of the positive integers less than $n$?
+\solution{
+If $n = 1$, then there are no such functions, since there are no positive integers less than $n$. So assume $n > 1$. In order to specify such a function, we have to decide which of the numbers from $1$ to $n - 1$, inclusive, will get sent to $1$. There are $n - 1$ ways to make this choice. There is no choice for the remaining numbers from 1 to $n - 1$, inclusive, since they all must get sent to 0. Finally, we are free to specify the value of the function at $n$, and this may be done in 2 ways. Hence, by the product rule the final answer is $2(n - 1)$.
+}
+\end{enumerate}
+
+\item (Rosen 6.2-3) A drawer contains twelve brown socks and twelve black socks,
+all mixed together. 
+A person removes socks randomly from the drawer in the dark.
+
+\begin{enumerate}
+\item \streasy How many socks must the person remove to be sure that 
+at least two socks are of the same color?
+\solution{
+By the pigeonhole principle, where socks are pigeons and colors are
+holes, there will be at least two pigeons in one hole when
+the number of pigeons is such that $\lceil n/2 \rceil=2$, that is, 
+when $n=3$ socks.
+}
+
+\item \streasy How many socks must the person remove to be sure that at 
+least two socks are black?
+\solution{
+In the worst case, the person removes 12 brown socks first, and only then
+removes 2 black ones.
+Thus, it is necessary to remove 14 socks to be sure that at least
+two are black.
+}
+\end{enumerate}
+
+\item \streasy (Rosen 6.2-5) Show that in any group of five
+integers (not necessarily consecutive), at least 
+two numbers have the same remainder when divided by 4.
+\solution{
+There are four possible remainders when dividing by 4, namely 0, 1, 2, and 3.
+Thus, by the pigeonhole principle, where numbers are pigeons
+and remainders are holes, in a set of five numbers, at least two 
+must have the same remainder.
+}
+
+\item \strmedium (Rosen 6.2-15) How many distinct numbers must be
+chosen from the set $\{1,2,3,4,5,6\}$ to ensure that 
+at least one pair of them has a sum equal to 7?
+\solution{
+The sum of any two numbers in the set $\{1,2,3,4,5,6\}$ is a
+number between $3$ (sum of 1+2) and 11 (sum of 5+6), inclusive.
+Thus, there are $11-3+1=9$ possible sums.
+
+Note that when I select $n$ numbers from the set, I form
+$n(n-1)/2$ possible pairs (each can be paired with every other).
+
+Using the pigeonhole principle, where pairs are pigeons 
+($n(n-1)/2$ of them) and sums are holes (9 of them),
+to guarantee that every hole has at least one pigeon 
+(so that the hole for sum 7 also has one), 
+we must have $\lceil n(n-1)/7 \rceil > 1$, that is,
+when $n > 3$.
+
+Thus, we must select at least $4$ numbers to ensure
+that the sum of at least one pair is 7.
+}
+
+\item (Rosen 6.2-37) \strhard A computer network consists of six computers. Each computer is directly connected to zero or more of the other computers. Show that there are at least two computers in the network that are directly connected to the same number of other computers. [Hint: It is impossible to have a computer linked to none of the others and a computer linked to all the others.]
+\solution{
+If the network has 6 machines, then there are 5 possible connectivity
+degrees simultaneously: either from 0 to 4 or from 1 to 5 
+(since in the same network degrees 0 and 5 are mutually exclusive).
+
+Thus, by the pigeonhole principle, where pigeons are 
+machines and holes are connectivity degrees, at least
+two machines will have the same degree.
+}
+
+\item (Rosen 6.3-11) How many binary strings of length 10 contain
+
+\begin{enumerate}
+\item \streasy exactly four 1s?
+\solution{
+The only freedom in creating such strings is in choosing
+where to place the four 1s among the 10 positions,
+which can be done in $C(10,4) = 210$ different ways.
+}
+
+\item \strmedium at most four 1s?
+\solution{
+Strings with at most four 1s can be divided into the following
+disjoint sets:
+\begin{itemize}
+\item those containing zero 1s: $C(10,0)=1$,
+\item those containing one 1: $C(10,1)=10$,
+\item those containing two 1s: $C(10,2)=45$,
+\item those containing three 1s: $C(10,3)=120$, and
+\item those containing four 1s: $C(10,4)=210$.
+\end{itemize} 
+
+Thus, by the addition rule, there are $1+10+45+120+210=386$
+strings with at most four 1s.
+}
+
+\item \strmedium at least four 1s?
+\solution{
+By the inclusion-exclusion principle, the number of strings 
+with at least four 1s is the total number of possible
+$2^{10}=1024$ binary strings of length 10,
+minus the 386 strings with at most four 1s, 
+plus the $210$ strings with exactly four 1s, 
+so there are $1024 - 386 + 210 = 848$ such strings.
+}
+
+\item \streasy an equal number of 0s and 1s?
+\solution{
+To form a string with an equal number of 0s and 1s,
+we must choose $5$ positions out of 10
+for the 0s, leaving the others for the 1s. 
+There are $C(10,5) = 252$ possibilities in total.
+}
+\end{enumerate}
+
+\item \strmedium (Rosen 6.3-13) A group contains $n$ men and $n$ women. 
+How many ways are there to arrange these people in a line
+if men and women must alternate?
+\solution{
+The process of forming the line can be divided into the following steps:
+\begin{itemize}
+\item choose whether men occupy the odd positions (and women the even ones), or vice versa: there are 2 options.
+\item arrange the $n$ men in the $n$ available positions for them: 
+$P(n,n)=n!$ ways,
+\item arrange the $n$ women in the $n$ available positions for them: 
+$P(n,n)=n!$ ways.
+\end{itemize}
+
+Thus, by the multiplication rule, there are $2 \cdot n! \cdot n! = 2(n!)^{2}$
+ways to form such a line.
+}
+
+\item (Rosen 6.3-21) How many permutations of the letters $ABCDEFG$ contain:
+\begin{enumerate}
+
+\item the strings $ABC$ and $DE$?
+\solution{
+The strings that contain $ABC$ and $DE$ can be 
+formed by permuting the elements $ABC$ (as one block),
+$DE$ (as another block), $F$, and $G$. 
+Since there are 4 elements, there are $P(4,4)=4!=24$ ways 
+to do this.
+}
+
+\item \strhard the strings $ABC$ and $CDE$?
+\solution{
+The strings that contain both $ABC$ and $CDE$
+are exactly those that contain $ABCDE$, and there are 
+$P(3,3)=3!=6$ of them.
+}
+
+\item \streasy the strings $CBA$ and $BED$?
+\solution{
+No string can contain both 
+$CBA$ and $BED$, since the letter $B$ would have to be
+used twice in incompatible ways.
+}
+
+\end{enumerate}
+
+\item \strmedium (Rosen 6.3-33) Suppose a department has 10 men 
+and 15 women.
+In how many ways can a six-member committee be formed if the 
+committee must contain the same number of men and women?
+\solution{
+If the committee has six members and half must be men
+and half women, the process of forming it can be divided into the following steps:
+\begin{itemize}
+\item choose $3$ men from the $10$ available: $C(10,3) = 120$
+ways to do this,
+\item choose $3$ women from the $15$ available: 
+$C(15,3) = 455$ ways to do this.
+\end{itemize}
+By the multiplication principle, there are $120 \times 455 = 54,600$ ways 
+to form the committee.
+}
+
+\item (Rosen 6.5-3) \streasy How many 6-letter strings exist? 
+(Consider an alphabet of 26 letters.)
+\solution{
+There are $26^{6} = 308,915,776$ 6-letter strings.
+}
+
+\item (Rosen 6.5-9) A bagel shop has onion bagels, poppy seed bagels, egg bagels, salty bagels, pumpernickel bagels, sesame seed bagels, raisin bagels, and plain bagels. How many ways are there to choose
+
+\begin{enumerate}
+\item \streasy six bagels?
+\solution{
+In this case there are $n=8$ elements in a set, from which we may 
+select $r=6$ elements with repetition.
+Thus, there are $C(n+r-1,r) = C(13,6) = 1,716$ ways to choose six bagels.
+}
+
+\item \streasy two dozen bagels?
+\solution{
+Here there are $n=8$ elements in a set, from which we may 
+select $r=24$ elements with repetition.
+Thus, there are $C(n+r-1,r) = C(31,24) = 2,629,575$ ways 
+to choose two dozen bagels.
+}
+
+\item \strmedium one dozen bagels, with at least one of each kind?
+\solution{
+Here there are $n=8$ elements in a set, from which we want to 
+select one dozen with repetition, with the restriction 
+that there must be at least one of each type. 
+This means that, of the dozen, 8 are already fixed (one of each type),
+and we are free to choose the remaining $r=4$ snacks with repetition.
+
+Thus, there are $C(n+r-1,r) = C(11,4) = 330$ ways to choose one dozen bagels 
+containing at least one of each type.
+}
+
+\end{enumerate}
+
+\item (Rosen 6.5-15) How many solutions does the equation
+$$
+x_{1} + x_{2} + x_{3} + x_{4} + x_{5} = 21,
+$$
+where $x_{i}, i = 1,2,3,4,5$, is a non-negative integer, have if
+
+\begin{enumerate}
+\item \streasy $x_{1} \geq 1$?
+\solution{
+Here there are $n=5$ elements in a set ($x_{1}, x_{2},
+x_{3}, x_{4}, x_{5}$), from which we select 21 elements 
+with repetition, under the restriction that there is at least one 
+element of type 1.
+This means that, of the 21 elements, 1 is already fixed 
+(the element of type 1),
+and we are free to choose the remaining $r=20$ with repetition.
+
+Thus, there are $C(n+r-1,r) = C(24,20) = 10,626$ solutions 
+to the equation under these conditions.
+}
+
+\item \strmedium $x_{i} \geq 2$ for $i=1,2,3,4,5$?
+\solution{
+Here there are $n=5$ elements in a set ($x_{1}, x_{2},
+x_{3}, x_{4}, x_{5}$), from which we select 21 elements 
+with repetition, under the restriction that there are at least two 
+elements of each type.
+This means that, of the 21 elements, 10 are already fixed 
+(two of each type), leaving $r=11$ to be freely chosen with repetition.
+
+Thus, there are $C(n+r-1,r) = C(15,11) = 1,365$ solutions 
+to the equation under these restrictions.
+}
+
+\item \strmedium $0 \leq x_{1} \leq 10$?
+\solution{
+The number of solutions with $0 \leq x_{1} \leq 10$ equals
+the total number of solutions minus the number of solutions with 
+$x_{1} \geq 11$.
+
+The total number of solutions comes from selecting
+$r=21$ elements with repetition from a set of $n=5$
+elements, i.e., $C(21+5-1,21) = C(25,21) = 12,650$.
+
+The number of solutions with $x_{1} \geq 11$ is found by
+fixing 11 elements as the first category ($x_{1}$)
+and then selecting, with repetition, $n=21-11=10$ elements 
+from a set of $r=5$ possible types, i.e., $C(10+5-1,10) = C(14,10) = 1,001$.
+
+Thus, there are $12,650 - 1,001 = 11,649$ solutions 
+to the equation with $0 \leq x_1 \leq 10$.
+}
+
+\end{enumerate}
+
+\item (Rosen 6.5-39) \strmedium In how many ways can one travel 
+in $xyz$-space from the origin $(0,0,0)$ to the point $(4,3,5)$
+taking steps of: one unit in the positive direction of the $x$-axis, 
+one unit in the positive direction of the $y$-axis, 
+or one unit in the positive direction of the $z$-axis?
+(Moving in the negative direction of any axis is not allowed, 
+i.e., you cannot move backward.)
+\solution{
+Define an alphabet of three letters \texttt{x}, \texttt{y}, \texttt{z}, 
+each representing, respectively, a unit move in the positive direction 
+of the $x$-, $y$-, and $z$-axes.
+
+A journey from the origin $(0,0,0)$ to the destination $(4,3,5)$
+corresponds to a string over this alphabet, in which each symbol
+represents a move.
+Since backward motion is not allowed, valid journeys must
+contain exactly 4 symbols \texttt{x} (to cover distance
+along the $x$-axis), 3 symbols \texttt{y} (to cover distance
+along the $y$-axis), and 5 symbols \texttt{z} (to cover distance along the $z$-axis),
+for a total of $4+3+5=12$ symbols.
+
+To count how many such strings exist, we can:
+\begin{itemize}
+\item choose 4 of the 12 positions to place the \texttt{x} symbols: 
+$C(12,4) = 495$ ways,
+\item choose 3 of the remaining $12-4=8$ positions for the 
+\texttt{y} symbols: $C(8,3) = 56$ ways,
+\item place 5 \texttt{z} symbols in the remaining $12-4-3=5$ positions:
+$C(5,5) = 1$ way.
+\end{itemize}
+
+Thus, by the multiplication principle, the total number of possible strings is
+$495 \times 56 \times 1 = 27,720$, which is the desired answer.
+}
+
+\end{enumerate}
+
+\end{document}

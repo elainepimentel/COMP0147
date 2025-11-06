@@ -1,0 +1,273 @@
+\documentclass[11pt,a4]{exam}
+
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{qtree}
+\usepackage{xcolor}
+\usepackage{proof}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{xspace}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+
+\def\cC{\mathcal{C}}
+\def\cV{\mathcal{V}}
+\def\cP{\mathcal{P}}
+
+\newcommand\lra{\longrightarrow}
+\newcommand\lrai{\Longrightarrow}
+\newcommand\iimp{\supset}
+
+\newcommand{\Frame}[1]{
+    \fbox{
+      \parbox[c]{\textwidth}
+      {
+       \noindent #1
+      }
+    }
+}
+
+\renewcommand{\solution}[1]{\paragraph{Solution:} #1 \vspace{4mm}}
+
+%\usepackage{draftwatermark}
+%\SetWatermarkAngle{-30}
+%\SetWatermarkText{\includegraphics{answers}}
+
+\usepackage[centerlast,small,sc]{caption}
+\newcommand{\nat}{N}
+\setlength{\captionmargin}{60pt}
+\boxedpoints
+\pointpoints{Mark}{Marks}
+\addpoints
+\hqword{Question}
+\hpword{Mark}
+\hsword{Cal.}
+\setlength\linefillheight{.5cm}
+%\printanswers
+\extraheadheight[0.5in]{0.2in}
+
+
+\newcommand{\course}{COMP0147: Discrete Mathematics \\ 25/26}
+\newcommand{\subject}{Practice sheet}
+\newcommand{\dt}{Nov/2025}
+
+
+\firstpageheader{\includegraphics[height=1.3cm]{UCL-logo.jpeg}
+}%
+{\large\bf  \course}{\bf \subject \\ \dt}
+
+\runningheader{
+Name:\\
+}{}{}
+\firstpagefooter{}{}{}
+\runningfooter{}{Page \thepage}{}
+\runningheadrule
+\footrule
+\lfoot{}
+\cfoot{Page  \thepage\ of \numpages}
+\rfoot{}
+
+
+\begin{document}
+
+\hbox to \textwidth{Name and ID:\enspace\hrulefill}
+%\vspace{1cm}
+%\hbox to \textwidth{Group:\enspace\hrulefill}
+
+
+
+\begin{center}
+\Frame{
+\begin{multicols}{2}
+\scriptsize
+\begin{enumerate}
+\item {\em This is not a mock exam!} It is a set of selected exercises covering all the material in the module.
+\item Try to solve all the questions and keep track of how long you take -- it should be around 2 hours.
+\item The sample is marked out of 100 in total. The number of marks for each question roughly corresponds to the difficulty.
+\item Good practice!
+\end{enumerate}
+\end{multicols}
+}
+\end{center}
+
+
+\lstset{
+	tabsize = 1, %% set tab space width
+	showstringspaces = false, %% prevent space marking in strings, string is defined as the text that is generally printed directly to the console
+	numbers = left, %% display line numbers on the left
+	commentstyle = \color{green}, %% set comment color
+	keywordstyle = \color{blue}, %% set keyword color
+	stringstyle = \color{red}, %% set string color
+	rulecolor = \color{black}, %% set frame color to avoid being affected by text color
+	basicstyle = \fontsize{7}{10} \ttfamily , %% set listing font and size
+	breaklines = true, %% enable line breaking
+	numberstyle = \tiny,
+	xleftmargin=2.5em,frame=single,framexleftmargin=2.5em
+  % literate={\ \ }{{\ }}1
+}
+
+
+
+\begin{questions}
+
+\question[6] 
+Determine whether each of the arguments below is correct or incorrect, and explain why.
+You must formalize the argument using propositions/predicates and indicate which rules of inference were used.
+
+\begin{enumerate}
+
+\item[a.] It is fun to drive convertible cars.
+Claudia's car is not a convertible.
+Therefore, Claudia's car is not fun to drive.
+
+\item[b.] Alice is taking COMP0147 or COMP003.
+Alice is not taking COMP0147 or she is taking Calculus.
+Therefore, Alice is taking COMP0003 or Calculus.
+
+\end{enumerate}
+
+\question[4] Let $m_1 , m_2 , \ldots , m_n$ be pairwise relatively prime integers greater than or equal to 2. Show that if $a \equiv b\pmod{m_i}$ for $i = 1,2,\ldots,n$, then $a \equiv b \pmod{m}$, where $m = m_1\cdot m_2\cdot\ldots \cdot m_n$.
+
+\question[10]
+The {\em symmetric difference} of sets $A$ and $B$, denoted by $A \oplus B$, is
+the set containing those elements in either $A$ or $B$, but not in both $A$ and $B$.
+\begin{enumerate}
+    \item[a.] What can you say about the sets $A$ and $B$ if $A\oplus B=A$?
+    \item[b.] Suppose that $A, B, C$ are sets such that $A\oplus C = B \oplus C$. Must it be the case that $A = B$?
+\end{enumerate}    
+
+\question[15] Consider a function $f : A \to B$.
+
+\begin{itemize}
+    \item 
+    A function $r : B \to A$ is called a \emph{right inverse} of $f$ if
+    \[
+    f \circ r = \mathrm{id}_B.
+    \]
+    This means that for every $b \in B$, $f(r(b)) = b$.
+
+    \item 
+    A function $\ell : B \to A$ is called a \emph{left inverse} of $f$ if
+    \[
+    \ell \circ f = \mathrm{id}_A.
+    \]
+    This means that for every $a \in A$, $\ell(f(a)) = a$.
+\end{itemize}
+\begin{enumerate}
+ \item[a.] Prove  that a function $h: A\to B$,
+\begin{itemize}
+  \item[i.] has a right inverse iff $h$ is surjective;
+  \item[ii.] has a left inverse  iff $h$ is injective;
+  \item[iii.] is invertible iff $h$ is a bijection.
+\end{itemize}
+
+    \item[b.] Let the function $f:\mathbb{R}\to \mathbb{R}$ be defined as:
+    \[
+    f(x)=\left\{\begin{array}{ll}
+    \sqrt{x} & \mbox{ if } x>0,\\
+    0 & \mbox{ otherwise.}
+    \end{array}
+    \right.
+    \]
+    \begin{enumerate}
+    \item[i.] Does $f$ have a right inverse? If so, give an example of a right inverse.
+    \item[ii.] Does $f$ have a left inverse? If so, give an example of a left inverse.
+    \item[iii.] Is $f$ invertible? If it is, what is its inverse?
+    \end{enumerate}
+
+    \item[c.] Let the function $g:\mathbb{R}\to [0,\infty)$ be defined as:
+    \[
+    g(x)=\left\{\begin{array}{ll}
+    \sqrt{x} & \mbox{ if } x>0,\\
+    0 & \mbox{ otherwise.}
+    \end{array}
+    \right.
+    \]
+    \begin{enumerate}
+    \item[i.] Does $g$ have a right inverse? If so, give an example of a right inverse.
+    \item[ii.] Does $g$ have a left inverse? If so, give an example of a left inverse.
+    \item[iii.] Is $g$ invertible? If it is, what is its inverse?
+    \end{enumerate}
+\end{enumerate}
+
+\question[10]
+Prove by mathematical induction that for all integers $n \geq 1$,
+\[
+1^3 + 2^3 + \dots + n^3 = (1 + 2 + \dots + n)^2.
+\]
+
+\question[10] Prove that at a party where there are at least two people, there are two people who know the same number of other people there.
+
+\question[5]
+A survey of 100 students found that:
+\begin{itemize}
+    \item 60 study Mathematics,
+    \item 45 study Computer Science,
+    \item 30 study both.
+\end{itemize}
+\begin{enumerate}
+    \item[a.] How many students study at least one of the two subjects?
+    \item[b.] How many study only Mathematics?
+    \item[c.] How many study neither subject?
+\end{enumerate}
+Express your results using set operations and the inclusion-exclusion principle.
+
+\question[10] Let $X=\{(a,b)\mid a,b\in\mathbb{Z}, b\not=0\}$ and define a relation $R$ on $X$ by
+\[
+((a,b),(c,d))\in R \qquad\Longleftrightarrow\qquad ad=bc.
+\]
+Show that $R$ is an equivalence relation.
+
+\question[20] A poset $(R, \preceq)$ is {\em well-founded} if there is no infinite decreasing sequence of elements in the poset, that is, elements $x_1,x_2,\ldots,x_n,\ldots$ such that $\cdots \prec x_n \prec \cdots \prec x_2 \prec x_1$. A poset $(R, \preceq)$ is {\em dense} if for all $x ,y \in S$ with $x \prec y$, there is an element $z \in R$ such that $x \prec z \prec y$.
+
+Let $\Sigma=\{\text{the 26 lowercase English letters}\}$ and let $\Sigma^{*}$ be the set of all finite strings over $\Sigma$.  Equip $\Sigma^{*}$ with the usual lexicographic order $\leq$ defined as follows: for $x,y\in\Sigma^*$, write $x<y$ iff either
+\begin{enumerate}
+  \item $x$ is a proper prefix of $y$, or
+  \item at the first position where $x$ and $y$ differ, the letter of $x$ is less than the letter of $y$ (according to the usual order $a<b<\cdots<z$).
+\end{enumerate}
+
+Show that $(\Sigma^*,\leq)$ is
+\begin{itemize}
+\item [a)] not well-founded;
+\item[b)] not dense.
+\end{itemize}
+
+\question[10] The {\em line graph} $L(G)$ of a simple graph $G$ is the graph whose vertices are in one-to-one correspondence with the edges of $G$. Two vertices of $L(G)$ are adjacent if and only if the corresponding edges in G have an end-point in common.
+\begin{itemize}
+\item[a.] Determine the line graphs of the two graphs below.
+\begin{center}
+\begin{tikzpicture}[vertex/.style={draw,circle,inner sep=1.5pt,minimum size=12pt}, >=Stealth]
+% G1 triangle
+\node[vertex] (A) at (0,1) { };
+\node[vertex] (B) at (-0.87,-0.5) { };
+\node[vertex] (C) at (0.87,-0.5) { };
+\draw (A) -- (B) -- (C) -- (A);
+\node at (0,-1.0) {$G_1$};
+\begin{scope}[xshift=4.5cm]
+% G2 K1,3
+\node[vertex] (O) at (0,-0.5) { };
+\node[vertex] (u) at (-1.2,0.6) { };
+\node[vertex] (v) at (0,1) { };
+\node[vertex] (w) at (1.2,0.6) { };
+\draw (O) -- (u); \draw (O) -- (v); \draw (O) -- (w);
+\node at (0,-1.0) {$G_2=K_{1,3}$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\item[b.] If $G$ and $H$ are simple graphs with $L(G)$ isomorphic to $L(H)$, are $G$ and $H$ also isomorphic? Justify.
+\item[c.] Prove that  if $G$ is a simple graph in which every vertex has degree $k$ (i.e.\ $G$ is $k$--regular), then every vertex of $L(G)$ has degree $2k-2$.
+\end{itemize}
+ 
+\end{questions}
+\end{document}
