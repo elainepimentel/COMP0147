@@ -329,24 +329,24 @@ as $a \leq 2b$, which is true since by the I.H. we have $a\leq 2b$.
 \end{enumerate}
 
 \item (Rosen 4.3-28) Give a recursive definition for each of the 
-sets of ordered pairs of positive integers. 
+sets of ordered pairs of natural numbers. 
 (Hint: Plot the points on the plane and look for lines containing 
 the points of the set.)
 
 \begin{enumerate}
-\item \streasy $S=\{(a,b)  \mid  a,b\in \mathbb{Z}^+, a+b \text{~is odd}\}$
+\item \streasy $S=\{(a,b)  \mid  a,b\in \mathbb{N}, a+b \text{~is odd}\}$
 \solution{
 \emph{Base step:} $(1,0) \in S$ and $(0,1) \in S$, \\
 \emph{Recursive step:} If $(a,b) \in S$, then $(a+2,b) \in S$ and $(a,b+2) \in S$.
 }
 
-\item \strmedium $S=\{(a,b)  \mid  a,b\in \mathbb{Z}^+, a  \mid  b\}$
+\item \strmedium $S=\{(a,b)  \mid  a,b\in \mathbb{N}, a  \mid  b\}$
 \solution{
 \emph{Base step:} $(a,0) \in S, (a>0)$\\  
 \emph{Recursive step:} if $(a,b) \in S$, then $(a,a+b) \in S$.
 }
 
-\item \strmedium $S=\{(a,b)  \mid  a,b\in \mathbb{Z}^+, 3  \mid  a+b\}$
+\item \strmedium $S=\{(a,b)  \mid  a,b\in \mathbb{N}, 3  \mid  a+b\}$
 \solution{
 \emph{Base step:} $(0,0) \in S$, \\
 \emph{Recursive step:} If $(a,b) \in S$, then $(a+0,b+3) \in S$, $(a+1,b+2) \in S$,
