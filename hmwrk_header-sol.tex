@@ -23,7 +23,6 @@
 
 \newwatermark[allpages,color=blue!50,angle=45,scale=3,xpos=0,ypos=0]{\fontsize{50}{60}{\bf Answers} \\[1cm]\fontsize{20}{30}\bf {Not to be printed}}
 
-
 % Information about the course.
 \newcommand{\strcourse}{Discrete Mathematics - COMP0147}
 \newcommand{\strinstitution}{\includegraphics[height=1cm]{UCL-logo.jpeg}}
@@ -55,9 +54,31 @@ Do not be discouraged if you see a difficult exercise--you may find that it is a
 \newcommand{\prop}[1]{\emph{\qm{#1}}} % Proposition in natural language
 \newcommand{\lazyfrac}[2]{#1/#2}
 \newcommand{\crossline}{\noindent\makebox[\linewidth]{\rule{\textwidth}{1pt}}}
+\newcommand{\ie}{{\em i.e.}}
+\newcommand{\eg}{{\em e.g.}}
 
 \newcommand{\imp}{\rightarrow} % Implication symbol
 \newcommand{\doubleimp}{\leftrightarrow} % Double implication symbol
+
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\newcommand{\orgcellA}[3]{\begin{Large}$({#1},{#2})$\end{Large} {\circled{#3}}}
+\newcommand{\orgcellB}[2]{\begin{Large}$({#1},{#2})$\end{Large} {$\ldots$}}
+
+\newcommand{\green}[1]{{\color{green} #1}}
+\newcommand{\red}[1]{{\color{red} #1}}
+
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\newcommand{\yes}{\green{\cmark}}
+\newcommand{\no}{\red{\xmark}}
 
 % We need this in order to be able to print both a handouts version
 % and a solution version of the homework.
