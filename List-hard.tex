@@ -1,0 +1,169 @@
+\input{hmwrk_header.tex}
+
+%====================================================================
+% Commands particular to this file
+%====================================================================
+\usepackage{graphicx}
+\usepackage{multirow}
+\begin{document}
+
+%====================================================================
+\homeworktitle{Hard problems}{Rosen}
+
+\crossline
+
+
+These are some problems taken from Rosen's book that I consider very hard! 
+
+\crossline
+
+\begin{enumerate}
+\item  (Rosen 2.3-80)
+Show that a set $S$ is infinite if and only if there exists a proper subset 
+$A \subsetneq S$ such that $A$ is in one-to-one correspondence with $S$.
+
+\solution{($\Rightarrow$) Suppose $S$ is infinite. Choose an element $x_{0} \in S$. 
+Since $S$ is infinite, the set $S - \{x_{0}\}$ is nonempty. Choose 
+$x_{1} \in S - \{x_{0}\}$. Inductively, having chosen distinct
+$x_{0}, \ldots, x_{n}$, the set $S - \{x_{0},\ldots,x_{n}\}$ is nonempty 
+(because $S$ is infinite), so choose $x_{n+1}$ from it.
+
+This produces an infinite sequence of distinct elements
+\[
+x_{0}, x_{1}, x_{2}, \ldots \in S.
+\]
+Let $T = \{x_{0}, x_{1}, x_{2}, \ldots\}$ and define
+\[
+A = S - \{x_{0}\}.
+\]
+Define a map $f : S \to A$ by
+\[
+f(x_n) = x_{n+1} \quad \text{for all } n \ge 0,
+\]
+and
+\[
+f(y) = y \quad \text{for all } y \in S - T.
+\]
+
+We check that $f$ is a bijection. First, $f$ is injective, since distinct 
+elements in $T$ map to distinct later elements in the sequence, and $f$ acts 
+as the identity on $S - T$. It is also surjective onto $A$, since each 
+$x_{n+1}$ has preimage $x_n$, and each $y \in S - T$ has preimage $y$ 
+itself. Thus $f$ is a bijection $S \to A$. Moreover, $A$ is a proper subset 
+of $S$ because $x_{0} \notin A$. Hence $S$ is Dedekind-infinite.
+
+($\Leftarrow$) Conversely, suppose there exists a proper subset $A \subsetneq S$ 
+and a bijection $f : S \to A$. If $S$ were finite, then $|A| < |S|$, so no 
+bijection between $S$ and $A$ could exist. This contradiction shows that $S$ 
+cannot be finite. Therefore, $S$ is infinite.
+
+\hfill $\Box$
+}
+
+\item (Rosen 2.5-38) Show that the set of functions from the positive integers to the set $\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$ is uncountable. [Hint: First set up a one-to-one correspondence between the set of real numbers between 0 and 1 and a subset of these functions. Do this by associating to the real number $0.d_1d_2\ldots d_n \ldots$ the function f with $f(n) = d_n$.]
+
+\item (Rosen 9.5-58) Each bead on a bracelet with three beads is either red, white, or blue, as illustrated in the figure shown.
+\begin{center}
+\includegraphics{figs/bracelet}
+\end{center}
+Define the relation $R$ as $(B_1,B_2)$
+where $B_1$ and $B_2$ are bracelets, belongs to $R$ if and only if $B_2$ can be obtained from $B_1$ by rotating it or rotating it and then reflecting it.
+\begin{itemize}
+\item[a)] Show that $R$ is an equivalence relation.
+\item[b)] What are the equivalence classes of $R$?
+\end{itemize}
+\solution{We have bracelets with three positions and colours taken from $\{R,W,B\}$.  Write a bracelet as a 3-tuple $(c_1,c_2,c_3)$ read cyclically; two 3-tuples that differ only by rotation or by a rotation followed by reflection represent the same physical bracelet.  
+Define the relation $R$ on the set $\mathcal B$ of all $3$-tuples of colours by
+\[
+(B_1,B_2)\in R \quad\text{iff}\quad B_2 \text{ can be obtained from } B_1
+\text{ by a rotation or by a rotation followed by a reflection.}
+\]
+
+\begin{itemize}
+\item[a)] We check the three properties directly using the allowed motions (there are three rotations: rotate by $0,120,240$ degrees; and three reflections: reflect about a line through a bead or through a mid-point of an edge).
+
+\begin{itemize}
+\item \emph{Reflexive.} The rotation by $0$ degrees leaves every bracelet fixed, so $(B,B)\in R$ for every $B\in\mathcal B$.
+
+\item \emph{Symmetric.} If $B_2$ can be obtained from $B_1$ by a rotation or by a rotation followed by a reflection, then performing the appropriate inverse motion (rotate the opposite amount, or reflect and rotate back) transforms $B_2$ back into $B_1$. Hence $(B_1,B_2)\in R$ implies $(B_2,B_1)\in R$.
+
+\item \emph{Transitive.} If $B_2$ is obtained from $B_1$ by some allowed motion and $B_3$ is obtained from $B_2$ by some allowed motion, then doing the two motions one after the other is again an allowed motion (a rotation or a rotation followed by a reflection). Thus $(B_1,B_2)\in R$ and $(B_2,B_3)\in R$ imply $(B_1,B_3)\in R$.
+\end{itemize}
+
+Therefore $R$ is reflexive, symmetric and transitive, so it is an equivalence relation.
+
+\item[b)] 
+We describe the equivalence classes (i.e. all bracelets up to the allowed motions). There are $3^3=27$ bracelets in total. We split into cases according to how many colours repeat.
+
+\medskip
+
+\noindent\textbf{Case 1: all three beads the same.} \\
+There are three bracelets:
+\[
+\{(R,R,R)\},\qquad \{(W,W,W)\},\qquad \{(B,B,B)\}.
+\]
+Each of these forms an equivalence class of size $1$ (rotations and reflections do not change them).
+
+\medskip
+
+\noindent\textbf{Case 2: exactly two beads the same and the third different.} \\
+Fix colours $x\neq y$ and consider the pattern with two $x$'s and one $y$. Up to rotation/reflection the three linear arrangements
+\[
+(x,x,y),\quad (x,y,x),\quad (y,x,x)
+\]
+all represent the same bracelet (reflections do not produce any new arrangement beyond these three). Thus for each ordered choice of $(x,y)$ with $x\neq y$ we get one equivalence class. There are $3$ choices for $x$ and $2$ choices for $y\neq x$, giving $3\cdot 2=6$ classes. Representative lists (one for each class) are:
+\[
+\{(R,R,W),(R,W,R),(W,R,R)\},
+\]
+\[
+\{(R,R,B),(R,B,R),(B,R,R)\},
+\]
+\[
+\{(W,W,R),(W,R,W),(R,W,W)\},
+\]
+\[
+\{(W,W,B),(W,B,W),(B,W,W)\},
+\]
+\[
+\{(B,B,R),(B,R,B),(R,B,B)\},
+\]
+\[
+\{(B,B,W),(B,W,B),(W,B,B)\}.
+\]
+Each such class has size $3$.
+
+\medskip
+
+\noindent\textbf{Case 3: all three beads different.} \\
+There is only one colour-multiset $\{R,W,B\}$ of size three with all colours distinct. Start with the linear arrangement $(R,W,B)$. Its distinct circular arrangements obtained by rotations and reflections are
+\[
+(R,W,B),\ (W,B,R),\ (B,R,W) \qquad\text{(the three rotations)}
+\]
+and
+\[
+(R,B,W),\ (B,W,R),\ (W,R,B) \qquad\text{(the three reflections)},
+\]
+so altogether $6$ distinct 3-tuples lie in this class. Thus there is exactly one equivalence class containing all bracelets with three distinct colours:
+\[
+\{(R,W,B),(W,B,R),(B,R,W),(R,B,W),(B,W,R),(W,R,B)\}.
+\]
+
+\medskip
+
+\noindent\textbf{Counting check.} The classes we listed have sizes
+\[
+3 \times 1 \quad(\text{all same})\;+\; 6 \times 3 \quad(\text{two same})\;+\; 1 \times 6 \quad(\text{all different})
+=3+18+6=27,
+\]
+which accounts for all bracelets.
+
+\end{itemize}
+
+\noindent\textbf{Conclusion.} The relation $R$ is an equivalence relation, and its equivalence classes are exactly the $10$ classes listed above: three singleton classes of constant colour, six classes each consisting of the three arrangements with two equal beads and one different, and one class consisting of the six arrangements with all three colours different.
+}
+
+
+\end{enumerate}
+
+\end{document}
+
