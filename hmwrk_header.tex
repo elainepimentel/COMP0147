@@ -1,0 +1,108 @@
+\documentclass[11pt,a4paper]{article}
+
+%====================================================================
+% LaTeX Packages
+%====================================================================
+\usepackage{geometry}
+\usepackage{enumerate}
+\usepackage{mdwlist} % Allows for suspeding and resuming lists.
+\geometry{a4paper,left=1.5cm,right=1.5cm,top=2.5cm,bottom=2cm}
+\usepackage{epsf}
+\usepackage{amsmath,amssymb}
+\usepackage{array} % Allows fixing row width.
+\usepackage{amsthm} % Allows for \qed symbol
+\usepackage{graphicx}
+\usepackage{nicefrac}
+\usepackage{multicol}
+\usepackage{xspace} % Introduces spaces after macros only when needed.
+%--------------------------------------------------------------------
+
+
+% Information about the course.
+\newcommand{\strcourse}{Discrete Mathematics - COMP0147}
+\newcommand{\strinstitution}{\includegraphics[height=1cm]{UCL-logo.jpeg}}
+\newcommand{\strsemester}{2025 - Term 1}
+
+% Information about the instructor.
+\newcommand{\strinstructor}{Prof. Elaine Pimentel}
+\newcommand{\stremail}{e.pimentel@ucl.ac.uk}
+
+% Information about assigment
+\newcommand{\strtypeofassignment}{List of exercises}
+\newcommand{\strsolution}{(Solution)}
+\newcommand{\strinstructorsolution}{Solution}
+\newcommand{\streasy}{\level{Easy}}
+\newcommand{\strmedium}{\level{Medium}}
+\newcommand{\strhard}{\level{Hard}}
+\newcommand{\strnoteondifficultylevel}{
+\paragraph{Note:} 
+The exercises are classified into difficulty levels:
+easy, medium, and hard.
+This classification, however, is only indicative.
+Different people may disagree about the difficulty level of the same exercise.
+Do not be discouraged if you see a difficult exercise--you may find that it is actually easy, by discovering a simpler way to solve it!
+}
+%--------------------------------------------------------------------
+
+\newcommand{\level}[1]{\textbf{\texttt{[#1]}}\xspace}
+\newcommand{\qm}[1]{``#1''}
+\newcommand{\prop}[1]{\emph{\qm{#1}}} % Proposition in natural language
+\newcommand{\lazyfrac}[2]{#1/#2}
+\newcommand{\crossline}{\noindent\makebox[\linewidth]{\rule{\textwidth}{1pt}}}
+\newcommand{\ie}{{\em i.e.}}
+\newcommand{\eg}{{\em e.g.}}
+
+\newcommand{\imp}{\rightarrow} % Implication symbol
+\newcommand{\doubleimp}{\leftrightarrow} % Double implication symbol
+
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+
+\newcommand{\green}[1]{{\color{green} #1}}
+\newcommand{\red}[1]{{\color{red} #1}}
+
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\newcommand{\yes}{\green{\cmark}}
+\newcommand{\no}{\red{\xmark}}
+
+
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\newcommand{\orgcellA}[3]{\begin{Large}$({#1},{#2})$\end{Large} {\circled{#3}}}
+\newcommand{\orgcellB}[2]{\begin{Large}$({#1},{#2})$\end{Large} {$\ldots$}}
+
+% We need this in order to be able to print both a handouts version
+% and a solution version of the homework.
+\ifdefined\hidesolution
+	\newcommand{\solution}[1]{}  
+\else
+	\newcommand{\solution}[1]{\paragraph{\strinstructorsolution:} #1 \vspace{4mm}}
+\fi
+
+\newcommand{\homeworktitle}[2]{
+\begin{center}
+\begin{flushleft}
+\noindent \textbf{\strinstitution \hfill \strsemester} \\
+\textbf{\strcourse \hfill \strinstructor}
+\end{flushleft} 
+\ \\
+\textbf{\MakeUppercase{\strtypeofassignment}}\\
+\textsc{#1\\
+(#2)}
+\end{center}
+}
+
+\newcommand{\noteondifficultylevel}{
+\strnoteondifficultylevel
+}
+%--------------------------------------------------------------------
+
+
+
+
+
