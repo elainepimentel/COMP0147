@@ -33,43 +33,37 @@
 There are four alternatives for each question.
 
 \begin{enumerate}
-\item \streasy In how many ways can a student answer
-the questions on the test if no question is left blank?
+\item \streasy In how many ways can a student answer the questions on the test if no question is left blank?
 \solution{
-By the multiplication rule, there are $4^{10}$ ways to answer
-the test.
+By the multiplication rule, there are $4^{10}$ ways to answer the test.
 }
 
-\item \streasy In how many ways can a student answer
-the questions on the test if questions may be left blank?
+\item \streasy In how many ways can a student answer the questions on the test if questions may be left blank?
 \solution{
-If questions may be left blank, then there are
-$5$ options for each question (each of the original $4$ alternatives 
+If questions may be left blank, then there are $5$ options for each question (each of the original $4$ alternatives 
 plus the alternative of leaving it blank).
 
-By the multiplication rule, there are $5^{10}$ ways to answer
-the test.
+By the multiplication rule, there are $5^{10}$ ways to answer the test.
 }
 \end{enumerate}
 
-\item (Rosen 6.1-23) How many integers between $100$ and $999$, inclusive,
-satisfy:
+\item (Rosen 6.1-23) How many integers between $100$ and $999$, inclusive, satisfy:
 
 \begin{enumerate}
 
 \item \strmedium are divisible by 3 or 4?
 \solution{
 The numbers divisible by $3$ in the interval from $100$ to $999$
-go from $34 \cdot 3 = 102$ to $333 \cdot 3 = 999$, that is,
+go from $34 \times 3 = 102$ to $333 \times 3 = 999$, that is,
 there are $333-34+1=300$ of these numbers.
 
 The numbers divisible by $4$ in the interval from $100$ to $999$
-go from $25 \cdot 4 = 100$ to $249 \cdot 4 = 996$, that is,
+go from $25 \times 4 = 100$ to $249 \times 4 = 996$, that is,
 there are $249-25+1=225$ of these numbers.
 
 The numbers divisible by both $3$ and $4$ in the interval from
-$100$ to $999$ are those divisible by $4\cdot3=12$,
-and they go from $9 \cdot 12 = 108$ to $83 \cdot 12 = 996$, that is,
+$100$ to $999$ are those divisible by $4 \times 3=12$,
+and they go from $9 \times 12 = 108$ to $83 \times 12 = 996$, that is,
 there are $83-9+1=75$ of these numbers.
 
 Thus, by the inclusion-exclusion principle, there are $300+225-75=450$
@@ -113,8 +107,7 @@ where $n$ is a positive integer, to the set $\{0,1\}$, if:
 \begin{itemize}
 \item If $n = 1$, there are two functions: $\{1 \mapsto 0\}$ or $\{1 \mapsto 1\}$.
 \item If $n = 2$, there are two functions: $\{1 \mapsto 0, 2 \mapsto 1\}$ or $\{1 \mapsto 1, 2 \mapsto 0 \}$.
-\item If $n \geq 3$, there are no bijective functions, since the domain
-is larger than the codomain.
+\item If $n \geq 3$, there are no bijective (one-to-one) functions, since the domain is larger than the codomain.
 \end{itemize}
 }
 
@@ -124,13 +117,12 @@ If $n=1$, then there is only one possible function: $\{1 \mapsto 0\}$.
 
 If $n \geq 2$, since the function assigns $0$ to both $1$ and $n$, 
 we are free to choose the values for the remaining $n-2$ elements.
-As there are 2 possibilities (0 or 1) for each, there are $2^{n-2}$ 
-possible functions.
+As there are 2 possibilities (0 or 1) for each, there are $2^{n-2}$  possible functions.
 }
 
 \item \streasy that assign 1 to exactly one of the positive integers less than $n$?
 \solution{
-If $n = 1$, then there are no such functions, since there are no positive integers less than $n$. So assume $n > 1$. In order to specify such a function, we have to decide which of the numbers from $1$ to $n - 1$, inclusive, will get sent to $1$. There are $n - 1$ ways to make this choice. There is no choice for the remaining numbers from 1 to $n - 1$, inclusive, since they all must get sent to 0. Finally, we are free to specify the value of the function at $n$, and this may be done in 2 ways. Hence, by the product rule the final answer is $2(n - 1)$.
+If $n = 1$, then there are no such functions, since there are no positive integers less than $n$ ($n = 1$ in this instance). So assume $n > 1$. In order to specify such a function, we have to decide which of the numbers from $1$ to $n - 1$, inclusive, will get assigned to $1$. There are $n - 1$ ways to make this choice. There is no choice for the remaining numbers from 1 to $n - 1$, inclusive, since they all must get sent to 0. Finally, we are free to specify the value of the function at $n$, and this may be done in 2 ways. Hence, by the product rule the final answer is $2(n - 1)$.
 }
 \end{enumerate}
 
@@ -140,21 +132,17 @@ A person removes socks randomly from the drawer in the dark.
 
 \begin{enumerate}
 \item \streasy How many socks must the person remove to be sure that 
-at least two socks are of the same color?
+at least two socks are of the same colour?
 \solution{
-By the pigeonhole principle, where socks are pigeons and colors are
-holes, there will be at least two pigeons in one hole when
-the number of pigeons is such that $\lceil n/2 \rceil=2$, that is, 
-when $n=3$ socks.
+By the pigeonhole principle (socks are pigeons and colours are
+holes), there will be at least two pigeons in one hole when
+the number of pigeons is such that $\lceil n/2 \rceil=2$, that is, when $n=3$ socks.
 }
 
-\item \streasy How many socks must the person remove to be sure that at 
-least two socks are black?
+\item \streasy How many socks must the person remove to be sure that at  least two socks are black?
 \solution{
-In the worst case, the person removes 12 brown socks first, and only then
-removes 2 black ones.
-Thus, it is necessary to remove 14 socks to be sure that at least
-two are black.
+In the worst case, the person removes 12 brown socks first, and only then removes 2 black ones.
+Thus, it is necessary to remove 14 socks to be sure that at least two are black.
 }
 \end{enumerate}
 
@@ -164,12 +152,10 @@ two numbers have the same remainder when divided by 4.
 \solution{
 There are four possible remainders when dividing by 4, namely 0, 1, 2, and 3.
 Thus, by the pigeonhole principle, where numbers are pigeons
-and remainders are holes, in a set of five numbers, at least two 
-must have the same remainder.
+and remainders are holes, in a set of five numbers, at least two must have the same remainder.
 }
 
-\item \strmedium (Rosen 6.2-15) How many distinct numbers must be
-chosen from the set $\{1,2,3,4,5,6\}$ to ensure that 
+\item \strmedium (Rosen 6.2-15) How many distinct numbers must be chosen from the set $\{1,2,3,4,5,6\}$ to ensure that 
 at least one pair of them has a sum equal to 7?
 \solution{
 The sum of any two numbers in the set $\{1,2,3,4,5,6\}$ is a
@@ -192,8 +178,7 @@ that the sum of at least one pair is 7.
 
 \item (Rosen 6.2-37) \strhard A computer network consists of six computers. Each computer is directly connected to zero or more of the other computers. Show that there are at least two computers in the network that are directly connected to the same number of other computers. [Hint: It is impossible to have a computer linked to none of the others and a computer linked to all the others.]
 \solution{
-If the network has 6 machines, then there are 5 possible connectivity
-degrees simultaneously: either from 0 to 4 or from 1 to 5 
+If the network has 6 machines, then there are 5 possible connectivity degrees simultaneously: either from 0 to 4 or from 1 to 5 
 (since in the same network degrees 0 and 5 are mutually exclusive).
 
 Thus, by the pigeonhole principle, where pigeons are 
@@ -247,8 +232,7 @@ There are $C(10,5) = 252$ possibilities in total.
 \end{enumerate}
 
 \item \strmedium (Rosen 6.3-13) A group contains $n$ men and $n$ women. 
-How many ways are there to arrange these people in a line
-if men and women must alternate?
+How many ways are there to arrange these people in a line if men and women must alternate?
 \solution{
 The process of forming the line can be divided into the following steps:
 \begin{itemize}
@@ -259,7 +243,7 @@ $P(n,n)=n!$ ways,
 $P(n,n)=n!$ ways.
 \end{itemize}
 
-Thus, by the multiplication rule, there are $2 \cdot n! \cdot n! = 2(n!)^{2}$
+Thus, by the multiplication rule, there are $2 \times n! \times n! = 2(n!)^{2}$
 ways to form such a line.
 }
 
@@ -291,8 +275,7 @@ used twice in incompatible ways.
 
 \end{enumerate}
 
-\item \strmedium (Rosen 6.3-33) Suppose a department has 10 men 
-and 15 women.
+\item \strmedium (Rosen 6.3-33) Suppose a department has 10 men  and 15 women.
 In how many ways can a six-member committee be formed if the 
 committee must contain the same number of men and women?
 \solution{
@@ -371,8 +354,7 @@ to the equation under these conditions.
 \solution{
 Here there are $n=5$ elements in a set ($x_{1}, x_{2},
 x_{3}, x_{4}, x_{5}$), from which we select 21 elements 
-with repetition, under the restriction that there are at least two 
-elements of each type.
+with repetition, under the restriction that there are at least two  elements of each type.
 This means that, of the 21 elements, 10 are already fixed 
 (two of each type), leaving $r=11$ to be freely chosen with repetition.
 
