@@ -27,7 +27,9 @@
 
 \crossline
 
+
 \begin{enumerate}
+
 
 \item \streasy (Rosen 2.1-5) Determine whether each of the following pairs of sets are equal or not.
 
@@ -146,7 +148,7 @@ The elements of $A \times B \times C$ are ordered triples $(a,b,c)$ such that $a
 The elements of $(A \times B) \times C$ are ordered pairs $((a,b),c)$, where the first element is itself an ordered pair $(a,b)$ with $a \in A$ and $b \in B$, and the second element is $c \in C$.
 }
 
-\item \strhard (Rosen 2.1-45) 
+\item \strhard (Rosen 2.1-45)
 The defining property of an ordered pair is that two ordered pairs are equal if and only if their first elements are equal and their second elements are equal. Surprisingly, instead of taking the ordered pair as a primitive concept, we can construct ordered pairs using basic notions from set theory. Show that if we define the ordered pair $(a,b)$ to be $\{\{a\},\{a,b\}\}$, then $(a,b) = (c,d)$ if and only if $a = c$ and $b = d$. [Hint: First show that $\{\{a\},\{a,b\}\} = \{\{c\},\{c,d\}\}$ if and only if $a = c$ and $b = d$.]
 \solution{
 First we prove the statement mentioned in the hint. The ``if'' part is immediate from the definition of equality. The ``only if'' part is rather subtle. We want to show that if $\{\{a\},\{a,b\}\} = \{\{c\},\{c,d\}\}$, then $a= c$ and $b = d$. First consider the case in which $a\not=  b$. Then $\{\{a\}, \{a, b\}\}$ has exactly two elements, both of which are sets; exactly one of them contains one element, and exactly one of them contains two elements. Thus $\{\{c\},\{c,d\}\}$ must have the same property; hence $c$ cannot equal $d$, and so $\{c\}$ is the element containing one element. Hence $\{a\} = \{c\}$, and so $a = c$. Also in this case the two-element elements $\{a, b\}$ and $\{c, d\}$ must be equal, and since $b \not= a = c$, we must have $b = d$. The other possibility is that $a = b$. Then $\{\{a\},\{a,b\}\} =\{\{a\}\}$, a set with one element. Hence $\{\{c\},\{c,d\}\}$ must also have only one element, which can only happen when $c = d$ and the set is $\{\{c\}\}$. It then follows that $a = c$, and hence $b= d$, as well.
@@ -314,11 +316,11 @@ x \in ( (B-A) \cup (C-A) ) &\doubleimp  x \in (B-A) \vee x \in (C-A) &  \text{(d
 \end{align*}
 }
 
-\item  $A_i=(0,i)$, i.e., the set $\{x \in \mathbb{R} \mid 0<x<1\}$.
+\item  $A_i=(0,i)$, i.e., the set $\{x \in \mathbb{R} \mid 0<x<i\}$.
 \solution{
 \begin{align*}
-\bigcup_{i=1}^{\infty} (0,i) &= (0,\infty) \\
-\bigcap_{i=1}^{\infty} (0,i) &= (0,1)
+\bigcup_{i=1}^{\infty} (0,i) &= (0,1) \cup (0,2) \cup (0,3) \cup \ldots = (0,\infty) \\
+\bigcap_{i=1}^{\infty} (0,i) &= (0,1) \cap (0,2) \cap (0,3) \cap \ldots = (0,1)
 \end{align*}
 }
 
@@ -368,16 +370,18 @@ to a positive integer;
 \solution{
 Function: $\mathbb{Z}^{+} \rightarrow \mathbb{Z}^{+} \backslash \{1\}$.
 }
-\item  the function that assigns to a binary string
-the number of $1$ bits in that string;
+\item The function that assigns to each binary string the number of $1$’s it contains.
 \solution{
-Function: $\{0,1\}^{*} \rightarrow \mathbb{N}$
+Function: $\{0,1\}^{*} \to \mathbb{N}$, where $\{0,1\}^\ast$ denotes the set of all
+finite binary strings.  
+Here the operator ${}^\ast$ is the \emph{Kleene star}, which means ``all finite strings over the given alphabet.''
 }
-\item  the function that assigns to a binary string
-the total number of bits in that string.
+
+\item The function that assigns to each binary string its length (total number of bits).
 \solution{
-Function: $\{0,1\}^{*} \rightarrow \mathbb{N}$
+Function: $\{0,1\}^\ast \to \mathbb{N}$, where $\{0,1\}^\ast$ denotes the set of all finite binary strings (Kleene star).
 }
+
 \end{enumerate}
 
 \item \streasy (Rosen 2.3-9) Find the value of:
@@ -458,17 +462,29 @@ The function is not injective, is surjective, and not bijective.
 }
 \end{enumerate}
 
-\item \streasy (Rosen 2.3-33) Let $g$ be a function from $A$ to $B$
-and $f$ a function from $B$ to $C$.
+\item \streasy (Rosen 2.3-33) Let $g$ be a function from $A$ to $B$ and $f$ a function from $B$ to $C$.
 
 \begin{enumerate}
-\item  Show that if $f$ and $g$ are both injective,
-then $f \circ g$ is also injective.
-\solution{Assume that both $f$ and $g$ are one-to-one. We need to show that $f \circ g$ is one-to-one. This means that we need to show that if $x$ and $y$ are two distinct elements of $A$, then $f(g(x)) \not= f(g(y))$. First, since $g$ is one-to-one, the definition tells us that $g(x) \not= g(y)$. Second, since now $g(x)$ and $g(y)$ are distinct elements of $B$, and since $f$ is one-to-one, we conclude that $f(g(x)) \not=f(g(y))$, as desired.}
+\item  Show that if $f$ and $g$ are both injective, then $f \circ g$ is also injective.
 
-\item  Show that if $f$ and $g$ are both surjective,
-then $f \circ g$ is also surjective.
-\solution{Assume that both $f$ and $g$ are onto. We need to show that $f \circ g$ is onto. This means that we need to show that if $z$ is any element of $C$, then there is some element $x \in A$ such that $f(g(x)) = z$. First, since $f$ is onto, we can conclude that there is an element $y\in  B$ such that $f (y) = z$. Second, since g is onto and $y \in B$, we can conclude that there is an element $x \in A$ such that $g(x) = y$. Putting these together, we have $z = f(y) = f(g(x))$, as desired.
+\solution{
+Let $x,y \in A$ be such that $(f\circ g)(x) = (f\circ g)(y)$.
+From the definition of function composition, it follows $f(g(x)) = f(g(y))$.
+Recall that in $f \circ g$, the rightmost function $g$ acts first, and then $f$ is applied to the result.
+Since $f$ is injective, this implies $g(x) = g(y)$.
+Since $g$ is also injective, it follows that $x = y$.
+Therefore, $f\circ g$ is injective.
+}
+
+\item Show that if $f$ and $g$ are both surjective, then $f \circ g$ is also surjective.
+
+\solution{
+Recall that in $f \circ g$, the rightmost function $g$ acts first, and then $f$ is applied to the result.
+To prove that $f \circ g : A \to C$ is surjective, we must show that for every $z \in C$, there is some $x \in A$ such that $(f \circ g)(x) = z$.
+Let $z$ be any element in $C$.
+Because $f$ is surjective, there is some $y \in B$ with $f(y) = z$, and because $g$ is surjective, there is some $x \in A$ with $g(x) = y$.
+Therefore, $(f \circ g)(x) = f(g(x)) = f(y) = z$.
+Since $z$ was an arbitrary element of $C$, this shows that $f \circ g$ is surjective.
 }
 \end{enumerate}
 
@@ -491,7 +507,7 @@ $f^{-1}(\{ x \mid x > 4 \}) = \{x \mid x < -2 \vee x > 2\}$
 \end{enumerate}
 
 \item \strhard (Rosen 2.3-54) Prove that if $x$ is a real number, 
-then $\lfloor -x \rfloor=-\lceil x \rceil$ and 
+then $\lfloor -x \rfloor = -\lceil x \rceil$ and 
 $\lceil -x \rceil = - \lfloor x \rfloor$.
 \solution{
 Let $x$ be written as $n + \epsilon$, where $n$
