@@ -162,7 +162,44 @@ which accounts for all bracelets.
 \noindent\textbf{Conclusion.} The relation $R$ is an equivalence relation, and its equivalence classes are exactly the $10$ classes listed above: three singleton classes of constant colour, six classes each consisting of the three arrangements with two equal beads and one different, and one class consisting of the six arrangements with all three colours different.
 }
 
+\item (Rosen 10.2.64) If $G$ is a bipartite simple graph with $v$ vertices and $e$ edges, then
+\[
+e \leq \frac{v^{2}}{4}.
+\]
 
+\solution{
+Since $G$ is bipartite, its vertex set can be partitioned into two disjoint parts
+$A$ and $B$, with
+\[
+|A| = a, \qquad |B| = b, \qquad a+b = v.
+\]
+Because the graph is simple and bipartite, every edge joins a vertex in $A$ to a
+vertex in $B$. Therefore the maximum possible number of edges is obtained when
+every vertex in $A$ is adjacent to every vertex in $B$; in that case,
+\[
+e \leq ab.
+\]
+
+We now maximize $ab$ subject to $a+b = v$. Write
+\[
+ab = a(v-a) = av - a^{2}.
+\]
+This is a quadratic in $a$, and its maximum occurs at
+\[
+a = \frac{v}{2},
+\qquad b = \frac{v}{2}.
+\]
+Substituting gives
+\[
+ab \leq \left(\frac{v}{2}\right)\left(\frac{v}{2}\right)
+    = \frac{v^{2}}{4}.
+\]
+
+Thus every bipartite simple graph with $v$ vertices satisfies
+\[
+e \leq \frac{v^{2}}{4}.
+\]
+}
 \end{enumerate}
 
 \end{document}
