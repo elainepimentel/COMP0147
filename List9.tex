@@ -1,0 +1,156 @@
+\input{hmwrk_header.tex}
+
+%====================================================================
+% Commands particular to this file
+%====================================================================
+\usepackage{graphicx}
+\usepackage{multirow}
+%\usepackage{bbding} % Allows for Checkmark symbol (\Checkmark with capital is bigger!) and for \XSolidBrush.
+%\usepackage[usenames,dvipsnames]{color} % Allows for colors.
+%\newcommand{\yes}{{\color{Green}{\Checkmark}}} % Symbol for yes. \Checkmark with capital is bigger!
+%\newcommand{\no}{{\color{Red}{\XSolidBrush}}} % Symbol for no. %--------------------------------------------------------------------
+
+
+
+\begin{document}
+
+%====================================================================
+\homeworktitle{Graphs Part I}{Rosen - Chapter 10}
+
+\crossline
+
+\paragraph{Required reading for this list:}
+\emph{Discrete Mathematics and Its Applications} (Rosen, 7\textsuperscript{th} Edition):
+\begin{itemize}
+\item Chapter 10.1: \emph{Graphs and Graph Models}
+\item Chapter 10.2: \emph{Graph Terminology and Special Types of Graphs}
+\item Chapter 10.3: \emph{Representing Graphs and Graph Isomorphism}
+\item Chapter 10.4: \emph{Connectivity}
+\end{itemize}
+
+\noteondifficultylevel
+
+\crossline
+
+\begin{enumerate}
+\item \streasy (Rosen 10.1-11) Let $G$ be a simple graph. Show that the relation $R$ on the set of vertices of $G$ such that $uRv$ if and only if there is an edge associated to $\{u, v\}$ is a symmetric, irreflexive relation on $G$.
+
+
+
+%\item \streasy (Rosen 10.1-25) How can a graph that models e-mail messages sent in a network be used to find people who have recently changed their primary e-mail address?
+%
+%\solution{For each e-mail address (the labels on the vertices), we could make a list of the other addresses they sent messages to or received messages from. If we see two addresses that had almost the same communication pattern, then we might suspect that these addresses belonged to the same person, who had recently changed his or her e-mail address.}
+
+%\item \streasy (Rosen 10.1-26) How can a graph that models e-mail messages sent in a network be used to find electronic mail mailing lists used to send the same message to many different e-mail addresses?
+%
+%\solution{A mailing list shows up as the same message (or highly similar messages) being delivered to a large set of recipients, usually from the same sender or via the same relay, and usually in a short time window. So we want to (1) identify identical / near-identical messages, (2) group recipients of each message, and (3) find large recipient groups or repeated recipient sets across messages.
+%
+%We can model this using a directed graph, where the vertex set contains the email addresses and the directed edges contains $s\to r$ for each delivered message from sender $s$ to recipient $r$.}
+
+\item \streasy (Rosen 10.1-33) Construct a precedence graph for the following program: 
+\[
+\begin{array}{lcl}
+S1: x := 0 & \qquad\qquad&  S2:x:=x+1\\
+S3:y:=2 & & S4: z := y\\
+S5: x := x + 2 & & S6: y := x + z\\
+S7: z := 4
+\end{array}
+\]
+
+\item \streasy (Rosen 10.2-6) Show that the sum, over the set of people at a party, of the number of people a person has shaken hands with, is even. Assume that no one shakes their own hand.
+
+\item \strmedium (Rosen 10.2-18) Show that in a simple graph with at least two vertices there must be two vertices that have the same degree.
+
+\item \strhard (Rosen 10.2-26) For which values of \(n\) are the following graphs bipartite?
+\begin{enumerate}[a)]
+  \item \(K_n\) (the complete graph on \(n\) vertices),
+  \item \(C_n\) (the cycle on \(n\) vertices),
+  \item \(W_n\) (the wheel on \(n\) vertices; i.e. a vertex (hub) joined to every vertex of a cycle \(C_{n-1}\)),
+  \item \(Q_n\) (the \(n\)-dimensional hypercube graph).
+\end{enumerate}
+
+
+%\item \strhard (Rosen 10.2-27) Suppose that there are four employees in the computer support group of the School of Engineering of a large university. Each employee will be assigned to support one of four different areas: hardware, software, networking, and wireless. Suppose that Ping is qualified to support hardware, networking, and wireless; Quiggley is qualified to support software and networking; Ruiz is qualified to support networking and wireless, and Sitea is qualified to support hardware and software.
+%\begin{itemize}
+%\item[a)] Use a bipartite graph to model the four employees and
+%their qualifications.
+%\item[b)] Use Hall's theorem to determine whether there is an
+%assignment of employees to support areas so that each
+%employee is assigned one area to support.
+%\item[c)] If an assignment of employees to support are as so that each employee is assigned to one support area exists, find one.
+%\end{itemize}
+%\solution{
+%\begin{itemize}
+%\item[a)]  The bipartite graph has vertices $h, s, n, w$ representing the support areas and $P, Q, R, S$ representing the employees. The qualifications are modeled by the bipartite graph with edges $P_h, P_n, P_w, Q_s, Q_n, R_n, R_w, S_h, S_s$.
+%\item[b)] Since every vertex representing an area has degree at least 2, the condition in Hall's theorem is satisfied for sets of size less than 3. We can easily check that the number of employees qualified for each of the four subsets of size 3 is at least 3, and clearly the number of employees qualified for each of the subsets of size 4 has size 4.
+%\item[c)] The answer is not unique; one complete matching is $\{P_n, Q_s, R_w, S_h\}$, which is easily found by inspection.
+%\end{itemize}
+%}
+
+\item  \streasy (Rosen 10.2-38) The degree sequence of a graph is the sequence of the degrees of the vertices of the graph in non-increasing order.  What is the degree sequence of the bipartite graph $K_{m,n}$ where $m$ and $n$ are positive integers? Explain your answer.
+
+
+%\item \streasy (Rosen 10.2-39) What is the degree sequence of $K_n$, where $n$ is a positive
+%integer? Explain your answer.
+%\solution{
+%Each of the n vertices is adjacent to each of the other $n - 1$ vertices, so the degree sequence is simply $n - 1, n - 1, \ldots , n - 1$, with $n$ terms in the sequence.
+%}
+
+\item \strmedium (Rosen 10.2-53) A simple graph is called {\em regular} if every vertex of this graph has the same degree. %A regular graph is called $n-$regular if every vertex in this graph has degree $n$.
+For which values of $n$ are these graphs regular?
+
+a) $K_n$ \qquad b) $C_n$  \qquad c) $W_n$  \qquad d) $Q_n$
+
+
+
+\item  \streasy (Rosen 10.2-54) For which values of $m$ and $n$ is $K_{m,n}$ regular?
+
+
+\item \streasy (Rosen 10.2-59) The complementary graph $\ov{G}$ of a simple graph $G$ has the same vertices as $G$. Two vertices are adjacent in $\ov{G}$ if and only if they are not adjacent in $G$. Describe each of these graphs.
+
+a) $\ov{K_n}$ \qquad b) $\ov{K_{m,n}}$  \qquad c) $\ov{C_n}$  \qquad d) $\ov{Q_n}$
+
+\item \streasy (Rosen 10.3-9) Represent each of these graphs with an adjacency matrix.
+
+a) $K_4$ \qquad b) $K_{1,4}$  \qquad c) $K_{2,3}$  \qquad d) $C_4$ \qquad e) $W_4$ \qquad f) $Q_3$
+
+\item  \streasy (Rosen 10.3-25) Is every zero-one square matrix that is symmetric and has zeros on the diagonal the adjacency matrix of a simple graph?
+
+
+\item \strmedium (Rosen 10.3-28) What is the sum of the entries in a row of the adjacency matrix for an undirected graph? For a directed graph?
+
+
+\item \strhard (Rosen 10.3-29) What is the sum of the entries in a column of the adjacency matrix for an undirected graph? For a directed graph?
+
+\item \strhard (Rosen 10.3-50) A simple graph $G$ is called {\em self-complementary} if $G$ and $\ov{G}$ are isomorphic.
+ Show that the graph below is self-complementary.
+ \begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \node (d) at (0,0) [circle,fill=black,inner sep=1.5pt,label=below:$d$] {};
+    \node (c) at (1,0) [circle,fill=black,inner sep=1.5pt,label=below:$c$] {};
+    \node (b) at (1,1) [circle,fill=black,inner sep=1.5pt,label=above:$b$] {};
+    \node (a) at (0,1) [circle,fill=black,inner sep=1.5pt,label=above:$a$] {};
+
+    \draw (d) -- (a) -- (b) -- (c) ;
+\end{tikzpicture}
+\end{center}
+
+\item  \strhard (Rosen 10.3-53) For which integers $n$ is $C_n$ self-complementary?
+
+\item \streasy (Rosen 10.4-16) Suppose that $G = (V , E)$ is a directed graph. A vertex $w \in V$ is {\em reachable} from a vertex $v \in V$ if there is a directed path from $v$ to $w$. The vertices $v$ and $w$ are {\em mutually reachable} if there are both a directed path from $v$ to $w$ and a directed path from $w$ to $v$ in $G$. Show that if $G=(V,E)$ is a directed graph and $u,v, w$ are vertices in $V$ for which $u$ and $v$ are mutually reachable and $v$ and $w$ are mutually reachable, then $u$ and $w$ are mutually reachable.
+
+
+\item \strmedium (Rosen 10.4-17) Show that if $G = (V , E)$ is a directed graph, then the strong components of two vertices $u$ and $v$ of $V$ are either the same or disjoint. [Hint: Use the last exercise.]
+
+\item \strmedium (Rosen 10.4-19) Find the number of paths of length $n$ between two different vertices in $K_4$ if $n$ is
+
+a) 2. \qquad b) 3.\qquad c) 4.\qquad d) 5.
+
+\item \strhard (Rosen 10.4-28)  Show that every connected graph with $n$ vertices has at least $n - 1$ edges.
+
+\item \strmedium (Rosen 10.4-29)  Let $G = (V,E)$ be a simple graph. Let $R$ be the relation on $V$ consisting of pairs of vertices $(u, v)$ such that there is a path from $u$ to $v$ or such that $u = v$. Show that $R$ is an equivalence relation.
+
+\end{enumerate}
+
+\end{document}
+
