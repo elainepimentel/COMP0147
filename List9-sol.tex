@@ -5,6 +5,9 @@
 %====================================================================
 \usepackage{graphicx}
 \usepackage{multirow}
+\usepackage{multicol}
+\usepackage{colonequals}
+\usepackage{blkarray}
 %\usepackage{bbding} % Allows for Checkmark symbol (\Checkmark with capital is bigger!) and for \XSolidBrush.
 %\usepackage[usenames,dvipsnames]{color} % Allows for colors.
 %\newcommand{\yes}{{\color{Green}{\Checkmark}}} % Symbol for yes. \Checkmark with capital is bigger!
@@ -322,6 +325,9 @@ a) $\ov{K_n}$ \qquad b) $\ov{K_{m,n}}$  \qquad c) $\ov{C_n}$  \qquad d) $\ov{Q_n
     \item There is really no better way to describe this graph than simply by saying it is the complement of \(C_n\). One representation would be to take as vertex set the integers from \(1\) to \(n\), inclusive, with an edge between distinct vertices \(i\) and \(j\) whenever \(i\) and \(j\) do \emph{not} differ by \(\pm 1\), modulo \(n\).
 
     \item Again, there is really no better way to describe this graph than simply by saying it is the complement of \(Q_n\). One representation would be to take as vertex set the bit strings of length \(n\), with two vertices joined by an edge if the bit strings differ in more than one bit.
+    
+    Katya's solution to this is really cool: represent the vertices with cartesian coordinates. For example, in $Q_2$ the vertices' coordinates form the set $\{(0,0),(0,1),(1,0),(1,1)\}$. Now, an edge will be in 
+    \(\ov{Q_n}\) iff the vertices differ on $k$ coordinates for $2\leq k\leq n$. In the case of $Q_2$ the edges in  \(\ov{Q_2}\) are $(0,0)-(1,1)$ and $(0,1)-(1,0)$. You can prove this by induction on $n$. 
 \end{enumerate}}
 
 \item \streasy (Rosen 10.3-9) Represent each of these graphs with an adjacency matrix.
@@ -447,24 +453,25 @@ uv\in E(G) \quad\Longleftrightarrow\quad \varphi(u)\varphi(v)\in E(\overline{G})
 
 Consider the permutation
 \[
-\varphi = (a\ c)(b\ d),
+%\varphi = (a\ c)(b\ d),
+\varphi = (a\ d \ b\ c),
 \]
 that is,
 \[
-\varphi(a)=c,\qquad \varphi(c)=a,\qquad
-\varphi(b)=d,\qquad \varphi(d)=b.
+\varphi(a)=d,\qquad \varphi(d)=b,\qquad
+\varphi(b)=c,\qquad \varphi(c)=a.
 \]
 
 We check that each edge of \(G\) is mapped to an edge of \(\overline{G}\):
 
 \[
-da \mapsto \varphi(d)\varphi(a)=bc \in E(\overline{G}),
+da \mapsto \varphi(d)\varphi(a)=bd \in E(\overline{G}),
 \]
 \[
-ab \mapsto \varphi(a)\varphi(b)=cd \in E(\overline{G}),
+ab \mapsto \varphi(a)\varphi(b)=dc \in E(\overline{G}),
 \]
 \[
-bc \mapsto \varphi(b)\varphi(c)=da \in E(\overline{G}).
+bc \mapsto \varphi(b)\varphi(c)=ca \in E(\overline{G}).
 \]
 
 Thus, \(\varphi\) is a bijection that maps edges of \(G\) to edges of
@@ -474,6 +481,75 @@ G \cong \overline{G}.
 \]
 
 Therefore, the graph is \emph{self-complementary}.
+
+Maria's visualisation of this is really cool. Please have in mind that this {\bf is not} a proof!
+
+This is $\ov{G}$:
+ \begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \node (d) at (0,0) [circle,fill=black,inner sep=1.5pt,label=below:$d$] {};
+    \node (c) at (1,0) [circle,fill=black,inner sep=1.5pt,label=below:$c$] {};
+    \node (b) at (1,1) [circle,fill=black,inner sep=1.5pt,label=above:$b$] {};
+    \node (a) at (0,1) [circle,fill=black,inner sep=1.5pt,label=above:$a$] {};
+
+    \draw (d) -- (b) ;
+    \draw (d) -- (c) -- (a) ;
+\end{tikzpicture} 
+\end{center}
+First move $a$ and $b$ so edges do not cross:
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \node (d) at (0,0) [circle,fill=black,inner sep=1.5pt,label=below:$d$] {};
+    \node (c) at (1,0) [circle,fill=black,inner sep=1.5pt,label=below:$c$] {};
+    \node (a) at (1,1) [circle,fill=black,inner sep=1.5pt,label=above:$a$] {};
+    \node (b) at (0,1) [circle,fill=black,inner sep=1.5pt,label=above:$b$] {};
+
+    \draw (d) -- (b) ;
+    \draw (d) -- (c) -- (a) ;
+    \end{tikzpicture} 
+\end{center}
+Then  flip the graph:
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \node (b) at (0,0) [circle,fill=black,inner sep=1.5pt,label=below:$b$] {};
+    \node (a) at (1,0) [circle,fill=black,inner sep=1.5pt,label=below:$a$] {};
+    \node (c) at (1,1) [circle,fill=black,inner sep=1.5pt,label=above:$c$] {};
+    \node (d) at (0,1) [circle,fill=black,inner sep=1.5pt,label=above:$d$] {};
+
+    \draw (d) -- (b) ;
+    \draw (d) -- (c) -- (a) ;
+    \end{tikzpicture} 
+\end{center}
+Finally, compare them:
+
+    \begin{minipage}{0.45\textwidth}
+      \begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \node (d) at (0,0) [circle,fill=black,inner sep=1.5pt,label=below:$d$] {};
+    \node (c) at (1,0) [circle,fill=black,inner sep=1.5pt,label=below:$c$] {};
+    \node (b) at (1,1) [circle,fill=black,inner sep=1.5pt,label=above:$b$] {};
+    \node (a) at (0,1) [circle,fill=black,inner sep=1.5pt,label=above:$a$] {};
+
+    \draw (d) -- (a) -- (b) -- (c) ;
+\end{tikzpicture} 
+\end{center}
+           \end{minipage}
+%    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \node (b) at (0,0) [circle,fill=black,inner sep=1.5pt,label=below:$b$] {};
+    \node (a) at (1,0) [circle,fill=black,inner sep=1.5pt,label=below:$a$] {};
+    \node (c) at (1,1) [circle,fill=black,inner sep=1.5pt,label=above:$c$] {};
+    \node (d) at (0,1) [circle,fill=black,inner sep=1.5pt,label=above:$d$] {};
+
+    \draw (d) -- (b) ;
+    \draw (d) -- (c) -- (a) ;
+    \end{tikzpicture} 
+    \end{center}
+\end{minipage}
+
+Observe that this is not the only solution!
 }
 
 \item  \strhard (Rosen 10.3-53) For which integers $n$ is $C_n$ self-complementary?
@@ -603,6 +679,10 @@ least \(n-1\) edges.
 }
 \item \strmedium (Rosen 10.4-29)  Let $G = (V,E)$ be a simple graph. Let $R$ be the relation on $V$ consisting of pairs of vertices $(u, v)$ such that there is a path from $u$ to $v$ or such that $u = v$. Show that $R$ is an equivalence relation.
 \solution{The definition given here makes it clear that $u$ and $v$ are related if and only if they are in the same component. In other words $f(u) = f(v)$ where $f(x)$ is the component in which $x$ lies. Therefore by Exercise 9 in Section 9.5 this is an equivalence relation.}
+
+\item \strmedium (Rosen 10.4-51) Show that if $G$ is a connected graph, then it is possible to remove vertices to disconnect $G$ if and only if $G$ is not a complete graph.
+
+\solution{If $G$ is complete, then removing vertices one by one leaves a complete graph at each step, so we never get a disconnected graph. Conversely, if $G$ is not complete, say with edge $uv$ missing, then removing all the vertices except $u$ and $v$ creates the disconnected graph consisting of just those two vertices.}
 \end{enumerate}
 
 \end{document}
